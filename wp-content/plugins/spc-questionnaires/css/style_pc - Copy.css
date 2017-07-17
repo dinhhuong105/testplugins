@@ -1,0 +1,3542 @@
+﻿
+@font-face {
+    font-family: 'icomoon';
+    src: url("../fonts/icomoon.eot?ies58p");
+    src: url("../fonts/icomoon.eot?ies58p#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?ies58p") format("truetype"), url("../fonts/icomoon.woff?ies58p") format("woff"), url("../fonts/icomoon.svg?ies58p#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.icon-shoes:before {
+    content: "\e90d"
+}
+
+.icon-book2:before {
+    content: "\e900"
+}
+
+.icon-hatebu:before {
+    content: "\e90c"
+}
+
+.icon-uma:before {
+    content: "\e901"
+}
+
+.icon-pocket:before {
+    content: "\e902"
+}
+
+.icon-feedly:before {
+    content: "\e903"
+}
+
+.icon-book:before {
+    content: "\e90c"
+}
+
+.icon-baby:before {
+    content: "\e905"
+}
+
+.icon-baby404:before {
+    content: "\e906"
+}
+
+.icon-fashion3:before {
+    content: "\e907"
+}
+
+.icon-mama:before {
+    content: "\e908"
+}
+
+.icon-mama404:before {
+    content: "\e908"
+}
+.icon-baby404:before {
+    content: "\e909"
+}
+.icon-feedly:before {
+    content: "\e903"
+}
+.icon-heart:before {
+    content: "\e90d"
+}
+.icon-2:before {
+    content: "\e907"
+}
+.icon-mugyuu:before {
+    content: "\e90a"
+}
+.icon-baby:before {
+    content: "\e905"
+}
+.icon-hatebu:before {
+    content: "\e901"
+}
+.icon-pocket:before {
+    content: "\e903"
+}
+.icon-play:before {
+    content: "\e90b"
+}
+.icon-video-camera:before {
+    content: "\e90a"
+}
+.icon-bubbles2:before {
+    content: "\e902"
+}
+.icon-important_devices:before {
+    content: "\e912"
+}
+.icon-recipe:before {
+    content: "\e90b";
+}
+
+.articleList {
+    overflow: hidden;
+    padding: 0 20px;
+    list-style: none;
+}
+
+.articleList li {
+    width: 325px;
+    height: 320px;
+    float: left;
+    margin: 0 20px 50px 0
+}
+
+.articleList li a {
+    width: 325px;
+    height: 320px;
+    position: relative
+}
+
+.articleList li .imgArea {
+    position: relative;
+    margin-bottom: 20px;
+    width: 325px;
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.articleList li .imgArea img {
+    width: 100%;
+    height: 150px
+}
+
+.articleList li .imgArea .overlay {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(89, 87, 87, 0.5);
+    width: 100%;
+    height: 100%;
+    color: #fff
+}
+
+.articleList li .imgArea .overlay .ovWrap {
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 27px 0;
+    overflow: hidden
+}
+
+.articleList li .imgArea .overlay .ovWrap p {
+    font-size: 2rem;
+    font-weight: bold
+}
+
+.articleList li .imgArea .overlay .ovWrap i {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 2rem;
+    font-weight: bold
+}
+
+.articleList li .imgArea .overlay .ovWrap .bd {
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease
+}
+
+.articleList li .imgArea .overlay .ovWrap .bdT {
+    border-top: 3px solid #fff;
+    position: absolute;
+    width: 200px;
+    top: 0;
+    left: -300%
+}
+
+.articleList li .imgArea .overlay .ovWrap .bdB {
+    border-bottom: 3px solid #fff;
+    position: absolute;
+    width: 200px;
+    bottom: 0;
+    left: 300%
+}
+
+.articleList li .imgArea .overlay .ovWrap .bdR {
+    border-right: 3px solid #fff;
+    position: absolute;
+    top: -300%;
+    right: 0;
+    width: 2px;
+    height: 100px
+}
+
+.articleList li .imgArea .overlay .ovWrap .bdL {
+    border-left: 3px solid #fff;
+    position: absolute;
+    top: -300%;
+    left: 0;
+    width: 2px;
+    height: 100px
+}
+
+.articleList li .content {
+    color: #333
+}
+
+.articleList li .content .articleData {
+    overflow: hidden
+}
+
+.articleList li .content .articleData .data,
+.articleList li .content .articleData .cat {
+    font-size: 1.4rem;
+    float: left
+}
+
+.articleList li .content .articleData .data {
+    margin: 0 5px 5px 0
+}
+
+.articleList li .content h2 {
+    max-height: 45px;
+    overflow: hidden;
+    font-weight: bold;
+    margin-bottom: 10px;
+    line-height: 1.4
+}
+
+.articleList li .content .articleData {
+    overflow: hidden
+}
+
+.articleList li .content .articleData:nth-last-child(1) {
+    position: absolute;
+    bottom: 0;
+    width: 100%
+}
+
+.articleList li .content .articleData .name,
+.articleList li .content .articleData .pv {
+    font-size: 1.4rem
+}
+
+.articleList li .content .articleData .name {
+    float: left
+}
+
+.articleList li .content .articleData .name .icon-mugyuu {
+    margin-right: 5px;
+    vertical-align: text-bottom
+}
+
+.articleList li .content .articleData .pv {
+    float: right
+}
+
+.articleList li .content .articleData .pv i {
+    margin-right: 5px;
+    color: #fd97a0
+}
+
+.articleList li:hover .imgArea .overlay {
+    opacity: 1
+}
+
+.articleList li:hover .imgArea .overlay .ovWrap .bdT {
+    left: -0
+}
+
+.articleList li:hover .imgArea .overlay .ovWrap .bdB {
+    left: -0
+}
+
+.articleList li:hover .imgArea .overlay .ovWrap .bdR {
+    top: -0
+}
+
+.articleList li:hover .imgArea .overlay .ovWrap .bdL {
+    top: -0
+}
+
+.articleList li:hover .content {
+    opacity: .7
+}
+.articleList li:nth-child(3n) {
+    margin-right: 0
+}
+@media all and (-ms-high-contrast: none) {
+    .articleList li .imgArea .overlay .ovWrap p {
+        font-weight: bold
+    }
+    .articleList li .content .articleData .name .icon-mugyuu {
+        vertical-align: middle
+    }
+}
+
+@supports (-ms-accelerator: true) {
+    .articleList li .imgArea .overlay .ovWrap p {
+        font-weight: bold
+    }
+    .articleList li .content .articleData .name .icon-mugyuu {
+        vertical-align: middle
+    }
+}
+
+.moreBtn {
+    padding: 0 20px
+}
+
+.moreBtn a {
+    color: #fc8c96;
+    height: 50px;
+    line-height: 50px;
+    border: solid 2px #fc8c96;
+    text-align: center;
+    box-sizing: border-box
+}
+
+.moreBtn a:hover {
+    background: #fc8c96;
+    color: #fff
+}
+
+.pagination ul {
+    text-align: center
+}
+
+.pagination ul li {
+    display: inline-block;
+    border: solid 1px #fc8c96;
+    border-radius: 3px;
+    min-width: 42px;
+    min-height: 42px;
+    box-sizing: border-box;
+    margin-right: 10px;
+    vertical-align: middle;
+    line-height: 40px
+}
+
+.pagination ul li a {
+    color: #fc8c96;
+    min-width: 40px;
+    min-height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+    box-sizing: border-box
+}
+
+.pagination ul li a:hover {
+    background: #fc8c96;
+    color: #fff
+}
+
+.pagination ul li i {
+    font-size: 2rem
+}
+
+.pagination ul li:nth-child {
+    margin-right: 0
+}
+
+.pagination ul li.active {
+    background: #fc8c96;
+    color: #fff
+}
+
+.pagination ul.page-numbers li {
+    border: none
+}
+
+.pagination ul.page-numbers li a {
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    border: solid 1px #fc8c96;
+    box-sizing: border-box;
+    color: #fc8c96;
+    border-radius: 3px
+}
+
+.pagination ul.page-numbers li a:hover {
+    background: #fc8c96;
+    color: #fff
+}
+
+.pagination ul.page-numbers li .current {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    border: solid 1px #fc8c96;
+    box-sizing: border-box;
+    background: #fc8c96;
+    color: #fff;
+    border-radius: 3px
+}
+
+@media all and (-ms-high-contrast: none) {
+    .pagination ul li {
+        max-height: 42px;
+        line-height: 45px
+    }
+    .pagination ul li a {
+        overflow: hidden;
+        max-height: 42px;
+        line-height: 45px
+    }
+}
+
+.mainWrap.list {
+    padding-top: 2px
+}
+
+.mainWrap.list .mainArea .articleListArea .heading {
+    margin-bottom: 0;
+    font-size: 18px
+}
+
+.mainWrap.list .mainArea .articleListArea .ttl {
+    overflow: hidden;
+    position: relative;
+    padding: 30px 20px;
+    margin-bottom: 40px;
+    line-height: 1.6
+}
+
+.mainWrap.list .mainArea .articleListArea .ttl:before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 66px;
+    height: 26px;
+    background: url("../images/hiyoko.png") no-repeat left bottom;
+    background-size: 66px 26px
+}
+
+.mainWrap.list .mainArea .articleListArea .ttl:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: url("../images/border.png") repeat-x left bottom;
+    left: 70px;
+    bottom: 8px
+}
+
+.mainWrap.list .mainArea .articleListArea .articleList li {
+    margin-right: 20px
+}
+
+.mainWrap.list .mainArea .articleListArea .articleList li:nth-child(2n) {
+    margin-right: 0
+}
+
+.mainWrap.list .mainArea .articleListArea .articleList li .imgArea {
+    width: 325px;
+    height: 200px
+}
+
+.mainWrap.list .mainArea .categoryArea .heading:before {
+    background: #fdafb6
+}
+
+
+.mainWrap.single {
+    padding-top: 2px
+}
+
+.mainWrap.single .mainArea .postArea {
+    margin-bottom: 80px
+}
+
+.mainWrap.single .mainArea .postArea .postDataArea {
+    overflow: hidden;
+    margin: 0 20px 20px
+}
+
+.mainWrap.single .mainArea .postArea .postDataArea .postDate {
+    float: left
+}
+
+.mainWrap.single .mainArea .postArea .postDataArea .pv {
+    float: right
+}
+
+.mainWrap.single .mainArea .postArea .postDataArea .pv i {
+    margin-right: 5px;
+    color: #fd98a1
+}
+
+.mainWrap.single .mainArea .postArea .heading {
+    padding: 0 20px 10px;
+    font-weight: bold;
+    font-size: 1.8rem;
+    line-height: 1.4
+}
+
+.mainWrap.single .mainArea .postArea .heading:before {
+    top: auto;
+    bottom: 0;
+    border-bottom: 1px solid #c9c9c9;
+    background: none
+}
+
+.mainWrap.single .mainArea .postArea .imgArea {
+    margin: 0 20px 30px;
+    width: 670px;
+    height: 300px;
+    border-radius: 5px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+.mainWrap.single .mainArea .postArea .imgArea img {
+    width: 100%;
+    height: 300px
+}
+
+.mainWrap.single .mainArea .postArea .snsArea {
+    overflow: hidden;
+    margin: 40px 20px
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .fb,
+.mainWrap.single .mainArea .postArea .snsArea .tw,
+.mainWrap.single .mainArea .postArea .snsArea .hb,
+.mainWrap.single .mainArea .postArea .snsArea .pk {
+    float: left;
+    width: calc(670px / 4)
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .fb a,
+.mainWrap.single .mainArea .postArea .snsArea .tw a,
+.mainWrap.single .mainArea .postArea .snsArea .hb a,
+.mainWrap.single .mainArea .postArea .snsArea .pk a {
+    position: relative;
+    overflow: hidden;
+    height: 50px;
+    color: #fff;
+    text-align: center;
+    font-size: 3rem;
+    line-height: 50px;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .fb a i,
+.mainWrap.single .mainArea .postArea .snsArea .tw a i,
+.mainWrap.single .mainArea .postArea .snsArea .hb a i,
+.mainWrap.single .mainArea .postArea .snsArea .pk a i {
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .fb a:before,
+.mainWrap.single .mainArea .postArea .snsArea .tw a:before,
+.mainWrap.single .mainArea .postArea .snsArea .hb a:before,
+.mainWrap.single .mainArea .postArea .snsArea .pk a:before {
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    content: "";
+    font-weight: bold;
+    font-size: 1.4rem;
+    opacity: 0;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .fb a:hover,
+.mainWrap.single .mainArea .postArea .snsArea .tw a:hover,
+.mainWrap.single .mainArea .postArea .snsArea .hb a:hover,
+.mainWrap.single .mainArea .postArea .snsArea .pk a:hover {
+    position: relative;
+    text-align: left
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .fb a:hover i,
+.mainWrap.single .mainArea .postArea .snsArea .tw a:hover i,
+.mainWrap.single .mainArea .postArea .snsArea .hb a:hover i,
+.mainWrap.single .mainArea .postArea .snsArea .pk a:hover i {
+    font-size: 6rem;
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg)
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .fb a:hover:before,
+.mainWrap.single .mainArea .postArea .snsArea .tw a:hover:before,
+.mainWrap.single .mainArea .postArea .snsArea .hb a:hover:before,
+.mainWrap.single .mainArea .postArea .snsArea .pk a:hover:before {
+    left: 50px;
+    overflow: visible;
+    width: 110px;
+    height: 50px;
+    line-height: 50px;
+    opacity: 1
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .fb a {
+    background: #315096
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .fb a:before {
+    content: "Facebook"
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .tw a {
+    background: #55acee
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .tw a:before {
+    content: "Twitter"
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .tw a:hover:before {
+    left: 63px
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .hb a {
+    background: #008fde;
+    line-height: 55px
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .hb a:before {
+    content: "hatebu"
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .hb a:hover:before {
+    left: 68px
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .hb a i {
+    display: inline-block
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .pk a {
+    background: #d3505a
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .pk a:before {
+    content: "Pocket"
+}
+
+.mainWrap.single .mainArea .postArea .snsArea .pk a:hover:before {
+    left: 68px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea {
+    overflow: hidden;
+    margin: 0 20px 30px;
+    line-height: 1.6
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .heading {
+    position: relative;
+    margin: 70px auto 30px !important;
+    padding: 0 0 0 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #e95383;
+    color: #fff;
+    font-size: 1.8rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .heading:before {
+    position: absolute;
+    bottom: -30px;
+    left: 8%;
+    z-index: 90;
+    margin-left: -15px;
+    width: 0;
+    height: 20px;
+    border-top: 15px solid #e95383;
+    border-right: 15px solid transparent;
+    border-bottom: 0;
+    border-left: 15px solid transparent;
+    content: ""
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .heading span {
+    z-index: 0;
+    display: inline;
+    margin: 0;
+    margin-top: -50px;
+    padding-top: 120px;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.8rem;
+    -webkit-transform: none;
+    transform: none
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .heading span .bold {
+    padding-top: 0
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop {
+    position: relative;
+    margin: 70px auto 30px;
+    padding: 20px 10px;
+    background: #e95383;
+    color: #fff;
+    font-weight: bold
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop:before,
+.mainWrap.single .mainArea .postArea .contentArea .headingtop:after {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    border-bottom: dashed 2px #fff;
+    content: ""
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop:after {
+    bottom: 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop span {
+    z-index: 0;
+    margin: 0;
+    margin-top: -50px;
+    padding-top: 120px;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.8rem;
+    -webkit-transform: none;
+    transform: none
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop span .bold {
+    padding-top: 0
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop span .step {
+    display: inline-block;
+    box-sizing: border-box;
+    margin-top: auto;
+    margin-right: 20px;
+    padding: 0 9px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #fff;
+    color: #e95383;
+    vertical-align: baseline;
+    font-size: inherit
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop2 {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 0 0 0 70px;
+    border-bottom: solid 5px #e95383;
+    font-weight: bold;
+    font-size: 2rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop2:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 5px 5px 0 5px;
+    background: #e95383;
+    color: #fff;
+    content: "STEP1";
+    font-weight: bold;
+    font-size: 1.4rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop2 span {
+    z-index: 0;
+    margin: 0;
+    margin-top: -50px;
+    padding-top: 100px;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: #333;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.8rem;
+    -webkit-transform: none;
+    transform: none
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop2 span .bold {
+    padding-top: 0
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop3 {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop3:before,
+.mainWrap.single .mainArea .postArea .contentArea .headingtop3:after {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 40px;
+    border: 2px solid #e95383;
+    content: ""
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop3:after {
+    top: 0;
+    right: 0
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop3 span {
+    z-index: 0;
+    margin: 0;
+    margin-top: -50px;
+    padding-top: 100px;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: #e95383;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.8rem;
+    -webkit-transform: none;
+    transform: none
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop3 span .bold {
+    padding-top: 0
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop3 span:before,
+.mainWrap.single .mainArea .postArea .contentArea .headingtop3 span:after {
+    display: block;
+    width: 30px;
+    height: 55px;
+    background: #f9f9f9;
+    content: ""
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop3 span:before {
+    position: absolute;
+    top: -15px;
+    left: 6px;
+    border-left: 2px solid #e95383;
+    -webkit-transform: rotate(-30deg);
+    transform: rotate(-30deg)
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop3 span:after {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    z-index: 2;
+    border-right: 2px solid #e95383;
+    -webkit-transform: rotate(-30deg);
+    transform: rotate(-30deg)
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop4 {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop4 span {
+    z-index: 0;
+    margin: 0;
+    margin-top: -50px;
+    padding-top: 100px;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: #e95383;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.8rem;
+    -webkit-transform: none;
+    transform: none
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop4 span .bold {
+    padding-top: 0
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .headingtop4 span .step {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 50px;
+    background: #e95383;
+    color: #fff;
+    font-size: 1.2rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .articleList {
+    padding: 0
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .articleList li {
+    float: none;
+    margin: 0;
+    width: auto;
+    height: auto;
+    list-style-position: inside
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList {
+    margin-bottom: 30px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 40px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f584a8;
+    color: #fff;
+    content: "";
+    text-align: center;
+    font-weight: bold;
+    line-height: 21px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li:nth-child(1):before {
+    content: "1"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li:nth-child(2):before {
+    content: "2"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li:nth-child(3):before {
+    content: "3"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li:nth-child(4):before {
+    content: "4"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li:nth-child(5):before {
+    content: "5"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li:nth-child(6):before {
+    content: "6"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li:nth-child(7):before {
+    content: "7"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li:nth-child(8):before {
+    content: "8"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li:nth-child(9):before {
+    content: "9"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .numberList li:nth-child(10):before {
+    content: "10"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card {
+    box-sizing: border-box;
+    margin: 30px auto;
+    max-width: 660px;
+    height: 150px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(199, 199, 199, 0.5), -1px -1px 5px rgba(199, 199, 199, 0.5);
+    word-wrap: break-word
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a {
+    display: block;
+    overflow: hidden
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-thumbnail {
+    float: left;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-thumbnail img {
+    max-width: 100%;
+    width: 150px;
+    height: 150px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content {
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    width: 510px;
+    height: 150px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content .dateArea {
+    overflow: hidden;
+    margin-bottom: 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content .dateArea .date,
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content .dateArea .cat {
+    float: left;
+    color: #333
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content .dateArea .date {
+    margin-right: 10px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content p {
+    margin-bottom: 5px;
+    color: #333
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content p.author,
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content p.excerpt {
+    font-size: 1.2rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content p.excerpt {
+    color: #777;
+    line-height: 1.2
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content p.author .icon-mugyuu {
+    margin-right: 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content p.blog-card-title {
+    margin-bottom: 5px;
+    min-height: 44px;
+    font-weight: bold;
+    line-height: 1.4
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content span {
+    font-size: 1.2rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content span.date {
+    margin-right: 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content .dateAreaBottom {
+    position: absolute;
+    bottom: 3px;
+    overflow: hidden;
+    width: 480px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content .dateAreaBottom .author {
+    float: left
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content .dateAreaBottom .pv {
+    float: right;
+    font-size: 1.2rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a .blog-card-content .dateAreaBottom .pv .icon {
+    margin-right: 5px;
+    color: #fd98a1
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card a:hover {
+    opacity: .7
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card-excerpt {
+    color: #333;
+    font-size: 90%
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blog-card-footer {
+    padding-top: 5px;
+    border-top: 1px solid #ddd;
+    border-top-width: 90%
+}
+
+.mainWrap.single .mainArea .postArea .contentArea blockquote p {
+    color: #b1afaf;
+    font-style: italic;
+    font-size: 1.2rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea blockquote p a {
+    display: inline-block;
+    color: #b1afaf;
+    font-style: italic
+}
+
+.mainWrap.single .mainArea .postArea .contentArea blockquote p a:hover {
+    opacity: .8
+}
+
+.mainWrap.single .mainArea .postArea .contentArea p {
+    margin-bottom: 30px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .heading,
+.mainWrap.single .mainArea .postArea .contentArea .subhead,
+.mainWrap.single .mainArea .postArea .contentArea .subhead2 {
+    margin: 20px 0 30px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .heading {
+    position: relative;
+    z-index: 2
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .double {
+    padding: 0 5px;
+    border-bottom: double 6px #e95383
+}
+
+.mainWrap.single .mainArea .postArea .contentArea #toc_container {
+    position: relative;
+    z-index: 10
+}
+
+.mainWrap.single .mainArea .postArea .contentArea #toc_container .toc_list li a {
+    display: block
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .subhead {
+    margin-top: 70px;
+    padding: 10px;
+    border-top: solid 2px #e95383;
+    border-bottom: solid 2px #e95383
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .subhead span {
+    padding-top: 150px;
+    font-weight: bold
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .subhead span .bold {
+    padding-top: 0
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .subhead2 {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 5px 20px;
+    font-weight: bold
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .subhead2:before {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    margin: 0 auto;
+    color: #f584a8;
+    content: "◆"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .bold {
+    font-weight: bold
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .center {
+    display: block;
+    margin: 0 auto;
+    text-align: center
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .youtube {
+    margin: 0 auto;
+    width: 90%
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .youtube iframe {
+    width: 100%
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .amazon {
+    margin-bottom: 40px;
+    text-align: center
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .amazon a+img {
+    display: none
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .PIN_1479449013420_embed_pin {
+    display: none !important;
+    box-shadow: none
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .pin {
+    margin-bottom: 20px;
+    text-align: center
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .pin img {
+    width: 80%;
+    border-radius: 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .pin a {
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
+    color: #ccc;
+    text-align: right
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .pin a i {
+    margin-right: 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .pin a .pinname {
+    font-size: 1.4rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .inst {
+    margin: 0 auto 20px;
+    width: 80%
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .inst iframe {
+    margin: 0 auto !important
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .inst img {
+    max-width: 100%;
+    width: 100%;
+    height: auto
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .inst a {
+    display: block;
+    color: #ccc;
+    text-align: right
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .inst a i {
+    margin-right: 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .inst a .instname {
+    font-size: 1.4rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .alignnone {
+    display: block !important;
+    margin: 0 auto !important
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .alignleft {
+    display: block !important;
+    float: none;
+    margin: 0 auto !important
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .alignright {
+    display: block !important;
+    float: none;
+    margin: 0 auto !important
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .aligncenter {
+    display: block !important;
+    margin: 0 auto !important
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blockquote {
+    position: relative;
+    display: block;
+    margin: 0 0 20px;
+    padding: 15px 20px 15px 55px;
+    border: solid 1px #ccc;
+    background: #fff;
+    box-shadow: 2px 2px 15px #ccc;
+    color: #666;
+    text-align: justify;
+    font-size: 16px;
+    font-family: Georgia, serif;
+    line-height: 1.2
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blockquote::before {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: #999;
+    content: "\201C";
+    font-weight: bold;
+    font-size: 60px;
+    font-family: Georgia, serif
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blockquote::after {
+    content: ""
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blockquote a {
+    padding: 0 3px;
+    background: #eee;
+    color: #c76c0c;
+    text-decoration: none;
+    cursor: pointer
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blockquote a:hover {
+    color: #666
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .blockquote em {
+    font-style: italic
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .strike {
+    text-decoration: line-through;
+    font-size: 1.4rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .articleList li {
+    list-style-position: inside
+}
+
+.mainWrap.single .mainArea .postArea .contentArea img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .fixtable {
+    width: 95%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: flex
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .fixtable th,
+.mainWrap.single .mainArea .postArea .contentArea .fixtable td {
+    margin: 0
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .fixtable thead tr th,
+.mainWrap.single .mainArea .postArea .contentArea .fixtable thead tr td {
+    display: block;
+    border: none;
+    border-bottom: solid 1px #eaeaea;
+    white-space: nowrap;
+    width: auto
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .fixtable thead tr th.img,
+.mainWrap.single .mainArea .postArea .contentArea .fixtable thead tr td.img {
+    height: 80px;
+    box-sizing: border-box
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .fixtable tbody {
+    display: block;
+    position: relative;
+    width: auto;
+    overflow-x: auto;
+    white-space: nowrap
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .fixtable tbody tr th.img,
+.mainWrap.single .mainArea .postArea .contentArea .fixtable tbody tr td.img {
+    height: 80px;
+    box-sizing: border-box
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .fixtable tbody tr th.img td,
+.mainWrap.single .mainArea .postArea .contentArea .fixtable tbody tr td.img td {
+    height: 130px;
+    box-sizing: border-box
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .fixtable tbody tr.img td {
+    height: 46px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea table {
+    width: 100%
+}
+
+.mainWrap.single .mainArea .postArea .contentArea table th,
+.mainWrap.single .mainArea .postArea .contentArea table td {
+    padding: 10px;
+    width: auto;
+    border: 1px solid #eaeaea
+}
+
+.mainWrap.single .mainArea .postArea .contentArea table th {
+    background: #fc8c96;
+    color: #fff;
+    font-weight: bold
+}
+
+.mainWrap.single .mainArea .postArea .contentArea a {
+    display: inline-block
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .frame {
+    position: relative;
+    margin: 20px auto;
+    padding: 20px 20px;
+    width: 90%;
+    border: 5px double #f9b48b;
+    border-radius: 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .frame p {
+    margin-bottom: 0
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .frame .frame-title {
+    position: absolute;
+    top: -16px;
+    left: 15px;
+    padding: 0 5px;
+    background-color: #f9f9f9;
+    color: #f9b48b;
+    font-weight: bold;
+    font-size: 1.8rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .frame .frame-title .fa {
+    margin-right: 5px;
+    font-size: 2rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .frame .frame-title .caution {
+    color: #ff4500
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .relationLink {
+    position: relative;
+    z-index: 3;
+    padding: 10px;
+    width: 80%;
+    border: solid 1px #ccc;
+    border-radius: 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .relationLink h5 {
+    margin-bottom: 5px;
+    border-bottom: solid 1px #ccc;
+    font-weight: bold;
+    font-size: 1.3rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .relationLink ul li a {
+    position: relative;
+    color: #333;
+    font-size: 1.3rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .relationLink ul li a:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #f584a8;
+    content: "";
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0)
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .relationLink ul li a .icon {
+    position: relative;
+    margin-right: 5px;
+    width: 10px;
+    height: 10px;
+    color: #f584a8;
+    -webkit-animation: bounce 3s infinite ease;
+    animation: bounce 3s infinite ease
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .relationLink ul li a .icon.icon-mugyuu:before {
+    position: absolute;
+    top: -1px;
+    left: 1px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .relationLink ul li a:hover:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1)
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0 auto 30px;
+    padding: 30px;
+    width: 660px;
+    background: #fff;
+    box-shadow: 1px 1px 5px rgba(199, 199, 199, 0.5), -1px -1px 5px rgba(199, 199, 199, 0.5);
+    -webkit-box-align: center;
+    align-items: center
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .imgArea {
+    margin: auto;
+    width: auto;
+    height: auto
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .imgArea img {
+    margin: 0 auto;
+    width: auto
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail {
+    width: 325px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .itemname {
+    margin-bottom: 20px;
+    padding: 0 5px;
+    border-bottom: solid 2px #f584a8;
+    font-weight: bold
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .detailContent {
+    margin-bottom: 20px;
+    padding: 0 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .detailContent .priceArea,
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .detailContent .ageArea,
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .detailContent .sizeArea {
+    display: inline-block;
+    margin: 0 10px 5px 0
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .icon {
+    display: inline-block;
+    box-sizing: border-box;
+    margin-right: 5px;
+    padding: 5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    color: #fff;
+    vertical-align: top;
+    text-align: center
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .icon.jpy {
+    margin-right: 5px;
+    background: #f90;
+    font-size: 1.8rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .icon.age {
+    position: relative;
+    background: #7fb9ea;
+    font-size: 1.4rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .icon.age:before {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    left: 0;
+    margin: 0 auto
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .icon.size {
+    position: relative;
+    background: #5cde84;
+    font-size: 1.3rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .icon.size:before {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    left: 0;
+    margin: 0 auto
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .icon.shoes {
+    position: relative;
+    background: #5cde84;
+    font-size: 1.5rem
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .icon.shoes:before {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    left: 2px;
+    margin: 0 auto
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .text {
+    padding: 0 5px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .amazonBtn {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 325px;
+    height: 50px;
+    border: solid 2px #f90;
+    background: #fff;
+    line-height: 46px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .amazonBtn a {
+    position: relative;
+    width: 100%;
+    color: #f90;
+    text-align: center;
+    font-weight: bold
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .amazonBtn a i {
+    position: absolute;
+    top: 17px;
+    left: 26px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .amazonBtn:hover {
+    background: #f90
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .itemArea .itemDetail .amazonBtn:hover a {
+    color: #fff
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .material {
+    float: left;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    width: 400px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .material h2 {
+    padding: 10px;
+    background: #f9b48b;
+    color: #fff;
+    font-weight: bold
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .material p {
+    margin-bottom: 0;
+    padding: 10px;
+    border-right: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    border-left: solid 1px #ccc
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .material dl {
+    overflow: hidden;
+    padding: 5px 10px;
+    border-right: solid 1px #ccc;
+    border-bottom: dotted 1px #ccc;
+    border-left: solid 1px #ccc
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .material dl dt {
+    float: left
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .material dl dd {
+    float: right
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .material dl:last-child {
+    border-bottom: solid 1px #ccc
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe {
+    clear: both;
+    padding: 10px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe h2 {
+    margin-bottom: 10px;
+    border-bottom: dotted 1px #ccc;
+    font-weight: bold
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li {
+    position: relative;
+    display: table;
+    margin-bottom: 30px;
+    padding: 2px 10px 0 39px;
+    height: auto
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li p {
+    display: table-cell;
+    padding-left: 10px;
+    vertical-align: top
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li img {
+    display: table-cell !important;
+    max-width: 200px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f9b48b;
+    color: #fff;
+    content: "";
+    text-align: center;
+    font-weight: bold;
+    line-height: 21px
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(1):before {
+    content: "1"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(2):before {
+    content: "2"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(3):before {
+    content: "3"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(4):before {
+    content: "4"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(5):before {
+    content: "5"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(6):before {
+    content: "6"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(7):before {
+    content: "7"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(8):before {
+    content: "8"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(9):before {
+    content: "9"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(10):before {
+    padding: 5px 0;
+    content: "10"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(11):before {
+    padding: 5px 0;
+    content: "11"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(12):before {
+    padding: 5px 0;
+    content: "12"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(13):before {
+    padding: 5px 0;
+    content: "13"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(14):before {
+    padding: 5px 0;
+    content: "14"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(15):before {
+    padding: 5px 0;
+    content: "15"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(16):before {
+    content: "16"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(17):before {
+    padding: 5px 0;
+    content: "17"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(18):before {
+    padding: 5px 0;
+    content: "18"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(9):before {
+    padding: 5px 0;
+    content: "19"
+}
+
+.mainWrap.single .mainArea .postArea .contentArea .recipe ol li:nth-child(20):before {
+    padding: 5px 0;
+    content: "20"
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea {
+    overflow: hidden;
+    margin: 0 20px;
+    background: #fff;
+    margin: 0 20px;
+    -webkit-box-shadow: 2px -2px 5px rgba(199, 199, 199, 0.2), -2px 2px 5px rgba(199, 199, 199, 0.2);
+    box-shadow: 2px -2px 5px rgba(199, 199, 199, 0.2), -2px 2px 5px rgba(199, 199, 199, 0.2)
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    overflow: hidden;
+    padding: 20px;
+    color: inherit;
+    -webkit-box-align: center;
+    align-items: center
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea a:hover {
+    opacity: .7
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea .imgArea {
+    float: left;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0 20px 0 0;
+    width: 130px;
+    height: 130px;
+    border: solid 3px #e95383;
+    border-radius: 50%
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea .imgArea img {
+    min-width: 130px;
+    max-width: 130px;
+    width: auto;
+    height: 100%
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea .authorData {
+    float: left;
+    width: 470px
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea .authorData .name {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 0 0 30px 20px
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea .authorData .name .icon-mugyuu {
+    font-size: small
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea .authorData .name:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 66px;
+    height: 26px;
+    background: url("../images/hiyoko.png") no-repeat left bottom;
+    background-size: 66px 26px;
+    content: ""
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea .authorData .name:after {
+    position: absolute;
+    bottom: 8px;
+    left: 70px;
+    width: 100%;
+    height: 1px;
+    background: url("../images/border.png") repeat-x left bottom;
+    content: ""
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea .authorData .skill {
+    margin-bottom: 20px
+}
+
+.mainWrap.single .mainArea .postArea .authorDataArea .authorData .skill,
+.mainWrap.single .mainArea .postArea .authorDataArea .authorData .text {
+    padding-left: 20px
+}
+
+.mainWrap.single .mainArea .topPostArea {
+    margin: 0 auto 80px;
+    width: 670px;
+    border-bottom: solid 2px #fc8c96;
+    position: relative
+}
+
+.mainWrap.single .mainArea .topPostArea:before {
+    content: "\e905";
+    position: absolute;
+    top: 55px;
+    left: 10px;
+    font-family: "icomoon";
+    font-size: 8rem;
+    color: #fc8c96;
+    transform: rotate(-20deg)
+}
+
+.mainWrap.single .mainArea .topPostArea:after {
+    content: "\e908";
+    position: absolute;
+    bottom: 60px;
+    right: 10px;
+    font-family: "icomoon";
+    font-size: 10rem;
+    color: #fc8c96;
+    transform: rotate(20deg)
+}
+
+.mainWrap.single .mainArea .topPostArea .topheading {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center
+}
+
+.mainWrap.single .mainArea .topPostArea .topheading span {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+    padding: 0 30px;
+    background: #f9f9f9;
+    text-align: center;
+    font-weight: bold
+}
+
+.mainWrap.single .mainArea .topPostArea .topheading:before {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 2px;
+    border-bottom: solid 2px #fc8c96;
+    content: ""
+}
+
+.mainWrap.single .mainArea .topPostArea .post {
+    margin-bottom: 30px
+}
+
+.mainWrap.single .mainArea .topPostArea .post a {
+    margin: 0 auto;
+    width: 325px;
+    height: 320px;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 2px -2px 5px rgba(199, 199, 199, 0.2), -2px 2px 5px rgba(199, 199, 199, 0.2)
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .imgArea {
+    position: relative;
+    margin-bottom: 20px;
+    width: 325px;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .imgArea .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(89, 87, 87, 0.5);
+    color: #fff;
+    opacity: 0
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .imgArea .overlay .ovWrap {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 27px 0;
+    width: 200px;
+    height: 100px;
+    text-align: center
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .imgArea .overlay .ovWrap p {
+    font-weight: bold;
+    font-size: 2rem
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .imgArea .overlay .ovWrap i {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 2rem
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .imgArea .overlay .ovWrap .bd {
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .imgArea .overlay .ovWrap .bdT {
+    position: absolute;
+    top: 0;
+    left: -300%;
+    width: 200px;
+    border-top: 3px solid #fff
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .imgArea .overlay .ovWrap .bdB {
+    position: absolute;
+    bottom: 0;
+    left: 300%;
+    width: 200px;
+    border-bottom: 3px solid #fff
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .imgArea .overlay .ovWrap .bdR {
+    position: absolute;
+    top: -300%;
+    right: 0;
+    width: 2px;
+    height: 100px;
+    border-right: 3px solid #fff
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .imgArea .overlay .ovWrap .bdL {
+    position: absolute;
+    top: -300%;
+    left: 0;
+    width: 2px;
+    height: 100px;
+    border-left: 3px solid #fff
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .content {
+    color: #333
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .content .articleData {
+    overflow: hidden
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .content .articleData .data,
+.mainWrap.single .mainArea .topPostArea .post a .content .articleData .cat {
+    float: left;
+    font-size: 1.4rem
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .content .articleData .data {
+    margin: 0 5px 5px 0
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .content h2 {
+    overflow: hidden;
+    margin-bottom: 10px;
+    max-height: 45px;
+    font-weight: bold;
+    line-height: 1.4
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .content .articleData {
+    display: flex;
+    overflow: hidden
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .content .articleData:nth-last-child(1) {
+    justify-content: space-between
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .content .articleData .name,
+.mainWrap.single .mainArea .topPostArea .post a .content .articleData .pv {
+    font-size: 1.4rem
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .content .articleData .name .icon-mugyuu {
+    margin-right: 5px;
+    vertical-align: text-bottom
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .content .articleData .pv {
+    float: right
+}
+
+.mainWrap.single .mainArea .topPostArea .post a .content .articleData .pv i {
+    color: #fd97a0
+}
+
+.mainWrap.single .mainArea .topPostArea .post a:hover .imgArea .overlay {
+    opacity: 1
+}
+
+.mainWrap.single .mainArea .topPostArea .post a:hover .imgArea .overlay .ovWrap .bdT {
+    left: -0
+}
+
+.mainWrap.single .mainArea .topPostArea .post a:hover .imgArea .overlay .ovWrap .bdB {
+    left: -0
+}
+
+.mainWrap.single .mainArea .topPostArea .post a:hover .imgArea .overlay .ovWrap .bdR {
+    top: -0
+}
+
+.mainWrap.single .mainArea .topPostArea .post a:hover .imgArea .overlay .ovWrap .bdL {
+    top: -0
+}
+
+.mainWrap.single .mainArea .topPostArea .post a:hover .content {
+    opacity: .7
+}
+
+.mainWrap.single .mainArea .topPostArea.second {
+    display: flex;
+    border-bottom: none
+}
+
+.mainWrap.single .mainArea .topPostArea.second:before {
+    display: none
+}
+
+.mainWrap.single .mainArea .topPostArea.second .balloon {
+    border: solid 2px #fc8c96;
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding: 20px 90px;
+    background: #fff;
+    position: relative
+}
+
+.mainWrap.single .mainArea .topPostArea.second .balloon .topheading {
+    font-weight: bold;
+    margin: 20px auto
+}
+
+.mainWrap.single .mainArea .topPostArea.second .balloon .topheading:before {
+    display: none
+}
+
+.mainWrap.single .mainArea .topPostArea.second .balloon:before {
+    content: "";
+    position: absolute;
+    top: 270px;
+    right: -12px;
+    width: 20px;
+    height: 20px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border: solid 2px #fc8c96;
+    box-sizing: border-box
+}
+
+.mainWrap.single .mainArea .topPostArea.second .balloon:after {
+    content: "";
+    position: absolute;
+    top: 270px;
+    right: -9px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.mainWrap.single .mainArea .rankingListArea .tabContentArea {
+    padding-bottom: 0
+}
+
+.mainWrap.single.qa .mainArea .postArea {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    background: url(../images/border.png) repeat-x bottom left
+}
+
+.mainWrap.single.qa .mainArea .postArea .contentArea .count {
+    padding-right: 10px;
+    text-align: right
+}
+
+.mainWrap.single.qa .mainArea .postArea .contentArea .count i {
+    margin-right: 5px;
+    color: #fd98a1;
+    font-size: 1.8rem
+}
+
+.mainWrap.single.qa .mainArea .postArea .btnArea a {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 560px;
+    height: 50px;
+    border: solid 2px #fc8c96;
+    color: #fc8c96;
+    text-align: center;
+    line-height: 50px
+}
+
+.mainWrap.single.qa .mainArea .postArea .btnArea a:hover {
+    background: #fc8c96;
+    color: #fff
+}
+
+.mainWrap.single.qa .mainArea .commentArea {
+    overflow: hidden
+}
+
+.mainWrap.single.qa .mainArea .commentArea .sortWrap {
+    position: relative;
+    float: right;
+    margin: 0 15px 20px 0
+}
+
+.mainWrap.single.qa .mainArea .commentArea .sortWrap .sort {
+    box-sizing: border-box;
+    padding: 5px 10px 5px 25px;
+    border: solid 1px #c9c9c9;
+    text-align: right;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+.mainWrap.single.qa .mainArea .commentArea .sortWrap:before {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    content: "\f0dc";
+    font: normal normal normal 14px/1 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList {
+    clear: both;
+    padding: 0 10px
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li {
+    position: relative;
+    margin: 0 10px 40px;
+    padding: 25px;
+    border: solid 1px #c9c9c9;
+    border-radius: 5px;
+    background: #fff
+}
+.mainWrap.single.qa .mainArea .commentArea .commentList li.owner {
+    border: solid 1px #fc8c96
+}
+.mainWrap.single.qa .mainArea .commentArea .commentList li.owner:before {
+    border-left: solid 8px #fc8c96 !important
+}
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData {
+    overflow: hidden;
+    margin-bottom: 20px
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .data {
+    float: left;
+    font-size: 1.4rem
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .report {
+    overflow: hidden;
+    font-size: 1.4rem
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal label {
+    float: right;
+    color: #000;
+    cursor: pointer
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal label i {
+    margin-right: 5px
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal input {
+    position: absolute;
+    z-index: -9999;
+    visibility: hidden
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal input:checked ~ .modal-overlay {
+    z-index: 999;
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1)
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -999;
+    background: rgba(201, 201, 201, 0.5);
+    opacity: 0;
+    -webkit-transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+    transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5)
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap {
+    position: absolute;
+    top: 35%;
+    right: 0;
+    left: 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 30px;
+    width: 450px;
+    background: #fff
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap h3 {
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.6rem
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap label {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #c9c9c9;
+    font-size: 2.5rem;
+    cursor: pointer
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap p {
+    margin-bottom: 20px;
+    line-height: 1.6
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea {
+    overflow: hidden
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .reportBtn,
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .cancelBtn {
+    display: block;
+    float: left;
+    box-sizing: border-box;
+    width: 185px;
+    height: 50px;
+    border: solid 2px #fc8c96;
+    background: #fff;
+    color: #fc8c96;
+    font-size: 1.4rem;
+    line-height: 50px
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .reportBtn:hover,
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .cancelBtn:hover {
+    background: #fc8c96;
+    color: #fff
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .reportBtn {
+    margin-right: 10px
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .commentData .modal .modal-overlay .modal-wrap .btnArea .cancelBtn:hover {
+    background: #fc8c96;
+    color: #fff
+}
+.mainWrap.single.qa .mainArea .commentArea .commentList li .comment > :not(.cld-like-dislike-wrap) {
+    margin-left: 15px;
+    margin-right: 15px;
+    line-height: 1.6
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .comment {
+    margin: 15px;
+    line-height: 1.6
+}
+.mainWrap.single.qa .mainArea .commentArea .commentList li .comment {
+    margin: 0px !important;
+    line-height: 1.6;
+    word-break: break-word;
+}
+.mainWrap.single.qa .mainArea .commentArea .commentList li .actionArea {
+    overflow: hidden;
+    margin-bottom: 10px;
+    padding: 0 0 10px 10px;
+    border-bottom: solid 1px #c9c9c9;
+    color: #c9c9c9
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .actionArea .good,
+.mainWrap.single.qa .mainArea .commentArea .commentList li .actionArea .reply {
+    float: left;
+    font-size: 1.8rem;
+    cursor: pointer
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .actionArea .good {
+    margin-right: 15px
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .actionArea .good.on {
+    color: #fc8c96
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .countArea {
+    padding: 0 10px;
+    font-size: 1.2rem
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .countArea .icon {
+    margin-right: 5px;
+    color: #fc8c96
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li:before {
+    position: absolute;
+    top: 20px;
+    left: -17px;
+    border-top: solid 8px transparent;
+    border-right: solid 8px #c9c9c9;
+    border-bottom: solid 8px transparent;
+    border-left: solid 8px transparent;
+    content: ""
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li:after {
+    position: absolute;
+    top: 20px;
+    left: -16px;
+    border-top: solid 8px transparent;
+    border-right: solid 8px #fff;
+    border-bottom: solid 8px transparent;
+    border-left: solid 8px transparent;
+    content: ""
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li:nth-child(2n):before {
+    position: absolute;
+    top: 20px;
+    right: -17px;
+    left: auto;
+    border-top: solid 8px transparent;
+    border-right: solid 8px transparent;
+    border-bottom: solid 8px transparent;
+    border-left: solid 8px #c9c9c9;
+    content: ""
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li:nth-child(2n):after {
+    position: absolute;
+    top: 20px;
+    right: -16px;
+    left: auto;
+    border-top: solid 8px transparent;
+    border-right: solid 8px transparent;
+    border-bottom: solid 8px transparent;
+    border-left: solid 8px #fff;
+    content: ""
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea {
+    margin-top: -48px;
+    margin-bottom: 40px;
+    padding: 110px 3px 0
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea .commentFormWrap {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    -webkit-box-shadow: 2px -2px 5px rgba(199, 199, 199, 0.2), -2px 2px 5px rgba(199, 199, 199, 0.2);
+    box-shadow: 2px -2px 5px rgba(199, 199, 199, 0.2), -2px 2px 5px rgba(199, 199, 199, 0.2)
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea .commentFormWrap:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    border-top: solid 5px #fdafb6;
+    content: ""
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea .ttlArea {
+    margin-bottom: 30px
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea h1 {
+    margin-bottom: 30px
+}
+.mainWrap.single.qa .mainArea .commentFormArea .ttlArea p {
+    font-size: 1.2rem
+}
+.mainWrap.single.qa .mainArea .commentFormArea .red {
+    color: #f00;
+    font-size: 1rem;
+    vertical-align: text-top
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li {
+    margin-bottom: 30px
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li h3 {
+    margin-bottom: 5px
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li p {
+    margin-bottom: 5px;
+    font-size: 1.2rem
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea form ul li input,
+.mainWrap.single.qa .mainArea .commentFormArea form ul li textarea {
+    box-sizing: border-box;
+    padding-left: 10px;
+    width: 100%;
+    height: 40px;
+    border: solid 1px #c9c9c9;
+    font-size: 100%;
+    line-height: 40px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea form ul li::-webkit-input-placeholder {
+    font-size: 1.2rem
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea {
+    position: relative;
+    padding-bottom: 35px;
+    border: solid 1px #c9c9c9
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea textarea {
+    padding: 5px 10px 20px;
+    min-height: 150px;
+    border: none;
+    text-indent: auto;
+    line-height: 1.6;
+    resize: none
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    margin-bottom: 0px;
+    height: 35px;
+    background: none;
+    line-height: 35px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn i {
+    margin-right: 5px
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    margin: 0;
+    height: 35px;
+    border: none;
+    font-size: 100px;
+    line-height: 0;
+    opacity: 0;
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=0);
+    cursor: pointer
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .sendBtn {
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 530px;
+    height: 50px;
+    border: solid 2px #fc8c96;
+    background: #fff;
+    color: #fc8c96;
+    text-align: center;
+    font-size: inherit;
+    line-height: 50px
+}
+
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .sendBtn:hover {
+    background: #fc8c96;
+    color: #fff
+}
+
+@media all and (-ms-high-contrast: none) {
+    .mainWrap.single .mainArea .postArea .snsArea .fb a,
+    .mainWrap.single .mainArea .postArea .snsArea .tw a,
+    .mainWrap.single .mainArea .postArea .snsArea .pk a,
+    .mainWrap.single .mainArea .postArea .snsArea .hb a {
+        line-height: 62px
+    }
+    .mainWrap.single .mainArea .postArea .snsArea .fb a:hover:before,
+    .mainWrap.single .mainArea .postArea .snsArea .tw a:hover:before,
+    .mainWrap.single .mainArea .postArea .snsArea .pk a:hover:before,
+    .mainWrap.single .mainArea .postArea .snsArea .hb a:hover:before {
+        overflow: hidden;
+        font-weight: bolder
+    }
+    .mainWrap.single .mainArea .postArea .snsArea .hb a {
+        line-height: 66px
+    }
+}
+
+.mainWrap.qa .mainArea .qaListArea .qaList {
+    padding: 20px 20px 50px
+}
+
+.mainWrap.qa .mainArea .qaListArea .qaList li {
+    width: auto;
+    height: auto;
+    background: none;
+    padding-top: 0;
+    float: none;
+    position: relative;
+    margin-right: 0
+}
+
+.mainWrap.qa .mainArea .qaListArea .qaList li a {
+    overflow: hidden;
+    width: auto;
+    height: auto
+}
+
+.mainWrap.qa .mainArea .qaListArea .qaList li .imgArea {
+    overflow: hidden;
+    float: left;
+    margin: 0 10px 0 0;
+    width: 200px;
+    height: 150px
+}
+
+.mainWrap.qa .mainArea .qaListArea .qaList li .imgArea .overlay .ovWrap {
+    width: auto;
+    top: 25px;
+    left: 20px;
+    right: 20px;
+    padding: 24px 0
+}
+
+.mainWrap.qa .mainArea .qaListArea .qaList li .imgArea .overlay .ovWrap i {
+    font-size: 2.3rem
+}
+
+.mainWrap.qa .mainArea .qaListArea .qaList li .content {
+    float: left;
+    width: 420px;
+    height: 150px
+}
+
+.mainWrap.qa .mainArea .qaListArea .qaList li .content h2 {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    min-height: 45px;
+    max-height: 55px
+}
+
+.mainWrap.qa .mainArea .qaListArea .qaList li .content .articleData:last-child {
+    position: absolute;
+    bottom: 0;
+    width: 420px
+}
+
+.mainWrap.qa .mainArea .qaListArea .qaList li .content .pv i {
+    font-size: 1.6rem
+}
+
+.mainWrap.qa .mainArea .qaListArea .qaList li:last-child {
+    margin-bottom: 0
+}
+.mainWrap.qa .mainArea .qaList {
+    padding: 20px 20px 50px
+}
+.mainWrap.qa .mainArea .qaList li {
+    width: 670px;
+    height: auto;
+    background: none;
+    padding-top: 0;
+    float: none;
+    position: relative;
+    margin-right: 0
+}
+.mainWrap.qa .mainArea .qaList li a {
+    overflow: hidden
+}
+.mainWrap.qa .mainArea .qaList li .imgArea {
+    overflow: hidden;
+    float: left;
+    margin: 0 10px 0 0;
+    width: 200px;
+    height: 150px
+}
+.mainWrap.qa .mainArea .qaList li .imgArea .overlay .ovWrap {
+    width: auto;
+    top: 25px;
+    left: 20px;
+    right: 20px;
+    padding: 24px 0
+}
+.mainWrap.qa .mainArea .qaList li .imgArea .overlay .ovWrap i {
+    font-size: 2.3rem
+}
+.mainWrap.qa .mainArea .qaList li .content {
+    float: left;
+    width: calc(100% - 210px);
+    height: 150px
+}
+.mainWrap.qa .mainArea .qaList li .content h2 {
+    font-size: 1.8rem;
+    line-height: 1.6
+}
+.mainWrap.qa .mainArea .qaList li .content .articleData:last-child {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 210px);
+    display: flex;
+    justify-content: space-between
+}
+.mainWrap.qa .mainArea .qaList li .content .pv i {
+    font-size: 1.6rem
+}
+.mainWrap.qa .mainArea .qaList li:last-child {
+    margin-bottom: 0
+}
+
+.mainWrap.single.qa .mainArea .commentArea .commentList li .answerArea .answerList {
+    border-bottom: dashed 1px #c9c9c9;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 15px 15px
+}
+.mainWrap.single.qa .mainArea .commentArea .commentList li .answerArea .answerList li {
+    border: none;
+    padding: 0;
+    margin: 0 20px 10px 0
+}
+.mainWrap.single.qa .mainArea .commentArea .commentList li .answerArea .answerList li:before {
+    display: none
+}
+.mainWrap.single.qa .mainArea .commentFormArea .answerInpotList li h3 {
+    margin-bottom: 5px
+}
+.mainWrap.single.qa .mainArea .commentFormArea .answerInpotList li label {
+    font-size: small
+}
+.mainWrap.single.qa .mainArea .commentFormArea .answerInpotList li .checkArea {
+    display: flex;
+    flex-wrap: wrap
+}
+.mainWrap.single.qa .mainArea .commentFormArea .answerInpotList li label {
+    margin: 0 10px 10px 0
+}
+.mainWrap.single.qa .mainArea .commentFormArea .answerInpotList li input[type="radio"] {
+    -webkit-appearance: radio;
+    -moz-appearance: radio;
+    appearance: radio;
+    margin-right: 5px;
+    height: auto;
+    line-height: auto;
+    width: auto
+}
+.mainWrap.single.qa .mainArea .commentFormArea .answerInpotList li input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    appearance: checkbox;
+    margin-right: 5px;
+    height: auto;
+    line-height: auto;
+    width: auto
+}
+.mainWrap.single.qa .mainArea .commentFormArea .answerInpotList li .selectArea {
+    position: relative
+}
+.mainWrap.single.qa .mainArea .commentFormArea .answerInpotList li .selectArea select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px 30px 5px 10px;
+    border: solid 1px #c9c9c9;
+    border-radius: 5px
+}
+.mainWrap.single.qa .mainArea .commentFormArea .answerInpotList li .selectArea:before {
+    content: "\f107";
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-family: "FontAwesome";
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+.mainWrap.list.qa .qaListAreaWrap {
+    margin-bottom: 50px
+}
+.mainWrap.list.qa .btnArea a {
+    position: relative;
+    width: 55%;
+    height: 50px;
+    line-height: 50px;
+    border: solid 2px #fc8c96;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fc8c96;
+    margin: 50px auto
+}
+.mainWrap.list.qa .btnArea a:hover {
+    background: #fc8c96;
+    color: #fff
+}
+.mainWrap.list.qa .btnArea a:before {
+    content: "\f055";
+    position: absolute;
+    top: -1px;
+    left: 25%;
+    font-family: "FontAwesome";
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+.mainWrap.addthread .threadFormArea .heading:before {
+    background: #fba2aa
+}
+.mainWrap.addthread .threadFormArea .formArea {
+    background: #fff;
+    border-radius: 5px;
+    padding: 30px;
+    box-sizing: border-box;
+    margin: 0 20px;
+    box-shadow: 2px -2px 5px rgba(199, 199, 199, 0.2), -2px 2px 5px rgba(199, 199, 199, 0.2)
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li:nth-child(2) {
+    width: 100%
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea {
+    width: 130px;
+    margin-right: 20px
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea img {
+    margin-bottom: 10px;
+    border-radius: 10px
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .imgBtn {
+    display: block;
+    background: #fff;
+    position: relative;
+    width: 130px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border: solid 1px #c9c9c9;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    cursor: pointer
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .imgBtn i {
+    margin-right: 10px
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .imgBtn input[type="file"] {
+    display: block;
+    width: 130px;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .ttl {
+    margin-bottom: 30px
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .ttl input {
+    width: 100%;
+    border: solid 1px #c9c9c9;
+    border-radius: 3px;
+    padding: 10px;
+    box-sizing: border-box
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .content .textArea {
+    position: relative;
+    border: solid 1px #c9c9c9;
+    border-radius: 3px;
+    overflow: hidden;
+    height: 250px;
+    box-sizing: border-box
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .content .textArea textarea {
+    border: none;
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    padding: 10px;
+    resize: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .content .imgBtn {
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .content .imgBtn i {
+    margin-right: 5px
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .content .imgBtn input {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0
+}
+.mainWrap.addthread .threadFormArea .formArea .sendBtn {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 100%;
+    color: #fc8c96;
+    height: 50px;
+    line-height: 50px;
+    border: solid 2px #fc8c96;
+    text-align: center;
+    box-sizing: border-box;
+    background: none;
+    cursor: pointer;
+    transition: all .2s ease-in
+}
+.mainWrap.addthread .threadFormArea .formArea .sendBtn:hover {
+    background: #fc8c96;
+    color: #fff
+}
+input[type="text"]:focus,
+textarea {
+    outline: 0
+}
+/* Button report*/
+.buttonReport{
+	float:right;
+	/*margin-top: 30px;*/
+}
+.buttonReport .wprc-content{
+	margin-right: 30px;
+}
+.wprc-content .wprc-submit i {
+    margin-right: 5px;
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .report {
+    overflow: hidden;
+    font-size: 1.4rem;
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .modal input {
+    position: absolute;
+    z-index: -9999;
+    visibility: hidden;
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .modal input:checked ~ .modal-overlay {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    z-index: 999
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .modal label {
+    color: #000;
+    cursor: pointer;
+    float: right;
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .modal .modal-overlay {
+    background: rgba(201, 201, 201, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+    -moz-transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+    -ms-transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+    -o-transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+    transition: all 0.75s cubic-bezier(0.65, -0.55, 0.265, 1.55);
+    z-index: -999;
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .modal .modal-overlay .modal-wrap {
+    position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 30px;
+    width: 450px;
+    box-sizing: border-box;
+    background: #fff;
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .modal .modal-overlay .modal-wrap label {
+    color: #c9c9c9;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.5rem;
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .modal .modal-overlay .modal-wrap h3 {
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .modal .modal-overlay .modal-wrap p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .modal .modal-overlay .modal-wrap .btnArea {
+    overflow: hidden;
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .modal .modal-overlay .modal-wrap .btnArea .reportBtn, .mainWrap.single.qa .mainArea .postArea .contentArea .buttonReport .modal .modal-overlay .modal-wrap .btnArea .cancelBtn {
+    width: 185px;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    display: block;
+    box-sizing: border-box;
+    color: #fc8c96;
+    background: #fff;
+    border: solid 2px #fc8c96;
+    font-size: 1.4rem;
+}
+.mainWrap.single.qa .mainArea .contentArea .buttonReport .modal .modal-overlay .modal-wrap .btnArea .reportBtn {
+    margin-right: 20px;
+}
+.btnArea .reportBtn:hover,
+.btnArea .cancelBtn:hover {
+    color: #fff !important;
+    background: #fc8c96 !important;
+}
+.flr{
+	float: right;
+	padding-right: 0px !important;
+}
+/* Button report*/
+/* Button add thread */
+.threadAdd{
+     background-color: #fc8c96;
+     color:#fff;
+     border-radius: 5px;
+     font-size: 1.2em !important;
+     padding: 10px 10px;
+     text-align: center;
+     font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+     font-weight: 900;
+     margin-bottom: 20px;
+}
+.threadAdd a{
+    color: inherit;
+}
+/* Button add thread */
+/* Image of comment */
+.mainWrap.single .mainArea .commentArea .commentList li p img {
+	display: block !important;
+    margin: 0 auto !important;
+    max-width: 60%;
+    height: auto;
+    border-radius: 5px
+}
+/* Image of comment */
+/* Pagination comment list */
+.notice_pagination .page-numbers {
+    display: inline-block;
+    border: solid 1px #fc8c96;
+    border-radius: 3px;
+    min-width: 42px;
+    min-height: 42px;
+    box-sizing: border-box;
+    margin-right: 10px;
+    vertical-align: middle;
+    line-height: 40px;
+    display: inline-block;
+    margin-right: 10px;
+    color: #fc8c96;
+}
+.notice_pagination span.current {
+    background: #fc8c96;
+    color: #fff;
+}
+.notice_pagination a.page-numbers:hover {
+    background: #fc8c96;
+    color: #fff;
+}
+.notice_pagination a.page-numbers i{
+    font-size: 2rem;
+}
+/* Pagination comment list */
+/* Form add Thread */
+#threadAddForm li .selectArea select {
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px 30px 5px 10px;
+    border: solid 1px #c9c9c9;
+    border-radius: 5px;
+    height: 32px;
+}
+#threadAddForm .categoryArea {
+    margin-bottom: 5%;
+    text-align: center;
+    margin-left: 2%;
+}
+#threadAddForm .answerInpotList {
+    margin-bottom: 5%;
+    text-align: center;
+}
+#threadAddForm .categoryArea li select {
+    width: 30%;
+    margin-right: 2%;
+}
+#threadAddForm .answerInpotList li div label{
+    width: 40%;
+    margin-right: 5%;
+}
+#threadAddForm .answerInpotList li div label input{
+    margin-right: 5px;
+}
+/* Form add Thread */
+/* Question Filter */
+.question_filter{
+	background-color: #FFF2F2;
+	padding: 6px;
+	/* text-align: center;
+    width: 35%; */
+	display: inline-block;
+	border-radius: 5px;
+	float: right;
+    margin-bottom: 10px;
+    padding: 10px 15px 20px 15px;
+}
+.question_filter .sortWrap{
+	position: relative !important;
+	float:  none !important;
+	margin: 0px 0px !important;
+}
+.question_filter .sortWrap .sort{
+	-webkit-appearance: initial !important;
+}
+
+
+.mainWrap.single.qa .mainArea .commentArea .sortWrap .sort{
+    padding: 5px 25px 5px 10px!important;
+    width: 100%
+}
+.mainWrap.single.qa .mainArea .commentArea .sortWrap:before{
+    content: ""!important;
+}
+.mainWrap.single.qa .mainArea .commentArea .sortWrap:after{
+    content: "\f107"!important;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 2rem;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased
+}
+.mainWrap.single.qa .mainArea .commentArea .sortWrap.lbFilter{
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+}
+.mainWrap.single.qa .mainArea .commentArea .sortWrap.lbFilter:after{
+    top: 2px;
+}
+.question_filter .icon_search{
+	float: left;
+    /* margin-left: 10px; */
+    padding-bottom: 5px;
+}
+.commentArea .row{
+    width: 100%;
+    display: inline-block;
+}
+
+/* Category: list bulletin board */
+/* By Uno */
+section.confirm{
+    display: none;
+}
+#backBtn,#submitBtn{
+    width: 49%;
+}
+.confirm_textArea{
+    border-top:1px solid #c0c0c0;
+    padding-top: 15px;
+}
+.error{
+    border-color:red!important;
+}
+.addthread-result h1{
+    padding: 20px;
+    font-size: 2em;
+    font-weight: bold;
+}
+.addthread-result{
+    display: none;
+}
+#confirm_thread_content img{
+    width: 90%;
+    height: auto;
+}
+#textareaEditor{
+        padding: 10px;
+        font-size: 12px;
+        height: calc(100% - 50px);
+        overflow-y: auto;
+    }
+#textareaEditor img{
+    height: auto;
+    max-width: 60%;
+}
+.textareaCustom{
+    position: absolute;
+    top: -999px;
+    left: -999px;
+    visibility: hidden;
+}
+#threadAddForm div.textArea{
+	resize:vertical;
+    position: relative;
+}
+#contentArea {
+    position: relative;
+    resize:vertical;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea div#textareaEditor {
+    min-height: 150px;
+    line-height: 1.6;
+    text-indent: auto;
+    resize: none;
+    padding: 5px 10px 20px;
+    border: none;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn input {
+    font-size: 14px!important;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn {
+    font-size: inherit;
+}
+.mainWrap.single.qa .mainArea .commentArea .commentList li img{
+    max-width: 100%;
+    margin-bottom: -15px !important;
+    margin-top: 5px !important;
+}
+.mainWrap.single.qa .mainArea .commentArea .commentList li img:last-child {
+    margin-bottom: 0 !important;
+}
+/* fixed layout */
+.mainWrap.single.qa .mainArea .commentFormArea h1{
+    margin-bottom: 0px!important;
+}
+/*Questionnaire Comment*/
+@font-face {
+    font-family: "icomoon-kaze";
+    src: url("../fonts/icomoon.eot-kaze?a7h6hm");
+    src: url("../fonts/icomoon.eot-kaze?a7h6hm#iefix") format("embedded-opentype"), url("../fonts/icomoon-kaze.ttf?a7h6hm") format("truetype"), url("../fonts/icomoon.woff-kaze?a7h6hm") format("woff"), url("../fonts/icomoon.svg-kaze?a7h6hm#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal
+}
+.answerList label.check:before{
+    content: "✓";
+}
+.qaSingle .commentFormArea:before{
+    top: 0!important;
+}
+.qaSingle .commentFormArea{
+    margin-top:0px;
+    padding-top: 20px;
+}
+.btnDisable:hover{
+    background-color: #ccc!important;
+    color:#fff!important;
+}
+.btnDisable{
+    color:#ccc!important;
+    border-color: #ccc!important;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li .textArea .imgBtn input{
+    font-size: inherit!important;
+}
+.answer_unit{
+    margin-top: 10px;
+}
+.answer_unit input{
+    width: 30% !important;
+    margin-right: 5px !important;
+}
+.answer_unit label{
+    font-size: inherit !important;
+}
+.answerInpotList li.user_pro{
+    margin-bottom: 15px !important;
+}
+.answerInpotList .user_pro ul li{
+    width: 50%;
+    padding: 5px 10px 0;
+}
+.answerInpotList .user_pro ul{
+    display: block;
+}
+.answerInpotList .user_pro .user_baby_age label {
+    float: left;
+}
+.answerInpotList .user_pro .user_baby_age label input{
+    width: 70% !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    margin-right: 5px;
+}
+.answerInpotList .user_pro .user_parent_age label input{
+    width: 40% !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    margin-right: 5px;
+}
+.answerInpotList .radio_h4{
+    padding-bottom: 5px;
+}
+.commentList div.user_comment_info{
+	margin: 10px 10px 0;
+	padding-bottom: 10px;
+	float: left;
+	width: 100%;
+	border-bottom: dashed 1px #c9c9c9;
+}
+.commentList div.user_comment_info h3{
+	margin-bottom: 5px;
+    min-height: 30px;
+}
+.commentList div.user_comment_info .user-comment-info {
+    position: relative;
+}
+.commentList .user_comment_info div.user_comment_info_boy:before{
+    content: "\e905";
+    position: absolute;
+    top: -4px;
+    left: 5px;
+    font-family: "icomoon";
+    font-size: 3rem;
+}
+.commentList .user_comment_info div.user_comment_info_girl:before{
+    content: "\e901";
+    position: absolute;
+    top: -4px;
+    left: 5px;
+    font-family: "icomoon-kaze";
+    font-size: 3.2rem;
+}
+.commentList .user_comment_info div.user_comment_info_mother:before{
+    content: "\e908";
+    position: absolute;
+    top: -9px;
+    left: 5px;
+    font-family: "icomoon";
+    font-size: 3.5rem;
+}
+.commentList .user_comment_info div.user_comment_info_father:before{
+    content: "\e900";
+    position: absolute;
+    top: -4px;
+    left: 5px;
+    font-family: "icomoon-kaze";
+    font-size: 3.2rem;
+}
+.commentList .user_comment_info div.user-comment-info.style:before{
+    content: "\e902";
+    position: absolute;
+    top: -4px;
+    left: 5px;
+    font-family: "icomoon-kaze";
+    font-size: 3rem;
+}
+
+.commentList .user_comment_info div.user-comment-info.style {
+    padding-left: 35px;
+}
+.commentList div.user_comment_info div{
+	padding: 5px 45px;
+	float: left;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li.user_pro .list-option-profile ul {
+    width: 100%;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li.user_pro .list-option-profile li {
+    margin-bottom: 15px;
+    padding-left: 0;
+    clear: both;
+}
+.mainWrap.single.qa .mainArea .commentFormArea form ul li.user_pro .list-option-profile li:last-child {
+    padding-right: 0;
+}
+.mainWrap.single.qa .mainArea .commentFormArea li.user_baby_age label {
+    width: 39%;
+    margin-right: 0;
+}
+.mainWrap.single.qa .mainArea .commentFormArea li.user_baby_age label:last-child {
+    margin-right: 0;
+}
+
+/*Questionnaire Comment*/
+
+/* use font awsome to show no image */
+.mainWrap.single .mainArea .postArea .imgArea.noimage-thumbnail {
+    width: 668px;
+    height: 298px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+.mainWrap.single .mainArea .postArea .imgArea.noimage-thumbnail i.fa-picture-o {
+    font-size: 150px;
+    color: #ccc;
+    padding-top: 70px;
+}
+
+.qaList .noimage-thumbnail {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #eee;
+    width: 198px !important;
+    height: 148px !important;
+}
+.qaList .noimage-thumbnail i.fa-picture-o {
+    vertical-align: middle;
+    font-size: 100px;
+    color: #ccc;
+    padding-top: 25px;
+}
