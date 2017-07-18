@@ -210,6 +210,7 @@ function wphd_thread_plugin_install() {
     global $wpdb;
 
     create_new_page('新規スレッド作成', 'add-thread');
+    create_new_page('質問掲示板', 'notice');
     wphd_add_guest_user();
 }
 
@@ -650,12 +651,7 @@ if ( !function_exists ('wphd_add_thread_front')) {
 	function wphd_add_thread_front()
 	{
 	    if (isset( $_POST['submitted'] )) {
-	        $user_guest = get_user_by( 'login', 'guest' );
-
-	        echo '<pre>';
-	        print_r($user_guest);
-	        echo '</pre>';
-	        
+	        $user_guest = get_user_by( 'login', 'guest' );	        
 	        $content = $_POST['thread_content'];
 	        $content_url = preg_replace("/<img[^>]+\>/i", " ", $content);
 	        $is_include_url = false;
