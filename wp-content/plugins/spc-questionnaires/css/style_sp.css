@@ -1882,6 +1882,7 @@ ul .none {
 h3#comments,
 div#comments,
 #respond,
+.nocomments,
 div.navigation,
 ol.commentlist {
   display: none;

@@ -37,10 +37,7 @@
 		cursor: pointer;
 	}
 	.btn-add{
-		    /* padding: 20px; */
 	    display: inline-block;
-	    /* height: 39px; */
-	    /* background: blue; */
 	    border: 1px solid #eee;
 	    padding: 6px 0 4px;
 	    margin-top: 10px;
@@ -83,15 +80,7 @@
 	}
 
 </style>
-<!-- <div class="row">
-	<p>よくある質問</p>
-	<label><input type="checkbox" name="pro_require[baby_sex]" <?= ((get_current_screen()->action == 'add') ||($profile_require && $profile_require['baby_sex']))? 'checked':''?>>お子さんの性別  </label><br>
-	<label><input type="checkbox" name="pro_require[baby_age]" <?= ((get_current_screen()->action == 'add') ||($profile_require && $profile_require['baby_age']))? 'checked':''?>>お子さんの年齢  </label><br>
-	<label><input type="checkbox" name="pro_require[parent_sex]" <?= ((get_current_screen()->action == 'add') ||($profile_require && $profile_require['parent_sex']))? 'checked':''?>>回答する人  </label><br>
-	<label><input type="checkbox" name="pro_require[parent_age]" <?= ((get_current_screen()->action == 'add') ||($profile_require && $profile_require['parent_age']))? 'checked':''?>>回答する人の年齢 </label><br/>
-	<label><input type="checkbox" name="pro_require[style]" <?= ((get_current_screen()->action == 'add') ||($profile_require && $profile_require['style'])) ? 'checked' : ''; ?>>回答する人のタイプ</label>
-</div> -->
-<hr>
+
 <div id="frm_question" class="meta-box-sortables ui-sortable">
 	<ul id="sortable">
 	<?php 

@@ -56,6 +56,14 @@
                 <th scop="row"><label for="num_of_report">一覧画面の表示件数</label></th>
                 <td><input type="number" name="spc_options[report_no]" value="<?php echo esc_attr( $spc_option['report_no'] ); ?>" placeholder="件数を入力" id="num_of_report"/><label for="num_of_report">件</label></td>
             </tr>
+            <tr>
+                <th scop="row"><label for="notice_slug">Notice slug</label></th>
+                <td><input type="text" name="spc_options[notice_slug]" value="<?php echo esc_attr( $spc_option['notice_slug'] ); ?>" placeholder="Slug for notice" id="notice_slug"/></td>
+            </tr>
+            <tr>
+                <th scop="row"><label for="num_of_report">Add thread slug</label></th>
+                <td><input type="text" name="spc_options[add_thread_slug]" value="<?php echo esc_attr( $spc_option['add_thread_slug'] ); ?>" placeholder="Slug for add thread" id="add_thread_slug"/></td>
+            </tr>
             </tbody>
         </table>
         <h2>Option</h2>

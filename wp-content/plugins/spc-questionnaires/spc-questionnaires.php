@@ -1,6 +1,6 @@
 <?php
 /**
-* Plugin Name: Questionnaire
+* Plugin Name: Questionnaire Management
 * Author: Dinh Van Huong
 * Description: Create questionnaire follow post
 */
@@ -24,7 +24,8 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
  *
  * @author Dinh Van Huong
  */
-add_filter( 'site_transient_update_plugins', 'wphd_questionnaire_disable_notification_plugin_updates' );
+add_filter('transient_update_plugins','wphd_questionnaire_disable_notification_plugin_updates');
+add_filter( 'site_transient_update_plugins', 'wphd_questionnaire_disable_notification_plugin_updates');
 function wphd_questionnaire_disable_notification_plugin_updates( $value ) 
 {
     if ( isset( $value ) && is_object( $value ) ) {
@@ -119,10 +120,11 @@ if (!is_admin()) {
 if ( !function_exists( 'wphd_load_page_template' )) {
 	function wphd_load_page_template( $page_template )
 	{
-		$active_question = is_plugin_active( 'spc-questionnaires/spc-questionnaires.php' );
-		$active_thread = is_plugin_active( 'spc-threads/spc-threads.php' );
-	    
-	    if ( is_page( 'notice' ) ) {
+		$active_question 	= is_plugin_active( 'spc-questionnaires/spc-questionnaires.php' );
+		$active_thread 		= is_plugin_active( 'spc-threads/spc-threads.php' );
+		$spc_option 		= get_option('spc_options');
+
+	    if ( (isset($spc_option['notice_slug']) && !empty($spc_option['notice_slug']) && is_page($spc_option['notice_slug'])) || is_page( 'notice' ) ) {
 	        $page_template = SPCV_CUSTOME_PLUGIN_DIR . 'views/page-notice.php';
 	    }
 
@@ -130,7 +132,7 @@ if ( !function_exists( 'wphd_load_page_template' )) {
 	    	$page_template = SPCV_CUSTOME_PLUGIN_DIR . 'views/single-question_post.php';
 	    }
 
-	    if ( $active_thread && is_page( 'add-thread' ) ) {
+	    if ( $active_thread && ((isset($spc_option['add_thread_slug']) && !empty($spc_option['add_thread_slug']) && is_page($spc_option['add_thread_slug'])) || is_page( 'add-thread' ))) {
 	        $page_template = WPHD_THREAD_PLUGIN_DIR . 'views/add-thread.php';
 	    }
 
@@ -150,7 +152,11 @@ if ( !function_exists( 'wphd_load_page_template' )) {
 if ( !function_exists( 'wphd_plugin_unique_style' )) {
 	function wphd_plugin_unique_style()
 	{
-		if (is_page( 'notice' ) || (is_single() && get_post_type() == 'question_post')) {
+		$spc_option = get_option('spc_options');
+		if (
+			((isset($spc_option['notice_slug']) && !empty($spc_option['notice_slug']) && is_page($spc_option['notice_slug'])) || is_page( 'notice' )) || 
+			(is_single() && get_post_type() == 'question_post')) 
+		{
 			wp_enqueue_style( 'font_awesome', SPCV_CUSTOME_PLUGIN_STYLE . 'font-awesome.min.css' );
 			if( cf_is_mobile() && file_exists(SPCV_CUSTOME_PLUGIN_DIR . 'css/style_sp.css')) {
 				wp_enqueue_style( 'style_sp', SPCV_CUSTOME_PLUGIN_STYLE . 'style_sp.css' );

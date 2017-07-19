@@ -1902,3 +1902,12 @@ section.confirm,
 .single-question_post .single-featured-image-header {
   display: none;
 }
+
+h3#comments,
+div#comments,
+#respond,
+.nocomments,
+div.navigation,
+ol.commentlist {
+  display: none;
+}

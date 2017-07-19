@@ -158,10 +158,11 @@ if ( !function_exists( 'wphd_load_page_template' )) {
 	function wphd_load_page_template( $page_template )
 	{
 		$active_question = is_plugin_active( 'spc-questionnaires/spc-questionnaires.php' );
-		$active_thread = is_plugin_active( 'spc-threads/spc-threads.php' );
-		$plugin_dir = ( $active_question ) ? SPCV_CUSTOME_PLUGIN_DIR : WPHD_THREAD_PLUGIN_DIR;
+		$active_thread 	= is_plugin_active( 'spc-threads/spc-threads.php' );
+		$plugin_dir 	= ( $active_question ) ? SPCV_CUSTOME_PLUGIN_DIR : WPHD_THREAD_PLUGIN_DIR;
+		$spc_option 	= get_option('spc_options');
 
-	    if ( is_page( 'notice' ) ) {
+	    if ( (isset($spc_option['notice_slug']) && !empty($spc_option['notice_slug']) && is_page($spc_option['notice_slug'])) || is_page( 'notice' ) ) {
 	        $page_template = $plugin_dir . 'views/page-notice.php';
 	    }
 
@@ -169,7 +170,7 @@ if ( !function_exists( 'wphd_load_page_template' )) {
 	    	$page_template = $plugin_dir . 'views/single-question_post.php';
 	    }
 
-	    if ( $active_thread && is_page( 'add-thread' ) ) {
+	    if ( $active_thread && (isset($spc_option['add_thread_slug']) && !empty($spc_option['add_thread_slug']) && is_page($spc_option['add_thread_slug'])) || is_page( 'add-thread' ) ) {
 	        $page_template = WPHD_THREAD_PLUGIN_DIR . 'views/add-thread.php';
 	    }
 
@@ -189,7 +190,12 @@ if ( !function_exists( 'wphd_load_page_template' )) {
 if ( !function_exists( 'wphd_thread_plugin_unique_style' )) {
 	function wphd_thread_plugin_unique_style()
 	{
-		if (is_page( 'notice' ) || is_page( 'add-thread' ) || (is_single() && get_post_type() == 'thread_post')) {
+		$spc_option = get_option('spc_options');
+		if ( 
+			((isset($spc_option['notice_slug']) && !empty($spc_option['notice_slug']) && is_page($spc_option['notice_slug'])) || is_page( 'notice' )) || 
+			((isset($spc_option['add_thread_slug']) && !empty($spc_option['add_thread_slug']) && is_page($spc_option['add_thread_slug'])) || is_page( 'add_thread' )) || 
+			(is_single() && get_post_type() == 'thread_post')) 
+		{
 			wp_enqueue_style( 'font_awesome', WPHD_THREAD_PLUGIN_STYLE . 'font-awesome.min.css' );
 			if( cf_is_mobile() && file_exists(WPHD_THREAD_PLUGIN_DIR . 'css/style_sp.css')) {
 				wp_enqueue_style( 'style_sp', WPHD_THREAD_PLUGIN_STYLE . 'style_sp.css' );
@@ -651,7 +657,8 @@ if ( !function_exists ('wphd_add_thread_front')) {
 	function wphd_add_thread_front()
 	{
 	    if (isset( $_POST['submitted'] )) {
-	        $user_guest = get_user_by( 'login', 'guest' );	        
+	        $user_guest = get_user_by( 'login', 'guest' );
+	        
 	        $content = $_POST['thread_content'];
 	        $content_url = preg_replace("/<img[^>]+\>/i", " ", $content);
 	        $is_include_url = false;

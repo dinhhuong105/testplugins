@@ -6,15 +6,14 @@
             <h1 class="heading">
 				質問掲示板
             </h1>
-            <p class="ttl">
- 				子育て奮闘中のママさん達が感じた疑問質問やお役立ち情報まで自由に語り合おう♪
-            </p>
-
             <?php $spc_thread   = is_plugin_active( 'spc-threads/spc-threads.php' ); ?>
             <?php $spc_question = is_plugin_active( 'spc-questionnaires/spc-questionnaires.php' ); ?>
             <?php if ( $spc_thread ) : ?>
-            <?php $spc_option = get_option('spc_options'); ?>
-			<?php if( $spc_option['allowpost']) :?>
+                <?php $spc_option = get_option('spc_options'); ?>
+    			<?php if( 
+                    $spc_option['allowpost']  &&
+                    ((isset($spc_option['add_thread_slug']) && !empty($spc_option['add_thread_slug']) && is_page($spc_option['notice_slug'])) || is_page( 'notice' )) 
+                ) :?>
             <div class="btnArea">
                 <a href="<?php echo home_url('/'); ?>add-thread">
 					トピックを投稿する
