@@ -105,9 +105,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 .breadcrumbList li {
     float: left;
+    font-size: 12px;
 }
 .breadcrumbList li a {
-    padding: 10px 0 10px 0;
+    padding: 10px 10px 10px 0;
     display: inline-block;
 }
 .breadcrumbList li:nth-child(1) a {
@@ -1024,7 +1025,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 .qaArea .btnArea {
   margin: 20px 0;
-  margin-top: -10px;
 }
 .qaArea .btnArea a {
   width: 70%;

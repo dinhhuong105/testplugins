@@ -15,7 +15,8 @@
                 ((isset($spc_option['add_thread_slug']) && !empty($spc_option['add_thread_slug']) && is_page($spc_option['notice_slug'])) || is_page( 'notice' )) 
             ) :?>
             <div class="btnArea">
-                <a href="<?php echo home_url('/'); ?>add-thread">
+                <?php $add_thread_link = (isset($spc_option['add_thread_slug']) && !empty($spc_option['add_thread_slug']) && is_page($spc_option['notice_slug'])) ? $spc_option['add_thread_slug'] : 'add-thread'; ?>
+                <a href="<?php echo home_url('/') . $add_thread_link; ?>">
                     トピックを投稿する
                 </a>
             </div>
