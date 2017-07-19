@@ -215,8 +215,6 @@ register_activation_hook( __FILE__ , 'wphd_thread_plugin_install');
 function wphd_thread_plugin_install() {
     global $wpdb;
 
-    create_new_page('新規スレッド作成', 'add-thread');
-    create_new_page('質問掲示板', 'notice');
     wphd_add_guest_user();
 }
 

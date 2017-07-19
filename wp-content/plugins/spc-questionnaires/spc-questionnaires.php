@@ -177,7 +177,7 @@ if ( !function_exists( 'my_plugin_install' )) {
 	function my_plugin_install() {
 	    global $wpdb;
 
-	    create_new_page('質問掲示板', 'notice', SPCV_CUSTOME_PLUGIN_DIR . 'views/page-notice.php');
+	    // your customize
 	}
 }
 
