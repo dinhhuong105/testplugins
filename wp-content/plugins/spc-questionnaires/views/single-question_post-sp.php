@@ -87,6 +87,6 @@
                     <?php endif; ?>
                 </section>
             </article>
-            <?php comments_template(SPCV_CUSTOME_PLUGIN_DIR . 'views/question_comments.php', true); ?>
+            <?php comments_template(); ?>
             <?php include_once( SPCV_CUSTOME_PLUGIN_DIR . 'views/related-entries.php' ); ?>
     <?php get_footer(); ?>

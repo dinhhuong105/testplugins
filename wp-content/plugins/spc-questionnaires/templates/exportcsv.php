@@ -136,7 +136,7 @@ $count_comment =  count($comments);
 		}else{
 			echo 'disabled="disabled"';
 		} ?>
-		><?php echo ($_unpublish_answer[0] == 1) ? '回答受付中' : '停止中'; ?></button>
+		><?php echo (isset($_unpublish_answer[0]) && $_unpublish_answer[0] == 1) ? '回答受付中' : '停止中'; ?></button>
 		<button class="btn-public page-title-action" data-post="<?=$id?>" data-status="<?=get_post_status($id)?>" ><?=(get_post_status($id) == 'publish')?'公開停止':'公開中'?></button>
 	</div>
 <h2 class="hndle ui-sortable-handle"><span>アンケート詳細</span></h2>
@@ -160,9 +160,9 @@ $count_comment =  count($comments);
 				<?php 
 				if(isset($value['answer']) && $value['type'] !== 'unit') :
 					foreach ($value['answer'] as $k_ques => $ans): 
-						$csv[$key][$ans] = $report_ans[$key][$k_ques];
+						$csv[$key][$ans] = isset($report_ans[$key][$k_ques]) ? $report_ans[$key][$k_ques] : 0;
 						?>
-						<li><?=$ans?> ... <?=$report_ans[$key][$k_ques]?></li>
+						<li><?=$ans?> ... <?php echo isset($report_ans[$key][$k_ques]) ?  $report_ans[$key][$k_ques] : 0; ?></li>
 				<?php endforeach;
 				else: 
 					if($report_ans[$key]):

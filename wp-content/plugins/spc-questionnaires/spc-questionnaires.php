@@ -343,23 +343,39 @@ if ( !function_exists( 'questionaire_attr' )) {
 if(isset($_POST)){
 	function questionaire_attr_save( $post_id )
 	{
+
 		//Description form questionnaire
-		$ques_description =   $_POST['ques_description']  ;
-		update_post_meta( $post_id, '_question_description', $ques_description );
+		if (isset($_POST['ques_description'])) {
+			$ques_description = $_POST['ques_description'];
+			update_post_meta( $post_id, '_question_description', $ques_description );
+		}
+		
 		
 		//List require profile of user comment
-		$pro_require =   $_POST['pro_require']  ;
-		update_post_meta( $post_id, '_question_profile_require', $pro_require );
+		if (isset($_POST['pro_require'])) {
+			$pro_require =   $_POST['pro_require']  ;
+			update_post_meta( $post_id, '_question_profile_require', $pro_require );
+		}
 
-		$question =   $_POST['question'];
-		update_post_meta( $post_id, '_question_type', $question );
+		// type of question
+		if (isset($_POST['question'])) {
+			$question =   $_POST['question'];
+			update_post_meta( $post_id, '_question_type', $question );
+		}
 
-		$limited_answer =   $_POST['limited_answer']  ;
-		update_post_meta( $post_id, '_limited_answer', $limited_answer );
+		// limit of answer
+		if (isset($_POST['limited_answer'])) {
+			$limited_answer =   $_POST['limited_answer']  ;
+			update_post_meta( $post_id, '_limited_answer', $limited_answer );
+		}
 
-		$_sort_question =   $_POST['_sort_question'];
-		update_post_meta( $post_id, '_sort_question', $_sort_question );
+		// sort question
+		if (isset($_POST['_sort_question'])) {
+			$_sort_question =   $_POST['_sort_question'];
+			update_post_meta( $post_id, '_sort_question', $_sort_question );
+		}
 	}
+
 	add_action( 'save_post', 'questionaire_attr_save' );
 }
 
@@ -1006,12 +1022,6 @@ if ( !function_exists( 'question_comment' )) {
 	                                            if(is_array($las_ans) && $key_ans == 'unit'){
 	                                                $list_unit = $questions[key($questions)][$queskey]['answer'];
 	                                                $answer_string = '';
-	                                                // if($list_unit[0]){
-	                                                //     $answer_string .= $las_ans[0] . $list_unit[0];
-	                                                //     if($list_unit[1]){
-	                                                //         $answer_string .= ' ' . $las_ans[1] . $list_unit[1];
-	                                                //     }
-	                                                // }
 
 	                                                if (strlen($las_ans[0]) > 0) {
 	                                                    $answer_string .= $las_ans[0] . $list_unit[0];
@@ -1030,7 +1040,7 @@ if ( !function_exists( 'question_comment' )) {
 	                                                <?php
 	                                            }else{
 	                                            ?>
-	                                            	<label class="<?php echo (count($answer)>1) ? 'check' : ''; ?>"><?php echo ($questions[key($questions)][$queskey]['answer'][$las_ans] != '') ? $questions[key($questions)][$queskey]['answer'][$las_ans] : $las_ans; ?></label>
+	                                            	<label class="<?php echo (isset($answer) && count($answer)>1) ? 'check' : ''; ?>"><?php echo (isset($questions[key($questions)][$queskey]['answer'][$las_ans]) && $questions[key($questions)][$queskey]['answer'][$las_ans] != '') ? $questions[key($questions)][$queskey]['answer'][$las_ans] : $las_ans; ?></label>
 	                                            <?php
 	                                            }
 	                                        }
@@ -1103,8 +1113,8 @@ if ( !function_exists( 'replace_duplicate_br_tag' )) {
 if ( !function_exists( 'ip_report_comment' )) {
 	 function ip_report_comment($comment_id, $ip){
 	    global $wpdb;
-	     
-	    $query = $wpdb->prepare( "SELECT COUNT(*) FROM wp_contentreports WHERE comment_id=%d AND reporter_ip=%s;", $comment_id, $ip );
+
+	    $query = $wpdb->prepare( "SELECT COUNT(*) FROM ". $wpdb->prefix ."contentreports WHERE comment_id=%d AND reporter_ip=%s;", $comment_id, $ip );
 	    $count_ip = $wpdb->get_var( $query );
 	     
 	    if ($count_ip >0 ) {
@@ -1351,7 +1361,7 @@ add_action( 'save_post', 'wphd_rewrite_slug_before_save' );
 if ( !function_exists( 'wphd_rewrite_slug_before_save' )) {
 	function wphd_rewrite_slug_before_save($post_id)
 	{
-	    if (in_array($_POST['post_type'], array('thread_post', 'question_post'))) {
+	    if (isset($_POST['post_type']) && in_array($_POST['post_type'], array('thread_post', 'question_post'))) {
 	        
 	        // check is japanese language or not
 	        $checked = false;

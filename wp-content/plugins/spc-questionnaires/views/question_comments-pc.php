@@ -20,6 +20,7 @@
     }
 ?>
 <section class="commentArea">
+    <?php $comment_arr = array(); ?>
     <?php if(have_comments()): ?>
     <?php $comment_order_default = get_option('comment_order'); ?>
     <div class="question_filter">
@@ -36,7 +37,7 @@
                     foreach ($question['answer'] as $anskey => $ansval) {
                         $ansKeys = $qkey.','.$anskey;
                 ?>
-                    <option value="<?=$ansKeys?>" <?=($_GET['comment_filter_by'] == $ansKeys)?'selected':''?> >┗ <?=mb_strlen($ansval)<10?$ansval:mb_substr($ansval,0,10)."..."?></option>
+                    <option value="<?=$ansKeys?>" <?=(isset($_GET['comment_filter_by']) && $_GET['comment_filter_by'] == $ansKeys)?'selected':''?> >┗ <?=mb_strlen($ansval)<10?$ansval:mb_substr($ansval,0,10)."..."?></option>
             <?php } 
             echo '</optgroup>';
                 }
@@ -47,13 +48,14 @@
     <div class="row">
         <label for="qaSort" class="sortWrap">
             <select id="qaSort" name="qaSort" class="sort">
-                <option value="old" <?php if($_GET['comment_order_by'] == 'old' || (!isset($_GET['comment_order_by']) && $comment_order_default != 'desc')) echo 'selected' ?>>古い順</option>
-                <option value="new" <?php if($_GET['comment_order_by'] == 'new' || (!isset($_GET['comment_order_by']) && $comment_order_default == 'desc')) echo 'selected' ?>>新着順</option>
-                <option value="like_count" <?php if($_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
+                <option value="old" <?php if((isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'old') || (!isset($_GET['comment_order_by']) && $comment_order_default != 'desc')) echo 'selected' ?>>古い順</option>
+                <option value="new" <?php if((isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'new') || (!isset($_GET['comment_order_by']) && $comment_order_default == 'desc')) echo 'selected' ?>>新着順</option>
+                <option value="like_count" <?php if(isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
             </select>
         </label>
 
     </div>
+
 	<ul class="commentList">
        <?php 
        $page = intval( get_query_var( 'cpage' ) );
@@ -102,6 +104,7 @@
      <?php endif; ?>
      <?php
      global $wp_query;
+     if ($comment_arr) {
         $wp_query->comments = $comment_arr;
          if(get_comment_pages_count($comment_arr,$comments_per_page, true) > 1){
              echo '<div style="margin-top:20px; text-align:center;" class="notice_pagination">';
@@ -112,6 +115,7 @@
                 ]);
              echo '</div>';
          }
+     }
      ?>
 </section>
 <section id="send" class="commentFormArea">
@@ -327,7 +331,7 @@
         <?php set_query_var( 'cpage', 0 );?>
         var target = jQuery(this);
 
-        var sort = "<?php echo $_GET['comment_order_by']; ?>";
+        var sort = "<?php echo isset($_GET['comment_order_by']) ? $_GET['comment_order_by'] : ''; ?>";
 
         var get_sort = 'comment_order_by=' + sort;
         var get_filter = 'comment_filter_by=' + target.val();
@@ -361,7 +365,7 @@
     jQuery('#qaSort').on('change',function(){
         var target = jQuery(this);
 
-        var filter = "<?php echo $_GET['comment_filter_by']; ?>";
+        var filter = "<?php echo isset($_GET['comment_filter_by']) ? $_GET['comment_filter_by'] : ''; ?>";
 
         var get_filter = 'comment_filter_by=' + filter;
         var get_sort = 'comment_order_by=' + target.val();
@@ -388,4 +392,4 @@
     });
 </script>
 <script src="<?php echo SPCV_CUSTOME_PLUGIN_URI; ?>views/js/notice-board.js"></script>
-<?php add_comment_on_questions(get_the_ID()) ?>
+<?php add_comment_on_questions(get_the_ID()); ?>

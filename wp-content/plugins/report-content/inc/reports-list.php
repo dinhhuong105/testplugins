@@ -14,7 +14,8 @@ function wprc_add_menu_items()
 function wprc_add_notification_menu(){
     global $wpdb;
     global $menu;
-    $query = $wpdb->prepare( "SELECT COUNT(*) FROM wp_contentreports WHERE status=%s;", 'new' );
+    $report_table = $wpdb->prefix . "contentreports";
+    $query = $wpdb->prepare( "SELECT COUNT(*) FROM $report_table WHERE status=%s;", 'new' );
     $count_new = $wpdb->get_var( $query );
     $key_report = false;
     foreach($menu as $key=>$parent_menu){

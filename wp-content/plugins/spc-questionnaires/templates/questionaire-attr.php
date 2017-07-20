@@ -4,7 +4,8 @@
 	$_unpublish_answer = get_metadata('post', $post->ID, '_unpublish_answer');
 	$profile_require = get_post_meta($post->ID, '_question_profile_require', TRUE);
 	$post_metas = get_metadata('post', $post->ID, '_question_type');
-	$GLOBALS['post_metas'] = $post_metas[0];
+
+	$GLOBALS['post_metas'] = isset($post_metas[0]) ? $post_metas[0] : array() ;
 	
 	$unit1 = get_option('spc_options')['list_unit1'];
 	if($unit1){
@@ -84,7 +85,7 @@
 <div id="frm_question" class="meta-box-sortables ui-sortable">
 	<ul id="sortable">
 	<?php 
-		if($post_metas[0]){
+		if(isset($post_metas[0])){
 			foreach ($post_metas[0] as $key => $post_meta) {
 				foreach ($post_meta as $id => $meta) {
 					$check = isset($meta['required'])?"checked='checked'":"";
@@ -246,7 +247,17 @@
 </div>
 <hr>
 <label for="limited_answer">リミット回答数 ></label>
-<input <?php echo ($_unpublish_answer[0]) ? 'disabled="disabled"' : '' ; ?> min="0" type="number" name="limited_answer" id="limited_answer" value="<?php echo $_limited_answer[0]; ?>" placeholder="回答数を入力"><label> 件 <?php echo ($_unpublish_answer[0]) ? ' &nbsp; <strong>(停止中)</strong>' : '' ; ?></label>
+
+<?php
+	
+	// echo '<pre>';
+	// print_r($_unpublish_answer);
+	// echo '</pre>';
+	// exit;
+
+?>
+
+<input <?php echo (isset($_unpublish_answer[0])) ? 'disabled="disabled"' : '' ; ?> min="0" type="number" name="limited_answer" id="limited_answer" value="<?php echo $_limited_answer[0]; ?>" placeholder="回答数を入力"><label> 件 <?php echo (isset($_unpublish_answer[0])) ? ' &nbsp; <strong>(停止中)</strong>' : '' ; ?></label>
 <?php 
 	wp_enqueue_script('jquery'); 
 ?>

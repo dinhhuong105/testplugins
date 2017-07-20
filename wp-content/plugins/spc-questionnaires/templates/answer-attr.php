@@ -160,6 +160,12 @@
 				$comment_metas = get_comment_meta($comment->comment_ID,'_question_comment',TRUE);
 				if (!empty($question_meta[$id])) :
 				foreach ($question_meta[$id] as $kQuestion => $question) {
+
+					// echo '<pre>';
+					// print_r($question);
+					// echo '</pre>';
+					// exit;
+
 					?>
 					<td>
 						<?php
@@ -181,11 +187,11 @@
 
 								    echo $answer_string;
 								}
-						        elseif($question['answer'][$answer] == ""){
+						        elseif(isset($question['answer'][$answer]) && $question['answer'][$answer] == ""){
 									echo $answer;
 								}else{
 								    if($first)
-									    echo $question['answer'][$answer];
+									    echo isset($question['answer'][$answer]) ? $question['answer'][$answer] : '';
 								    else
 								        echo ', ' . $question['answer'][$answer];
 								}

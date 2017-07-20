@@ -86,7 +86,7 @@
 				<p class="none">記事が見つかりませんでした。</p>
 				<?php endif; ?>
             </section>
-            <?php comments_template('/question_comments.php'); ?>
+            <?php comments_template(); ?>
             <?php include_once( SPCV_CUSTOME_PLUGIN_DIR . 'views/related-entries.php' ); ?>
         </div>
 		<?php get_sidebar(); ?>
