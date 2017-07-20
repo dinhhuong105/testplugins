@@ -50,7 +50,6 @@
                         $image = wp_get_attachment_image_src( $thumbnail_id, 'thumbnail' );
 
                         if(!$image[0]){
-                            // $image[0] = get_template_directory_uri()."/images/noimage-thumbnail-sp.png";
                             $image[0] = '';
                         }
                     ?>
@@ -80,24 +79,6 @@
                             <h1><?php the_title(); ?></h1>
                         </div>
                    </div>
-
-                    <!-- <div class="dataArea">
-                        <p class="data"><?php #the_time('Y/m/d'); ?></p>
-                        <p class="pv">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
-                            <?php
-                                #if ( function_exists ( 'wpp_get_views' ) ) {
-                                    #echo wpp_get_views ( get_the_ID() ); }
-                            ?>
-                        </p>
-                    </div>
-                    <h1>
-                        <?php #the_title(); ?>
-                    </h1> -->
-
-                    <!--<div class="imgArea" style="background-image: url(<?php //echo $image[0]; ?>);">
-                        <img src='data:image/gif;base64,R0lGODlhAQABAIAAAP//////zCH5BAEHAAAALAAAAAABAAEAAAICRAEAOw=='>
-                    </div>-->
                     <div class="content">
                         <?php the_content(); ?>
                         <div>
@@ -145,6 +126,6 @@
                     <?php endif; ?>
                 </section>
             </article>
-            <?php comments_template('/notice_comments.php'); ?>
+            <?php comments_template(); ?>
             <?php include_once( WPHD_THREAD_PLUGIN_DIR . 'views/related-entries.php' ); ?>
     <?php get_footer(); ?>

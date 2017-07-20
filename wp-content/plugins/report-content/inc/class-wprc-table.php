@@ -34,7 +34,7 @@ class WPRC_Table extends WPRC_List_Table
 
 	function column_post($item)
 	{
-		define('DEFAULT_COMMENTS_PER_PAGE',20);
+		$default_comment_per_page = 20;
 		$comment = ($item['comment_id']>0)?'&comment_id_scroll='.$item['comment_id']:'';
 	    $post = get_post($item['post_id']);
 
@@ -56,7 +56,7 @@ class WPRC_Table extends WPRC_List_Table
 		                break;
 		            }
 		        }
-		        $page_scroll = ($position>DEFAULT_COMMENTS_PER_PAGE)?'&paged='.ceil($position/DEFAULT_COMMENTS_PER_PAGE):'';
+		        $page_scroll = ($position>$default_comment_per_page)?'&paged='.ceil($position/$default_comment_per_page):'';
 		        
 			    return '<a href="' . get_admin_url(). 'edit.php?post_type=question_post&page=review&post='. $post->ID . $comment . $page_scroll .'">確認する</a>';
 			}else{

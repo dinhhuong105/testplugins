@@ -21,7 +21,6 @@
 					$thumbnail_id = get_post_thumbnail_id();
                     $image = wp_get_attachment_image_src( $thumbnail_id, '900_thumbnail' );
                     if(!$image[0]){
-                        // $image[0] = get_template_directory_uri()."/images/noimage-thumbnail.png";
                         $image[0] = '';
                     }
 					$childCat = '';
@@ -117,7 +116,7 @@
 				<p class="none">記事が見つかりませんでした。</p>
 				<?php endif; ?>
             </section>
-            <?php comments_template('/notice_comments.php'); ?>
+            <?php comments_template(); ?>
             <?php include_once( WPHD_THREAD_PLUGIN_DIR . 'views/related-entries.php' ); ?>
         </div>
 		<?php get_sidebar(); ?>

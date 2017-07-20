@@ -1249,7 +1249,8 @@ textarea {
   line-height: 40px;
   display: block;
   width: 100%;
-  box-sizing: border-box
+  box-sizing: border-box;
+  padding: 0;
 }
 .qaSingle .content .buttonReport .modal .modal-overlay .modal-wrap .btnArea .reportBtn {
   color: #fff;

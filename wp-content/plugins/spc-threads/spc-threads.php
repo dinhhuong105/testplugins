@@ -500,8 +500,8 @@ if ( !function_exists ('ip_report_comment')) {
 	function ip_report_comment($comment_id, $ip)
 	{
 		global $wpdb;
-
-		$query = $wpdb->prepare( "SELECT COUNT(*) FROM wp_contentreports WHERE comment_id = %d AND reporter_ip = %s;", $comment_id, $ip );
+		$report_table = $wpdb->prefix . "contentreports";
+		$query = $wpdb->prepare( "SELECT COUNT(*) FROM $report_table WHERE comment_id = %d AND reporter_ip = %s;", $comment_id, $ip );
 		$count_ip = $wpdb->get_var( $query );
 
 		if ( $count_ip>0 ) {
@@ -525,8 +525,8 @@ if ( !function_exists ('ip_report_post')) {
 	function ip_report_post($post_id, $ip)
 	{
 		global $wpdb;
-
-		$query = $wpdb->prepare( "SELECT COUNT(*) FROM wp_contentreports WHERE post_id = %d AND comment_id = 0 AND reporter_ip = %s;", $post_id, $ip );
+		$report_table = $wpdb->prefix . "contentreports";
+		$query = $wpdb->prepare( "SELECT COUNT(*) FROM $report_table WHERE post_id = %d AND comment_id = 0 AND reporter_ip = %s;", $post_id, $ip );
 		$count_ip = $wpdb->get_var( $query );
 
 		if ( $count_ip>0 ) {
