@@ -50,19 +50,27 @@
                         $post_cat = get_the_category();
                         usort( $post_cat , '_usort_terms_by_ID');
                         $count = count($post_cat);
-                        if($count === 3) {//カテが3
-                            $catNameGrandson = $post_cat[2]->cat_name;
-                        }elseif($count === 2){//カテが2
-                            $catNameGrandson = $post_cat[1]->cat_name;
-                        }else{
-                            $catNameGrandson = $post_cat[0]->cat_name;
+                        $catNameGrandson = '';
+                        if ($count) {
+                            if($count === 3) {//カテが3
+                                $catNameGrandson = $post_cat[2]->cat_name;
+                            }elseif($count === 2){//カテが2
+                                $catNameGrandson = $post_cat[1]->cat_name;
+                            }else{
+                                $catNameGrandson = $post_cat[0]->cat_name;
+                            }
                         }
+
                         $thumbnail_id = get_post_thumbnail_id();
-                        $image = wp_get_attachment_image_src( $thumbnail_id, 'pcList_thumbnail' );
-                        if($post->post_type == 'thread_post' && !$image[0]){
-                            // $image[0] = get_template_directory_uri()."/images/noimage-thumbnail.png";
+                        if (!isset($thumbnail_id->errors)) {
+                           $image = wp_get_attachment_image_src( $thumbnail_id, 'pcList_thumbnail' );
+                            if($post->post_type == 'thread_post' && !$image[0]){
+                                $image[0] = '';
+                            } 
+                        } else {
                             $image[0] = '';
                         }
+                        
                         $author = get_userdata($post->post_author);
                         $authorRoles = $author->roles;
                         usort( $authorRoles , '_usort_terms_by_ID');

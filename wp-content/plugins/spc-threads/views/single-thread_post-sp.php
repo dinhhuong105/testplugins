@@ -2,7 +2,6 @@
        <?php
             $postCat = get_the_category();
             usort( $postCat , '_usort_terms_by_ID');
-            $catId = $postCat[0]->cat_ID;
             $author_id = $post->post_author;
             $author = get_userdata($post->post_author);
         ?>
@@ -24,22 +23,22 @@
                     <?php
                         $postCat = get_the_category();
                         usort( $postCat , '_usort_terms_by_ID');
-                        $catId = $postCat[0]->cat_ID;
-                        $parentCat = $postCat[0]->cat_name;
                         $childCat = '';
                         $catNameGrandson = '';
                         $catIdGrandson = '';
                         $count = count($postCat);
-                        if($count === 3) {//カテが3
-                            $childCat = $postCat[1]->cat_name;
-                            $catNameGrandson = $postCat[2]->cat_name;
-                            $catIdGrandson = $postCat[2]->cat_ID;
-                        }elseif($count === 2){//カテが2
-                            $catNameGrandson = $postCat[1]->cat_name;
-                            $catIdGrandson = $postCat[1]->cat_ID;
-                        }else{
-                            $catNameGrandson = $postCat[0]->cat_name;
-                            $catIdGrandson = $postCat[0]->cat_ID;
+                        if ($count) {
+                            if($count === 3) {//カテが3
+                                $childCat = $postCat[1]->cat_name;
+                                $catNameGrandson = $postCat[2]->cat_name;
+                                $catIdGrandson = $postCat[2]->cat_ID;
+                            }elseif($count === 2){//カテが2
+                                $catNameGrandson = $postCat[1]->cat_name;
+                                $catIdGrandson = $postCat[1]->cat_ID;
+                            }else{
+                                $catNameGrandson = $postCat[0]->cat_name;
+                                $catIdGrandson = $postCat[0]->cat_ID;
+                            }
                         }
                         $author_id = $post->post_author;
                         $author = get_userdata($post->post_author);
@@ -47,9 +46,12 @@
                         usort( $userLebel , '_usort_terms_by_ID');
                         $slug_name = $post->post_name;
                         $thumbnail_id = get_post_thumbnail_id();
-                        $image = wp_get_attachment_image_src( $thumbnail_id, 'thumbnail' );
-
-                        if(!$image[0]){
+                        if (!isset($thumbnail_id->errors)) {
+                            $image = wp_get_attachment_image_src( $thumbnail_id, '900_thumbnail' );
+                            if(!$image[0]){
+                                $image[0] = '';
+                            }
+                        } else {
                             $image[0] = '';
                         }
                     ?>

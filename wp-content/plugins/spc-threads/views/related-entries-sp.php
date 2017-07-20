@@ -5,82 +5,33 @@
       $questionary_url = home_url()."/questionary/public/";
       $recommend_class = "articleList plusList";
 
-      if( $post->post_type === "movingimage_post" ){
-               $recommend_class = "movieList recipe";
-               $cat = get_the_terms($post->ID,"movingimage_cat");
-               $cat = current($cat);
-               $catNameGrandson = $cat->name;
-               $catId = $cat->term_id;
-               $args = array (
-                    'posts_per_page' => 4,
-                    'post_type' => $post->post_type, #投稿種別を絞る
-                    'tax_query' => array(
-                        array(
-                                'taxonomy' => "movingimage_cat",
-                                'field' => 'id',
-                                'terms' => $catId,
-                            ),
-                    ),
-               );
-      }elseif( $post->post_type === "movie_post" ){
-               $recommend_class = "movieList";
-               $cat = get_the_terms($post->ID,"movie_cat");
-               $cat = current($cat);
-               $catNameGrandson = $cat->name;
-               $catId = $cat->term_id;
-               $args = array (
-                    'posts_per_page' => 4,
-                    'post_type' => $post->post_type, #投稿種別を絞る
-                    'tax_query' => array(
-                        array(
-                                'taxonomy' => "movie_cat",
-                                'field' => 'id',
-                                'terms' => $catId,
-                            ),
-                    ),
-               );
-      }elseif($post->post_type === "item_post") {
-          $recommend_class = "itemList";
-          $cat = get_the_terms($post->ID,"item_cat");
-          $cat = current($cat);
-          $catNameGrandson = $cat->name;
-          $catId = $cat->term_id;
-          $args = array (
-              'posts_per_page' => 5,
-              'post_type' => $post->post_type, #投稿種別を絞る
-              'tax_query' => array(
-                  array(
-                      'taxonomy' => "item_cat",
-                      'field' => 'id',
-                      'terms' => $catId,
-                  ),
-              ),
-          );
-      }else{
-                // 最遠親カテゴリまたはカテゴリ自身のIDが1かどうか判断し、代入
-                $postCat = get_the_category();
-                usort( $postCat , '_usort_terms_by_ID');
-                $count = count($postCat);
-                // $catId = $postCat[0]->cat_ID == 1 ? 1 :$postCat[2]->cat_ID;
-                $catId = '';
-                $catNameGrandson = '';
-                if( $count === 3) {//カテが3
-                    $catNameGrandson = $postCat[2]->cat_name;
-                    $catId = $postCat[2]->cat_ID;
-                } elseif( $count === 2) {//カテが2
-                    $catNameGrandson = $postCat[1]->cat_name;
-                    $catId = $postCat[1]->cat_ID;
-                }else{
-                     $catId = $postCat[0]->cat_ID;
-                    $catNameGrandson = $postCat[0]->cat_name;
-                    $catIdGrandson = $postCat[0]->cat_ID;
-                }
-            $args = array (
-                    'posts_per_page' => 5,
-                    'post_type' => $post->post_type, #投稿種別を絞る
-                    'cat' => $catId,
-            );
-      }
+      
+    // 最遠親カテゴリまたはカテゴリ自身のIDが1かどうか判断し、代入
+    $postCat = get_the_category();
+    usort( $postCat , '_usort_terms_by_ID');
+    $count = count($postCat);
+    $catId = '';
+    $catNameGrandson = '';
+    if ($count) {
+        if( $count === 3) {//カテが3
+            $catNameGrandson = $postCat[2]->cat_name;
+            $catId = $postCat[2]->cat_ID;
+        } elseif( $count === 2) {//カテが2
+            $catNameGrandson = $postCat[1]->cat_name;
+            $catId = $postCat[1]->cat_ID;
+        }else{
+             $catId = $postCat[0]->cat_ID;
+            $catNameGrandson = $postCat[0]->cat_name;
+            $catIdGrandson = $postCat[0]->cat_ID;
+        }
+    }
+
+    $args = array (
+            'posts_per_page' => 5,
+            'post_type' => $post->post_type, #投稿種別を絞る
+            'cat' => $catId,
+    );
+
 
       // 検索条件の共通項を追加
       $args += array(
@@ -100,55 +51,22 @@
      <ul class="<?php echo($recommend_class)?>">
      <?php if( $query -> have_posts() ): ?>
      <?php while ($query -> have_posts()) : $query -> the_post(); ?>
-         <?php if( $post->post_type === "item_post" ): ?>
-             <?php
-               $thumbnail_id = get_post_thumbnail_id();
-               $image = wp_get_attachment_image_src( $thumbnail_id, '240_thumbnail' );
-           ?>
-             <li>
-                 <div class="imgArea" style="background-image: url(<?php echo $image[0]; ?>);">
-                     <img src='data:image/gif;base64,R0lGODlhAQABAIAAAP//////zCH5BAEHAAAALAAAAAABAAEAAAICRAEAOw=='>
-                 </div>
-                 <div class="starArea">
-                     <?php  $score = get_post_meta($post->ID, 'average_score', true);?>
-                     <?php  for($i=0;$i<$score;$i++){ ?>
-                        <i class="fa fa-star on" aria-hidden="true"></i>
-                     <?php } ?>
-                     <?php for($i=5;$score<$i;$i--){?>
-                         <i class="fa fa-star" aria-hidden="true"></i>
-                     <?php } ?>
-                 </div>
-                 <h2><?php the_title(); ?></h2>
-                 <p class="price">
-                     ¥<?php echo( get_post_meta($post->ID, 'item', true)); ?>
-                 </p>
-             </li>
-         <?php elseif( $post->post_type === "movingimage_post" ): ?>
-             <?php
-                $thumbnail_id = get_post_thumbnail_id();
-                $image = wp_get_attachment_image_src( $thumbnail_id, '300_thumbnail' );
-            ?>
-             <li>
-                 <a href="<?php the_permalink(); ?>">
-     				<div class="imgArea" style="background-image: url(<?php echo $image[0]; ?>);">
-     					<img src='data:image/gif;base64,R0lGODlhAQABAIAAAP//////zCH5BAEHAAAALAAAAAABAAEAAAICRAEAOw=='>
-     				</div>
-                     <h2><?php the_title(); ?></h2>
-                 </a>
-             </li>
-         <?php else: ?>
-             <?php
-                 $author = get_userdata($post->post_author);
-                 $authorRoles = $author->roles;
-                 usort( $authorRoles , '_usort_terms_by_ID');
-                 $author_id = $post->post_author;
-                 $thumbnail_id = get_post_thumbnail_id();
+         
+         <?php
+             $author = get_userdata($post->post_author);
+             $authorRoles = $author->roles;
+             usort( $authorRoles , '_usort_terms_by_ID');
+             $author_id = $post->post_author;
+             $thumbnail_id = get_post_thumbnail_id();
+            if (!isset($thumbnail_id->errors)) {
                  $image = wp_get_attachment_image_src( $thumbnail_id, 'list_thumbnail' );
                  if($post->post_type == 'thread_post' && !$image[0]){
-                     // $image[0] = get_template_directory_uri()."/images/noimage-thumbnail-sp.png";
-                     $image[0] = '';
+                    $image[0] = '';
                  }
-             ?>
+            } else {
+                $image[0] = '';
+            }
+         ?>
             <li>
                 <a href="<?php the_permalink(); ?>">
                     <?php if (!empty($image[0])) : ?>
@@ -189,7 +107,7 @@
                     </div>
                 </a>
             </li>
-         <?php endif; ?>
+
      <?php endwhile; else: ?>
         <li class="none">該当する記事がありません。</li>
      <?php endif; ?>

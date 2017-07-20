@@ -110,7 +110,15 @@
             </form>
             <section class="threadFormArea addthread-result">
                 <div class="formArea" align="center" id="result-message"><h1>投稿完了しました</h1>
-                    <a href="<?=home_url().'/notice'?>" class="sendBtn">質問掲示板に戻る</a>
+                    <?php
+                        $spc_option = get_option('spc_options');
+                        if ( isset($spc_option['notice_slug']) && !empty($spc_option['notice_slug'])) {
+                            $red_link = home_url() .'/'. $spc_option['notice_slug'];
+                        } else {
+                            $red_link = home_url() . '/notice';
+                        }
+                    ?>
+                    <a href="<?php echo $red_link; ?>" class="sendBtn">質問掲示板に戻る</a>
                 </div>
             </section>
         </div>

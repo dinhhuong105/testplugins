@@ -15,30 +15,38 @@
 				<?php
 		            $postCat = get_the_category();
 		            usort( $postCat , '_usort_terms_by_ID');
-		            $catId = $postCat[0]->cat_ID;
+	            
 		            $author_id = $post->post_author;
 		            $author = get_userdata($post->post_author);
 					$thumbnail_id = get_post_thumbnail_id();
-                    $image = wp_get_attachment_image_src( $thumbnail_id, '900_thumbnail' );
-                    if(!$image[0]){
+                    if (!isset($thumbnail_id->errors)) {
+                        $image = wp_get_attachment_image_src( $thumbnail_id, '900_thumbnail' );
+                        if(!$image[0]){
+                            $image[0] = '';
+                        }
+                    } else {
                         $image[0] = '';
                     }
+
 					$childCat = '';
                     $catNameGrandson = '';
                     $catIdGrandson = '';
                     $count = count($postCat);
+                    if ($count) {
                     // if($catId !== 1) {
-                    if($count === 3) {//カテが3
-                        $childCat = $postCat[1]->cat_name;
-                        $catNameGrandson = $postCat[2]->cat_name;
-                        $catIdGrandson = $postCat[2]->cat_ID;
-                    }elseif($count === 2){//カテが2
-                        $catNameGrandson = $postCat[1]->cat_name;
-                        $catIdGrandson = $postCat[1]->cat_ID;
-                    }else{
-                        $catNameGrandson = $postCat[0]->cat_name;
-                        $catIdGrandson = $postCat[0]->cat_ID;
+                        if($count === 3) {//カテが3
+                            $childCat = $postCat[1]->cat_name;
+                            $catNameGrandson = $postCat[2]->cat_name;
+                            $catIdGrandson = $postCat[2]->cat_ID;
+                        }elseif($count === 2){//カテが2
+                            $catNameGrandson = $postCat[1]->cat_name;
+                            $catIdGrandson = $postCat[1]->cat_ID;
+                        }else{
+                            $catNameGrandson = $postCat[0]->cat_name;
+                            $catIdGrandson = $postCat[0]->cat_ID;
+                        }
                     }
+                    
                     $author_id = $post->post_author;
                     $author = get_userdata($post->post_author);
                     $userLebel = $author -> roles;

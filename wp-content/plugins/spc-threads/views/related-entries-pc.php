@@ -13,17 +13,18 @@
       // $catId = $postCat[0]->cat_ID == 1 ? 1 :$postCat[2]->cat_ID;
       $catId = '';
       $catNameGrandson = '';
-
-      if( $count === 3) {//カテが3
-          $catNameGrandson = $postCat[2]->cat_name;
-          $catId = $postCat[2]->cat_ID;
-      } elseif( $count === 2) {//カテが2
-          $catNameGrandson = $postCat[1]->cat_name;
-          $catId = $postCat[1]->cat_ID;
-      }else{
-           $catId = $postCat[0]->cat_ID;
-          $catNameGrandson = $postCat[0]->cat_name;
-          $catIdGrandson = $postCat[0]->cat_ID;
+      if ($count) {
+        if( $count === 3) {//カテが3
+            $catNameGrandson = $postCat[2]->cat_name;
+            $catId = $postCat[2]->cat_ID;
+        } elseif( $count === 2) {//カテが2
+            $catNameGrandson = $postCat[1]->cat_name;
+            $catId = $postCat[1]->cat_ID;
+        }else{
+             $catId = $postCat[0]->cat_ID;
+            $catNameGrandson = $postCat[0]->cat_name;
+            $catIdGrandson = $postCat[0]->cat_ID;
+        }
       }
 
       $args = array (
@@ -48,10 +49,14 @@
 			 		
     		<?php
     			$thumbnail_id = get_post_thumbnail_id();
-    			$image = wp_get_attachment_image_src( $thumbnail_id, 'pcList_thumbnail' );
-    			if($post->post_type == 'question_post' && !$image[0]){
-    			    $image[0] = '';
-    			}
+          if (!isset($thumbnail_id->errors)) {
+      			$image = wp_get_attachment_image_src( $thumbnail_id, 'pcList_thumbnail' );
+      			if($post->post_type == 'question_post' && !$image[0]){
+      			    $image[0] = '';
+      			}
+          } else {
+            $image[0] = '';
+          }
           
           $author = get_userdata($post->post_author);
           $authorRoles = $author->roles;
@@ -60,16 +65,18 @@
           $cats = get_the_category();
           usort($cats, '_usort_terms_by_ID');
           $count = count($cats);
-          if( $count === 3) {//カテが3
-              $catNameGrandson = $cats[2]->cat_name;
-              $catId = $cats[2]->cat_ID;
-          } elseif( $count === 2) {//カテが2
-              $catNameGrandson = $cats[1]->cat_name;
-              $catId = $cats[1]->cat_ID;
-          }else{
-               $catId = $cats[0]->cat_ID;
-              $catNameGrandson = $cats[0]->cat_name;
-              $catIdGrandson = $cats[0]->cat_ID;
+          if ($count) {
+            if( $count === 3) {//カテが3
+                $catNameGrandson = $cats[2]->cat_name;
+                $catId = $cats[2]->cat_ID;
+            } elseif( $count === 2) {//カテが2
+                $catNameGrandson = $cats[1]->cat_name;
+                $catId = $cats[1]->cat_ID;
+            }else{
+                 $catId = $cats[0]->cat_ID;
+                $catNameGrandson = $cats[0]->cat_name;
+                $catIdGrandson = $cats[0]->cat_ID;
+            }
           }
     		?>
 			<li>
