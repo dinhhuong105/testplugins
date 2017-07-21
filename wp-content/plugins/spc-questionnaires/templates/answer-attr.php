@@ -132,12 +132,14 @@
 				ニックネーム
 			</th>
 			<?php
-				for ($i=1; $i <= count($question_meta[$id]); $i++) { 
-					?>
-					<th>
-						設問<?=$i?>の回答 
-					</th>
-					<?php
+				if (!empty($question_meta[$id])) {
+					for ($i=1; $i <= count($question_meta[$id]); $i++) { 
+						?>
+						<th>
+							設問<?=$i?>の回答 
+						</th>
+						<?php
+					}
 				}
 			?>
 			<th style="min-width: 200px;">

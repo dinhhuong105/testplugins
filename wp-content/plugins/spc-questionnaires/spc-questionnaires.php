@@ -80,8 +80,19 @@ if ( !function_exists( 'wphd_add_posts_columns_row' )) {
 	{
 		if ( in_array(get_post_type(), array('question_post', 'thread_post')) ) {
 			if ( 'thumbnail' == $column_name ) {
-		        $thumb = get_the_post_thumbnail($post_id, array(80,80), 'thumbnail');
-		        echo ( $thumb ) ? $thumb : '－';
+
+		        $thumbnail_id = get_post_thumbnail_id();
+		        $image[0] = '';
+                if (!isset($thumbnail_id->errors)) {
+                   $image = wp_get_attachment_image_src( $thumbnail_id, 'thumbnail' ); 
+                }
+
+                if ($image[0]) {
+                	echo '<img width="80" height="80" src="'. $image[0] .'" class="attachment-80x80 size-80x80 wp-post-image" alt="" thumbnail="" srcset="'. $image[0] .' 100w, '. $image[0] .' 150w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px">';
+                } else {
+                	echo '－';
+                }
+
 		    } elseif ( 'slug' == $column_name ) {
 		        $slug = get_post($post_id) -> post_name;
 		        echo $slug;
