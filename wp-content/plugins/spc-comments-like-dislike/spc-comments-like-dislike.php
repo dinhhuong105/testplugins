@@ -3,17 +3,28 @@
 defined( 'ABSPATH' ) or die( 'No script kiddies please' );
 
 /*
-  Plugin Name: Comments Like Dislike
+  Plugin Name: SPC - Comments Like Dislike
   Description: A simple plugin to add like dislike for your comments
-  Version:     1.0.2
-  Author:      WP Happy Coders
-  Author URI:  http://wphappycoders.com
-  License:     GPL2
-  License URI: https://www.gnu.org/licenses/gpl-2.0.html
-  Domain Path: /languages
-  Text Domain: comments-like-dislike
+  Text Domain: spc-comments-like-dislike
  */
 
+ 
+/**
+ * disable notification update for special plugin
+ *
+ * @author Dinh Van Huong
+ */
+add_filter('transient_update_plugins','wphd_comment_disable_notification_plugin_updates');
+add_filter( 'site_transient_update_plugins', 'wphd_comment_disable_notification_plugin_updates');
+function wphd_comment_disable_notification_plugin_updates( $value ) 
+{
+    if ( isset( $value ) && is_object( $value ) ) {
+        unset( $value->response[ plugin_basename(__FILE__) ] );
+    }
+
+    return $value;
+}
+ 
 
 if ( !class_exists( 'CLD_Comments_like_dislike' ) ) {
 

@@ -1,12 +1,8 @@
 <?php
 /*
-Plugin Name: Report Content
-Plugin URI: http://wpgurus.net/
+Plugin Name: SPC- Report Content
 Description: Inserts a secure form on specified pages so that your readers can report bugs, spam content and other problems.
-Version: 1.5.0
-Author: Hassan Akhtar
-Author URI: http://wpgurus.net/
-License: GPL2
+Text Domain: spc-wordpress-popular-posts
 */
 
 /**********************************************
@@ -17,13 +13,30 @@ License: GPL2
 
 define('WPRC_TABLE_VERSION', '1.1');
 
+/**
+ * disable notification update for special plugin
+ *
+ * @author Dinh Van Huong
+ */
+add_filter('transient_update_plugins','wphd_report_disable_notification_plugin_updates');
+add_filter( 'site_transient_update_plugins', 'wphd_report_disable_notification_plugin_updates');
+function wphd_report_disable_notification_plugin_updates( $value ) 
+{
+    if ( isset( $value ) && is_object( $value ) ) {
+        unset( $value->response[ plugin_basename(__FILE__) ] );
+    }
+
+    return $value;
+}
+
 function wprc_install()
 {
 	global $wpdb;
 
 	$table_name = wprc_table_name();
 	$table_exists = $wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name;
-	$table_up_to_date = get_option("wprc_db_version") == WPRC_TABLE_VERSION;
+	// $table_up_to_date = get_option("wprc_db_version") == WPRC_TABLE_VERSION;
+	$table_up_to_date = true;
 
 	if ($table_exists && $table_up_to_date) {
 		return;
