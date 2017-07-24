@@ -1218,8 +1218,8 @@ if ( !function_exists ('breadcrumb')) {
 /*---------------------------------------------------------------*/
 /* WordPressの投稿作成画面で必須項目を作る（空欄ならJavaScriptのアラート）
 /*---------------------------------------------------------------*/
-add_action( 'admin_head-post-new.php', 'mytheme_post_edit_required' ); // 新規投稿画面でフック
-add_action( 'admin_head-post.php', 'mytheme_post_edit_required' );     // 投稿編集画面でフック
+// add_action( 'admin_head-post-new.php', 'mytheme_post_edit_required' ); // 新規投稿画面でフック
+// add_action( 'admin_head-post.php', 'mytheme_post_edit_required' );     // 投稿編集画面でフック
 if ( !function_exists( 'mytheme_post_edit_required' )) {
 	function mytheme_post_edit_required() {
 	?>

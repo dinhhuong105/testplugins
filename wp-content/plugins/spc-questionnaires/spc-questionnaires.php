@@ -450,7 +450,6 @@ if ( !function_exists( 'report_link' )) {
 		if($page_object->post_type == 'question_post'){
 			$actions['report_page'] = '<a href="'.admin_url( 'edit.php?post_type=question_post&page=review&post=' . $page_object->ID ).'">Report</a>';
 			unset($actions['inline hide-if-no-js']);
-			// print_r($actions);exit;
 		}
 		return $actions;
 	}
@@ -530,39 +529,6 @@ if ( !function_exists( 'update_report_status_post' )) {
 		}
 	}
 }
-
-/**
-* disable editable post after has comment
-**/
-/*function stoppostedition_filter( $capauser, $capask, $param){
-
-	global $wpdb;   
-
-	$post = get_post( $param[2] );
-	$num_comment =  wp_count_comments( $param[2] );
-	if( $post->post_status == 'publish' && $post->post_type == 'question_post'){
-
-			// Disable post edit only for authore role
-			if( $capauser['administrator'] == 1 ){
-
-				if( ( $param[0] == "edit_post") || ( $param[0] == "delete_post" ) ) {
-					if($num_comment->approved > 0){
-						foreach( (array) $capask as $capasuppr) {
-
-								if ( array_key_exists($capasuppr, $capauser) ) {
-
-									$capauser[$capasuppr] = 0;
-
-								}
-							}
-					}
-				}
-			}
-	}
-	return $capauser;
-}
-add_filter('user_has_cap', 'stoppostedition_filter', 100, 3 );*/
-
 
 
 /**
@@ -1257,8 +1223,8 @@ add_action('wp_ajax_nopriv_thread_change_category', 'thread_change_category');
 /*---------------------------------------------------------------*/
 /* WordPressの投稿作成画面で必須項目を作る（空欄ならJavaScriptのアラート）
 /*---------------------------------------------------------------*/
-add_action( 'admin_head-post-new.php', 'mytheme_post_edit_required' ); // 新規投稿画面でフック
-add_action( 'admin_head-post.php', 'mytheme_post_edit_required' );     // 投稿編集画面でフック
+// add_action( 'admin_head-post-new.php', 'mytheme_post_edit_required' ); // 新規投稿画面でフック
+// add_action( 'admin_head-post.php', 'mytheme_post_edit_required' );     // 投稿編集画面でフック
 if ( !function_exists( 'mytheme_post_edit_required' )) {
 	function mytheme_post_edit_required() {
 	?>

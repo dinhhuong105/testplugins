@@ -195,7 +195,7 @@
                 <?php endif; ?>
                 
                 <?php 
-                if($questions[$post->ID]){
+                if(isset($questions[$post->ID]) && $questions[$post->ID]){
                     foreach ($questions[$post->ID] as $qkey => $question) {
                         $required = isset($question['required'])?"required":"";
                         $star = isset($question['required'])?'<span class="red">※</span>':"";
