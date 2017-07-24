@@ -1883,3 +1883,16 @@ section.confirm,
 .single-question_post .single-featured-image-header {
   display: none;
 }
+.newList .noimage-thumbnail i.fa-picture-o, .plusList .noimage-thumbnail i.fa-picture-o, .authorList .noimage-thumbnail i.fa-picture-o {
+    vertical-align: middle;
+    font-size: 120px;
+    color: #ccc;
+    padding-top: 38px;
+}
+.newList .noimage-thumbnail, .plusList .noimage-thumbnail, .authorList .noimage-thumbnail {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #eee;
+    width: 323px !important;
+    height: 198px !important;
+}

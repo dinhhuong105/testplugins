@@ -16,7 +16,6 @@
 				<?php
 		            $postCat = get_the_category();
 		            usort( $postCat , '_usort_terms_by_ID');
-		            $catId = $postCat[0]->cat_ID;
 		            $author_id = $post->post_author;
 		            $author = get_userdata($post->post_author);
 					$thumbnail_id = get_post_thumbnail_id();
@@ -25,18 +24,21 @@
                     $catNameGrandson = '';
                     $catIdGrandson = '';
                     $count = count($postCat);
-                    // if($catId !== 1) {
-                    if($count === 3) {//カテが3
-                        $childCat = $postCat[1]->cat_name;
-                        $catNameGrandson = $postCat[2]->cat_name;
-                        $catIdGrandson = $postCat[2]->cat_ID;
-                    }elseif($count === 2){//カテが2
-                        $catNameGrandson = $postCat[1]->cat_name;
-                        $catIdGrandson = $postCat[1]->cat_ID;
-                    }else{
-                        $catNameGrandson = $postCat[0]->cat_name;
-                        $catIdGrandson = $postCat[0]->cat_ID;
+                    
+                    if($count) {
+                        if($count === 3) {//カテが3
+                            $childCat = $postCat[1]->cat_name;
+                            $catNameGrandson = $postCat[2]->cat_name;
+                            $catIdGrandson = $postCat[2]->cat_ID;
+                        }elseif($count === 2){//カテが2
+                            $catNameGrandson = $postCat[1]->cat_name;
+                            $catIdGrandson = $postCat[1]->cat_ID;
+                        }else{
+                            $catNameGrandson = $postCat[0]->cat_name;
+                            $catIdGrandson = $postCat[0]->cat_ID;
+                        }
                     }
+
                     $author_id = $post->post_author;
                     $author = get_userdata($post->post_author);
                     $userLebel = $author -> roles;
@@ -49,12 +51,6 @@
                     <p class="postDate"><?php the_time('Y/m/d'); ?></p>
                     <p class="pv">
 						<?php
-//                             $comments = get_comments(array('post_id' => $post->ID, ));
-//                                 $countLike = 0;
-//                                 foreach($comments as $comment) {
-//                                     $countLike += get_comment_meta( $comment->comment_ID, 'cld_like_count', true );
-//                                 }
-//                                 echo $countLike;
 						if ( function_exists ( 'wpp_get_views' ) ) {
                             echo '<i class="fa fa-heart" aria-hidden="true"></i>';
 						    echo wpp_get_views ( get_the_ID() ); }

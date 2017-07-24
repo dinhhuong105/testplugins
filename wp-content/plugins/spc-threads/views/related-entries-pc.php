@@ -9,19 +9,16 @@
       $postCat = get_the_category();
       usort( $postCat , '_usort_terms_by_ID');
       $count = count($postCat);
-      // $catId = $count > 2 ? $postCat[2]->cat_ID : $postCat[1]->cat_ID;
-      // $catId = $postCat[0]->cat_ID == 1 ? 1 :$postCat[2]->cat_ID;
-      $catId = '';
       $catNameGrandson = '';
+      $catIdGrandson = '';
       if ($count) {
         if( $count === 3) {//カテが3
             $catNameGrandson = $postCat[2]->cat_name;
-            $catId = $postCat[2]->cat_ID;
+            $catIdGrandson = $postCat[2]->cat_ID;
         } elseif( $count === 2) {//カテが2
             $catNameGrandson = $postCat[1]->cat_name;
-            $catId = $postCat[1]->cat_ID;
+            $catIdGrandson = $postCat[1]->cat_ID;
         }else{
-             $catId = $postCat[0]->cat_ID;
             $catNameGrandson = $postCat[0]->cat_name;
             $catIdGrandson = $postCat[0]->cat_ID;
         }
@@ -30,7 +27,7 @@
       $args = array (
               'posts_per_page' => 6,
               'post_type' => $post->post_type, #投稿種別を絞る
-              'cat' => $catId,
+              'cat' => $catIdGrandson,
       );
     
 
@@ -146,111 +143,3 @@
 		<?php wp_reset_postdata(); ?>
 	</ul>
 </section>
-
-
-
-<?php
-// 関連アンケートの表示。投稿種別によっては非表示
-// if( $post->post_type !== "movingimage_post" && $post->post_type !== "item_post"):
-//     global $wpdb;
-//
-//     // dbからデータを取得する
-//     $query = "
-//         SELECT
-//                *
-//         FROM
-//                `boards`
-//         WHERE
-//                `term_id` LIKE {$catId} AND
-//                AND `status` LIKE 0
-//         ORDER BY
-//                RAND() ASC
-//         LIMIT
-//                4
-//     ";
-//     $results = $wpdb->get_results( $query, OBJECT );
-
-    ?>
-    <?php //if($catId !== 1):?>
-    <!-- <section class="plusArea">
-        <h1 class="heading">
-            <span>関</span><span>連</span><span>の</span><span>あ</span><span>る</span><span>ア</span><span>ン</span><span>ケ</span><span>ー</span><span>ト</span>
-        </h1>
-       <ul class="articleList plusList">
-            <?php //foreach($results as $board):?>
-            <?php
-                // $img_dir = $questionary_url.'/assets/img/';
-                // $thumb_dir = $img_dir.'uploads/list/';
-                //
-                // if(  is_file($thumb_dir.$board->image) )
-                // {
-                //     $img_class = "imgArea";
-				// 	$img_path = $thumb_dir.$board->image;
-                //     $img_html = "<img src=\"{$img_path}\">";
-                // }
-                // else
-                // {
-                //     $img_class = "imgArea noImage";
-                //
-                //     $cat = get_category($board->term_id);
-                //     $cat_list = get_ancestors( $board->term_id, 'category' );
-                //     $term_id = !empty($cat) && $cat->parent ? end($cat_list) : $board->term_id;
-                //
-                //     switch($term_id)
-                //     {
-                //         case 2: //こどものこと
-				// 			$img_path = "{$img_dir}babyBig.png";
-                //             $img_html = "<img src=\"{$img_path}\" class=\"catChild\">";
-                //             break;
-                //
-                //         case 3: //ままのこと
-				// 			$img_path = "{$img_dir}mamaBig.png";
-                //             $img_html = "<img src=\"{$img_path}\" class=\"catMama\">";
-                //             break;
-                //
-                //         default:
-                //             $img_path = "{$img_dir}mamaBig.png";
-                //             $img_html = "<img src=\"{$img_path}\" class=\"catMama\">";
-                //     }
-                //  }
-
-            ?>
-                <li>
-                    <a href="<?php// echo(home_url()."/questionary/board/view/{$board->id}")?>">
-                        <div class="<?php //echo( $img_class ) ?>" style="background-image: url(<?php //echo $image[0]; ?>);">
-                            <img src='data:image/gif;base64,R0lGODlhAQABAIAAAP//////zCH5BAEHAAAALAAAAAABAAEAAAICRAEAOw=='>
-							<div class="overlay">
-								<div class="ovWrap">
-									<i class="icon-book2"></i>
-									<p>READ MORE</p>
-									<div class="bd bdT"></div>
-									<div class="bd bdB"></div>
-									<div class="bd bdR"></div>
-									<div class="bd bdL"></div>
-								</div>
-							</div>
-                        </div>
-                        <div class="content">
-                            <div class="articleData">
-                                <p class="data"><?php //echo(date('Y/m/d',$board->created_at)); ?></p>
-                                <p class="cat"><?php //echo $cat->cat_name; ?></p>
-                            </div>
-                            <h2><?php //echo( $board->title ); ?></h2>
-                            <div class="articleData">
-                                <p class="name"></p>
-                                <p class="pv">
-                                    <i class="fa fa-heart" aria-hidden="true"></i>
-                                    <?php //echo( $board->count ); ?>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <?php //endforeach;?>
-                <?php //if( empty($results) ): ?>
-                    <li class="none">該当するアンケートがありません。</li>
-                <?php //endif;?>
-       </ul>
-    </section> -->
-    <?php //endif ?>
-<?php //endif ?>

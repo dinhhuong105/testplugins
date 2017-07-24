@@ -9,27 +9,26 @@
       $postCat = get_the_category();
       usort( $postCat , '_usort_terms_by_ID');
       $count = count($postCat);
-      // $catId = $count > 2 ? $postCat[2]->cat_ID : $postCat[1]->cat_ID;
-      // $catId = $postCat[0]->cat_ID == 1 ? 1 :$postCat[2]->cat_ID;
-      $catId = '';
+      $catIdGrandson = '';
       $catNameGrandson = '';
 
-      if( $count === 3) {//カテが3
+      if ($count) {
+        if( $count === 3) {//カテが3
           $catNameGrandson = $postCat[2]->cat_name;
-          $catId = $postCat[2]->cat_ID;
-      } elseif( $count === 2) {//カテが2
-          $catNameGrandson = $postCat[1]->cat_name;
-          $catId = $postCat[1]->cat_ID;
-      }else{
-           $catId = $postCat[0]->cat_ID;
-          $catNameGrandson = $postCat[0]->cat_name;
-          $catIdGrandson = $postCat[0]->cat_ID;
+          $catIdGrandson = $postCat[2]->cat_ID;
+        } elseif( $count === 2) {//カテが2
+            $catNameGrandson = $postCat[1]->cat_name;
+            $catIdGrandson = $postCat[1]->cat_ID;
+        }else{
+            $catNameGrandson = $postCat[0]->cat_name;
+            $catIdGrandson = $postCat[0]->cat_ID;
+        }
       }
 
       $args = array (
               'posts_per_page' => 6,
               'post_type' => $post->post_type, #投稿種別を絞る
-              'cat' => $catId,
+              'cat' => $catIdGrandson,
       );
     
 
@@ -60,16 +59,17 @@
           $cats = get_the_category();
           usort($cats, '_usort_terms_by_ID');
           $count = count($cats);
-          if( $count === 3) {//カテが3
-              $catNameGrandson = $cats[2]->cat_name;
-              $catId = $cats[2]->cat_ID;
-          } elseif( $count === 2) {//カテが2
-              $catNameGrandson = $cats[1]->cat_name;
-              $catId = $cats[1]->cat_ID;
-          }else{
-               $catId = $cats[0]->cat_ID;
-              $catNameGrandson = $cats[0]->cat_name;
-              $catIdGrandson = $cats[0]->cat_ID;
+          if ($count) {
+            if( $count === 3) {//カテが3
+                $catNameGrandson = $cats[2]->cat_name;
+                $catIdGrandson = $cats[2]->cat_ID;
+            } elseif( $count === 2) {//カテが2
+                $catNameGrandson = $cats[1]->cat_name;
+                $catIdGrandson = $cats[1]->cat_ID;
+            }else{
+                $catNameGrandson = $cats[0]->cat_name;
+                $catIdGrandson = $cats[0]->cat_ID;
+            }
           }
     		?>
 			<li>

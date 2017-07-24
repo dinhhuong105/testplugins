@@ -33,15 +33,14 @@
                     $catIdGrandson = '';
                     $count = count($postCat);
                     if ($count) {
-                    // if($catId !== 1) {
-                        if($count === 3) {//カテが3
+                        if ($count === 3) {//カテが3
                             $childCat = $postCat[1]->cat_name;
                             $catNameGrandson = $postCat[2]->cat_name;
                             $catIdGrandson = $postCat[2]->cat_ID;
-                        }elseif($count === 2){//カテが2
+                        } elseif ($count === 2) {//カテが2
                             $catNameGrandson = $postCat[1]->cat_name;
                             $catIdGrandson = $postCat[1]->cat_ID;
-                        }else{
+                        } else {
                             $catNameGrandson = $postCat[0]->cat_name;
                             $catIdGrandson = $postCat[0]->cat_ID;
                         }

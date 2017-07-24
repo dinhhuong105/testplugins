@@ -46,15 +46,18 @@
 	</ul>
 	 <?php endif; ?>
 	 <?php
-	     if(get_comment_pages_count() > 1){
-	         echo '<div style="margin-top:15px; text-align:center;" class="notice_pagination">';
-	         //ページナビゲーションの表示
-	         paginate_comments_links([
-                'next_text'    => __('›'),
-                'prev_text'    => __('‹')
-                ]);
-	         echo '</div>';
-	     }
+	     if ($comment_arr) {
+            $wp_query->comments = $comment_arr;
+             if(get_comment_pages_count($comment_arr,$comments_per_page, true) > 1){
+                 echo '<div style="margin-top:15px; text-align:center;" class="notice_pagination">';
+                 //ページナビゲーションの表示
+                 paginate_comments_links([
+                    'next_text'    => __('›'),
+                    'prev_text'    => __('‹')
+                    ]);
+                 echo '</div>';
+             }
+         }
      ?>
 </section>
 <section class="commentFormArea" id="send">

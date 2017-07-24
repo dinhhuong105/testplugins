@@ -1091,12 +1091,15 @@ if ( !function_exists( 'ip_report_comment' )) {
 	 function ip_report_comment($comment_id, $ip){
 	    global $wpdb;
 
-	    $query = $wpdb->prepare( "SELECT COUNT(*) FROM ". $wpdb->prefix ."contentreports WHERE comment_id=%d AND reporter_ip=%s;", $comment_id, $ip );
-	    $count_ip = $wpdb->get_var( $query );
-	     
-	    if ($count_ip >0 ) {
-	     	return true;
-	    }
+	    if ( is_plugin_active( 'spc-report-content/spc-report-content.php' )) {
+		    $query = $wpdb->prepare( "SELECT COUNT(*) FROM ". $wpdb->prefix ."contentreports WHERE comment_id=%d AND reporter_ip=%s;", $comment_id, $ip );
+		    $count_ip = $wpdb->get_var( $query );
+		     
+		    if ($count_ip >0 ) {
+		     	return true;
+		    }
+		}
+		
 	    return false;
 	 }
 }

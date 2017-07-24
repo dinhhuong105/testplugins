@@ -510,11 +510,13 @@ if ( !function_exists ('ip_report_comment')) {
 	{
 		global $wpdb;
 		$report_table = $wpdb->prefix . "contentreports";
-		$query = $wpdb->prepare( "SELECT COUNT(*) FROM $report_table WHERE comment_id = %d AND reporter_ip = %s;", $comment_id, $ip );
-		$count_ip = $wpdb->get_var( $query );
+		if ( is_plugin_active( 'spc-report-content/spc-report-content.php' )) {
+			$query = $wpdb->prepare( "SELECT COUNT(*) FROM $report_table WHERE comment_id = %d AND reporter_ip = %s;", $comment_id, $ip );
+			$count_ip = $wpdb->get_var( $query );
 
-		if ( $count_ip>0 ) {
-			return true;
+			if ( $count_ip>0 ) {
+				return true;
+			}
 		}
 
 		return false;
@@ -535,11 +537,14 @@ if ( !function_exists ('ip_report_post')) {
 	{
 		global $wpdb;
 		$report_table = $wpdb->prefix . "contentreports";
-		$query = $wpdb->prepare( "SELECT COUNT(*) FROM $report_table WHERE post_id = %d AND comment_id = 0 AND reporter_ip = %s;", $post_id, $ip );
-		$count_ip = $wpdb->get_var( $query );
+		
+		if ( is_plugin_active( 'spc-report-content/spc-report-content.php' )) {
+			$query = $wpdb->prepare( "SELECT COUNT(*) FROM $report_table WHERE post_id = %d AND comment_id = 0 AND reporter_ip = %s;", $post_id, $ip );
+			$count_ip = $wpdb->get_var( $query );
 
-		if ( $count_ip>0 ) {
-			return true;
+			if ( $count_ip>0 ) {
+				return true;
+			}
 		}
 
 		return false;
@@ -589,10 +594,10 @@ if ( !function_exists ('wphd_thread_notification_thread_menu')) {
  * @author Dinh Van Huong
  */
 add_action( 'save_post', 'wphd_rewrite_slug_before_save' );
-if ( !function_exists ('wphd_thread_notification_thread_menu')) {
+if ( !function_exists ('wphd_rewrite_slug_before_save')) {
     function wphd_rewrite_slug_before_save($post_id)
     {
-        if (in_array($_POST['post_type'], array('thread_post', 'question_post'))) {
+        if (isset($_POST['post_type']) && in_array($_POST['post_type'], array('thread_post', 'question_post'))) {
             
             // check is japanese language or not
             $checked = false;
@@ -1171,7 +1176,7 @@ if ( !function_exists ('breadcrumb')) {
  *
  * @author Dinh Van Huong
  */
-if ( !function_exists ('breadcrumb')) {
+if ( !function_exists ('pagination')) {
 	function pagination($pages = '', $range = 2)
 	{
 	    $showitems = ($range * 2)+1;//表示するページ数（５ページを表示）
@@ -1182,7 +1187,7 @@ if ( !function_exists ('breadcrumb')) {
 		if(empty($paged)) { 
 			$paged = 1; //デフォルトのページ  サーバー戻ったらこっちに直す
 		}
-
+		
 	    if($pages == '') {
 	        global $wp_query;
 	        $pages = $wp_query->max_num_pages;//全ページ数を取得
