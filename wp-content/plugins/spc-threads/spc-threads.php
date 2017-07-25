@@ -725,11 +725,16 @@ if ( !function_exists ('wphd_add_thread_front')) {
 	            // set thumbnail
 	            if (isset($_FILES)) {
 	                $file = 'thread_thumb';
-	            
 	                $attach_id = media_handle_upload( $file, $post_id );
-	                if ($attach_id) {
+
+	                if ($attach_id && empty($_FILES['errors'])) {
 	                    update_post_meta($post_id, '_thumbnail_id', $attach_id);
 	                }
+	            }
+
+	            $wp_options = (array) get_post_meta($post_id, '_thumbnail_id', true);
+	            if (isset($wp_options['errors'])) {
+	            	delete_post_meta($post_id, '_thumbnail_id');
 	            }
 	            
 	            // set category
@@ -826,6 +831,7 @@ if ( !function_exists ('upload_image_thread')) {
 	    $file = 'content_image';
 	    $attach_id 	= media_handle_upload( $file );
 	    $post_image = get_post($attach_id);
+
 	    $image_link = $post_image->guid;
 	    $image_title = $post_image->post_title;
 	    $return = array(
@@ -1187,7 +1193,7 @@ if ( !function_exists ('pagination')) {
 		if(empty($paged)) { 
 			$paged = 1; //デフォルトのページ  サーバー戻ったらこっちに直す
 		}
-		
+
 	    if($pages == '') {
 	        global $wp_query;
 	        $pages = $wp_query->max_num_pages;//全ページ数を取得

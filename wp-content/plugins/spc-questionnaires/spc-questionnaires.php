@@ -1180,48 +1180,6 @@ if ( !function_exists( 'comment_compare_new' )) {
 	}
 }
 
-/**
- * Function for call ajax upload image when add thread on front
- * @author Hung Nguyen
- */
-if ( !function_exists( 'upload_image_thread' )) {
-	function upload_image_thread() {
-	    $file = 'content_image';
-	    $attach_id = media_handle_upload( $file );
-	    $post_image = get_post($attach_id);
-	    $image_link = $post_image->guid;
-	    $image_title = $post_image->post_title;
-	    $return = array(
-	        'status' => 'OK',
-	        'id'    => $attach_id,
-	        'image_link' => $image_link,
-	        'image_title' => $image_title
-	    );
-	    wp_send_json($return);
-	}
-}
-
-add_action('wp_ajax_upload_image_thread', 'upload_image_thread');
-add_action('wp_ajax_nopriv_upload_image_thread', 'upload_image_thread');
-
-/**
- * Function for call ajax change category
- * @author Hung Nguyen
- */
-if ( !function_exists( 'thread_change_category' )) {
-	function thread_change_category() {
-	    $id = $_POST['id'];
-	    if ($id > 0) {
-	        $child_categories = get_categories( array( 'parent' => $id, 'hide_empty'=>false ) );
-	    } else {
-	        $child_categories = [];
-	    }
-	    wp_send_json($child_categories);
-	}
-}
-add_action('wp_ajax_thread_change_category', 'thread_change_category');
-add_action('wp_ajax_nopriv_thread_change_category', 'thread_change_category');
-
 
 /*---------------------------------------------------------------*/
 /* WordPressの投稿作成画面で必須項目を作る（空欄ならJavaScriptのアラート）
