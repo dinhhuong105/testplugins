@@ -10,7 +10,7 @@
     .form-table th {font-weight: normal!important; width:270px;}
 </style>
 <div class="wrap">
-    <h1>MUGYUU!の設定</h1>
+    <h1>掲示板、アンケートの設定</h1>
     <form method="post" name="spc_setting">
         <h2>掲示板設定</h2>
         <table class="form-table">
