@@ -58,7 +58,9 @@
        <select id="qaSort" name="qaSort" class="sort">
             <option value="old" <?php if((isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'old') || (!isset($_GET['comment_order_by']) && $comment_order_default != 'desc')) echo 'selected' ?>>古い順</option>
 			<option value="new" <?php if((isset($_GET['comment_order_by'])) && $_GET['comment_order_by'] == 'new' || (!isset($_GET['comment_order_by']) && $comment_order_default == 'desc')) echo 'selected' ?>>新着順</option>
+            <?php if (is_plugin_active( 'spc-comments-like-dislike/spc-comments-like-dislike.php' )) : ?>
             <option value="like_count" <?php if(isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
+            <?php endif; ?>
        </select>
    </label>
    <ul class="commentList">
@@ -347,7 +349,27 @@
 		var get_filter = 'comment_filter_by=' + filter;
 		var get_sort = 'comment_order_by=' + target.val();
         
-        var current_link = window.location.origin + window.location.pathname;
+        // redirect to first page.
+        var pathname_location = window.location.pathname.split('/');
+        var count_pathname_location = pathname_location.length - 1;
+
+        // remove slash at the last of array.
+        if ( pathname_location[count_pathname_location] == '') {
+            pathname_location.splice(count_pathname_location, 1);
+        }
+
+        // remove slash at the first of array.
+        if ( pathname_location[0] == '') {
+            pathname_location.splice(0, 1);
+        }
+
+        // remove comment-page-[0-9].
+        if (/^comment-page-[0-9]/g.test(pathname_location[pathname_location.length-1])) {
+            var count_pathname_location = pathname_location.length - 1;
+            pathname_location.splice(count_pathname_location, 1);
+        }
+
+        var current_link = window.location.origin  + '/' + pathname_location.join('/') + '/';
         
         if(filter.length>0) {
         	current_link += '?';

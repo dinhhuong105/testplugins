@@ -49,13 +49,19 @@
                         usort( $userLebel , '_usort_terms_by_ID');
                         $slug_name = $post->post_name;
                         $thumbnail_id = get_post_thumbnail_id();
-                        $image = wp_get_attachment_image_src( $thumbnail_id, 'thumbnail' );
+                        $image = wp_get_attachment_image_src( $thumbnail_id, '900_thumbnail' );
                     ?>
 
                     <div class="top">
-                        <div class="imgArea noImage">
-                            <img src="<?php echo $image[0]; ?>">
-                        </div>
+                        <?php if($image[0] != ''): ?>
+                            <div class="imgArea noImage">
+                                <img src="<?php echo $image[0]; ?>">
+                            </div>
+                        <?php else : ?>
+                            <div class="imgArea noimage-thumbnail">
+                                <i class="fa fa-picture-o" aria-hidden="true"></i>
+                            </div>
+                        <?php endif;?>
                         <div class="articleData">
                             <div class="dataArea">
                                <p class="data"><?php the_time('Y/m/d'); ?></p>

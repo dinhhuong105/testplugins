@@ -61,10 +61,14 @@
 					<?php the_title(); ?>
                 </h1>
                 <?php if($image[0] != ''): ?>
-				<div class="imgArea" style="background-image: url(<?php echo $image[0]; ?>);">
-					<img src='data:image/gif;base64,R0lGODlhAQABAIAAAP//////zCH5BAEHAAAALAAAAAABAAEAAAICRAEAOw=='>
-                </div>
-                <?php endif ?>
+    				<div class="imgArea" style="background-image: url(<?php echo $image[0]; ?>);">
+    					<img src='data:image/gif;base64,R0lGODlhAQABAIAAAP//////zCH5BAEHAAAALAAAAAABAAEAAAICRAEAOw=='>
+                    </div>
+                <?php else : ?>
+                    <div class="imgArea noimage-thumbnail">
+                        <i class="fa fa-picture-o" aria-hidden="true"></i>
+                    </div>
+                <?php endif;?>
                 <div class="contentArea">
 					<?php the_content(); ?>
 					<div class="count">
