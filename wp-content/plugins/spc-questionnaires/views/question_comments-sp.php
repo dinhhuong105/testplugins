@@ -28,7 +28,10 @@
 <section class="commentArea">
     <?php $comment_arr = array(); ?>
     <?php if(have_comments()): ?>
-    <?php $comment_order_default = get_option('comment_order'); ?>
+    <?php 
+        // $comment_order_default = get_option('comment_order');
+        $comment_order_default = 'desc';
+    ?>
     <div class="question_filter">
         <div class="icon_search">
         	<i class="fa fa-search" aria-hidden="true"></i> 絞り込む

@@ -5,7 +5,10 @@
 <section class="commentArea">
     <?php $comment_arr = array(); ?>
 	<?php if(have_comments()): ?>
-    <?php $comment_order_default = get_option('comment_order'); ?>
+    <?php 
+        // $comment_order_default = get_option('comment_order');
+        $comment_order_default = 'desc';
+    ?>
 	<label for="qaSort" class="sortWrap">
 		<select id="qaSort" name="qaSort" class="sort">
 			<option value="old" <?php if((isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'old') || (!isset($_GET['comment_order_by']) && $comment_order_default != 'desc')) echo 'selected' ?>>古い順</option>
