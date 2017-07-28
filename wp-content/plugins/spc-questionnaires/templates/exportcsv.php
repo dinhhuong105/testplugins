@@ -165,7 +165,7 @@ $count_comment =  count($comments);
 						<li><?=$ans?> ... <?php echo isset($report_ans[$key][$k_ques]) ?  $report_ans[$key][$k_ques] : 0; ?></li>
 				<?php endforeach;
 				else: 
-					if($report_ans[$key]):
+					if(isset($report_ans[$key]) && $report_ans[$key]):
 					 foreach ($report_ans[$key] as $answer => $count): 
 						$csv[$key][$answer] = $count;
 					?>

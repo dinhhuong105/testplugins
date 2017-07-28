@@ -3,6 +3,7 @@
     $GLOBALS['thread_no'] = get_post_meta($post->ID, '_thread_comment_no', true);
 ?>
 <section class="commentArea">
+    <?php $comment_arr = array(); ?>
 	<?php if(have_comments()): ?>
     <?php $comment_order_default = get_option('comment_order'); ?>
 	<label for="qaSort" class="sortWrap">
@@ -46,18 +47,19 @@
 	</ul>
 	 <?php endif; ?>
 	 <?php
-	     if ($comment_arr) {
+        global $wp_query;
+	    if ($comment_arr) {
             $wp_query->comments = $comment_arr;
-             if(get_comment_pages_count($comment_arr,$comments_per_page, true) > 1){
-                 echo '<div style="margin-top:15px; text-align:center;" class="notice_pagination">';
-                 //ページナビゲーションの表示
-                 paginate_comments_links([
+            if(get_comment_pages_count($comment_arr,$comments_per_page, true) > 1){
+                echo '<div style="margin-top:15px; text-align:center;" class="notice_pagination">';
+                //ページナビゲーションの表示
+                paginate_comments_links([
                     'next_text'    => __('›'),
                     'prev_text'    => __('‹')
                     ]);
-                 echo '</div>';
-             }
-         }
+                echo '</div>';
+            }
+        }
      ?>
 </section>
 <section class="commentFormArea" id="send">

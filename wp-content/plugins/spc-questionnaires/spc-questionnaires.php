@@ -20,6 +20,29 @@ define( 'SPCV_CUSTOME_PLUGIN_IMAGES', plugin_dir_url( __FILE__ ) . 'images/');
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 /**
+ *
+ * check permission for user to use this plugin
+ *
+ */
+if (!function_exists('wphd_init_questionaire')) {
+	function wphd_init_questionaire()
+	{
+		global $current_user;
+
+		$allow = false;
+		$not_allow_roles = array('subscriber');
+		foreach ($current_user->roles as $user_role) {
+			if (!in_array($user_role, $not_allow_roles)) {
+				$allow = true;
+			}
+		}
+
+		return $allow;
+	}
+}
+
+
+/**
  * disable notification update for special plugin
  *
  * @author Dinh Van Huong
@@ -216,13 +239,13 @@ if ( !function_exists( 'create_new_page' )) {
 
 	        // Create post object
 	        $_p = array();
-	        $_p['post_title'] = $the_page_title;
-	        $_p['post_name'] = $the_page_name;
-	        $_p['post_content'] = "";
-	        $_p['post_status'] = 'publish';
-	        $_p['post_type'] = 'page';
-	        $_p['comment_status'] = 'closed';
-	        $_p['ping_status'] = 'closed';
+	        $_p['post_title'] 		= $the_page_title;
+	        $_p['post_name'] 		= $the_page_name;
+	        $_p['post_content'] 	= "";
+	        $_p['post_status'] 		= 'publish';
+	        $_p['post_type'] 		= 'page';
+	        $_p['comment_status'] 	= 'closed';
+	        $_p['ping_status'] 		= 'closed';
 
 	        if ($the_page_template) {
 	        	$_p['page_template'] = $the_page_template;
@@ -248,7 +271,6 @@ add_filter( 'comments_template', function ( $template ) {
 if ( !function_exists( 'spc_questionaire' )) {
 	function spc_questionaire() 
 	{
-
 		/*
 		 * Biến $label để chứa các text liên quan đến tên hiển thị của Post Type trong Admin
 		 */
@@ -292,10 +314,13 @@ if ( !function_exists( 'spc_questionaire' )) {
 			'has_archive' => true, //Cho phép lưu trữ (month, date, year)
 			'exclude_from_search' => false, //Loại bỏ khỏi kết quả tìm kiếm
 			'publicly_queryable' => true, //Hiển thị các tham số trong query, phải đặt true
-			'capability_type' => 'post'
+			'capability_type' => 'post',
+			'map_meta_cap'	=> true
 		);
 
-		register_post_type('question_post', $args); //Tạo post type với slug tên là questionaire và các tham số trong biến $args ở trên
+		if (wphd_init_questionaire()) {
+			register_post_type('question_post', $args); //Tạo post type với slug tên là questionaire và các tham số trong biến $args ở trên	
+		}	
 	}
 }
 add_action( 'init', 'spc_questionaire' );
@@ -308,9 +333,10 @@ if ( !function_exists( 'change_post_menu_label' )) {
 	{
 		global $submenu;
 
-		// echo "<pre>";print_r($submenu);echo "</pre>"; //Print menus and find out the index of your custom post type menu from it.
-		$submenu['edit.php?post_type=question_post'][5][0] = 'アンケート一覧'; // Replace the 27 with your custom post type menu index from displayed above $menu array 
-		$submenu['edit.php?post_type=question_post'][10][0] = 'アンケート作成'; 
+		if (wphd_init_questionaire()) {
+			$submenu['edit.php?post_type=question_post'][5][0] 	= 'アンケート一覧'; // Replace the 27 with your custom post type menu index from displayed above $menu array 
+			$submenu['edit.php?post_type=question_post'][10][0] = 'アンケート作成'; 
+		}
 	}
 }
 add_action( 'admin_menu', 'change_post_menu_label' );
@@ -320,9 +346,12 @@ add_action( 'admin_menu', 'change_post_menu_label' );
 */
 add_action( 'admin_menu', 'remove_wp_menu', 999 );
 if ( !function_exists( 'remove_wp_menu' )) {
-	function remove_wp_menu(){
-		remove_submenu_page( 'edit.php?post_type=question_post', 'edit-tags.php?taxonomy=category&amp;post_type=question_post' );
-		remove_submenu_page( 'edit.php?post_type=question_post','review' );
+	function remove_wp_menu()
+	{
+		if (wphd_init_questionaire()) {
+			remove_submenu_page( 'edit.php?post_type=question_post', 'edit-tags.php?taxonomy=category&amp;post_type=question_post' );
+			remove_submenu_page( 'edit.php?post_type=question_post','review' );
+		}
 	}
 }
 /**
@@ -331,7 +360,9 @@ if ( !function_exists( 'remove_wp_menu' )) {
 if ( !function_exists( 'questionaire_meta_box' )) {
 	function questionaire_meta_box()
 	{
-	 	add_meta_box( 'thong-tin', '新規アンケートの作成', 'questionaire_attr', 'question_post' );
+		if (wphd_init_questionaire()) {
+	 		add_meta_box( 'thong-tin', '新規アンケートの作成', 'questionaire_attr', 'question_post' );
+	 	}
 	}
 }
 add_action( 'add_meta_boxes', 'questionaire_meta_box' );
@@ -410,8 +441,8 @@ if ( !function_exists( 'update_status_comment' )) {
 		$commentarr['comment_ID'] = $_POST['comment_ID'];
 		$commentarr['comment_approved'] = $_POST['status']?0:1;
 		$result = wp_update_comment( $commentarr );
-		if($_POST['status'] == '1'){
-				update_report_status_comment($_POST['comment_ID']);
+		if ($_POST['status'] == '1') {
+			update_report_status_comment($_POST['comment_ID']);
 		}
 		wp_send_json(['success'=>$result]);
 	}
@@ -447,33 +478,40 @@ if ( !function_exists( 'csv_file' )) {
 
 if ( !function_exists( 'report_link' )) {
 	function report_link($actions, $page_object){
-		if($page_object->post_type == 'question_post'){
-			$actions['report_page'] = '<a href="'.admin_url( 'edit.php?post_type=question_post&page=review&post=' . $page_object->ID ).'">Report</a>';
-			unset($actions['inline hide-if-no-js']);
+		if (wphd_init_questionaire()) {
+			if($page_object->post_type == 'question_post'){
+				$actions['report_page'] = '<a href="'.admin_url( 'edit.php?post_type=question_post&page=review&post=' . $page_object->ID ).'">Report</a>';
+				unset($actions['inline hide-if-no-js']);
+			}
 		}
 		return $actions;
 	}
 }
 add_filter('post_row_actions', 'report_link', 10, 2);
 
-add_action( 'admin_post_review', 'report_question' );
+// add_action( 'admin_post_review', 'report_question' );
+// add_action( 'admin_post_nopriv_review', 'report_question' );
 if ( !function_exists( 'report_question' )) {
 	function report_question(){
 		include_once('templates/exportcsv.php'); 
 	}
 }
 
-add_action('admin_menu', 'test_plugin_setup_menu');
-if ( !function_exists( 'test_plugin_setup_menu' )) {
-	function test_plugin_setup_menu(){
-		add_submenu_page( 'edit.php?post_type=question_post','アンケート詳細', 'アンケート詳細', 'manage_options', 'review', 'test_init' );
+add_action('admin_menu', 'wphd_plugin_setup_menu');
+if ( !function_exists( 'wphd_plugin_setup_menu' )) {
+	function wphd_plugin_setup_menu(){
+		if (wphd_init_questionaire()) {
+			add_submenu_page( 'edit.php?post_type=question_post','アンケート詳細', 'アンケート詳細', 'edit_posts', 'review', 'wphd_init_report' );
+		}
 	}
 }
 
-if ( !function_exists( 'test_init' )) {
-	function test_init(){
-		include_once('templates/exportcsv.php'); 
-		include_once('templates/answer-attr.php'); 
+if ( !function_exists( 'wphd_init_report' )) {
+	function wphd_init_report(){
+		if (wphd_init_questionaire()) {
+			include_once('templates/exportcsv.php'); 
+			include_once('templates/answer-attr.php'); 
+		}
 	}
 }
 
@@ -824,7 +862,7 @@ if ( !function_exists( 'pagination' )) {
 add_action('admin_menu','spc_setting_menu');
 if ( !function_exists( 'spc_setting_menu' )) {
 	function spc_setting_menu() {
-	    add_options_page('設定', 'MUGYUU!の設定', 'manage_options', 'spc_setting','spc_setting_options');
+	    add_options_page('設定', '掲示板、アンケートの設定', 'manage_options', 'spc_setting','spc_setting_options');
 	}
 }
 
