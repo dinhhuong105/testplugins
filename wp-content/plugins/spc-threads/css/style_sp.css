@@ -403,6 +403,41 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     border-radius: 3px;
 }
 
+/* Image of comment */
+/* Pagination comment list */
+.notice_pagination .page-numbers {
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  border: solid 1px #fc8c96;
+  box-sizing: border-box;
+  background: #fff;
+  color: #fc8c96;
+  display: inline-block;
+  margin-right: 10px;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  float: none;
+  padding: 0;
+  font-size: 1rem;
+}
+.notice_pagination span.current {
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  border: solid 1px #fc8c96;
+  box-sizing: border-box;
+  background: #fc8c96;
+  color: #fff;
+}
+.notice_pagination a.page-numbers i{
+  font-size: 1rem;
+}
+
 /* post detail */
 .qaSingle .qaSingleArea {
     overflow: hidden;
@@ -1279,37 +1314,7 @@ textarea {
   height: auto;
   border-radius: 5px
 }
-/* Image of comment */
-/* Pagination comment list */
-.notice_pagination .page-numbers {
-  width: 26px;
-  height: 26px;
-  line-height: 26px;
-  border: solid 1px #fc8c96;
-  box-sizing: border-box;
-  background: #fff;
-  color: #fc8c96;
-  display: inline-block;
-  margin-right: 10px;
 
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
-}
-.notice_pagination span.current {
-  width: 26px;
-  height: 26px;
-  line-height: 26px;
-  border: solid 1px #fc8c96;
-  box-sizing: border-box;
-  background: #fc8c96;
-  color: #fff;
-}
-.notice_pagination a.page-numbers i{
-  font-size: 1.8rem;
-}
 /*.qaSingle .commentFormArea:before{
   top: 0!important;
 }*/

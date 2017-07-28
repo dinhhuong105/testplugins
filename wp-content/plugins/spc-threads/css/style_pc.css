@@ -676,6 +676,38 @@ footer .aboutArea .left .otherArea .bnrArea .bnr,
     }
 }
 
+/* Image of comment */
+/* Pagination comment list */
+.notice_pagination .page-numbers {
+    display: inline-block;
+    border: solid 1px #fc8c96;
+    border-radius: 3px;
+    min-width: 42px;
+    min-height: 42px;
+    box-sizing: border-box;
+    margin-right: 10px;
+    vertical-align: middle;
+    line-height: 42px;
+    display: inline-block;
+    margin-right: 10px;
+    color: #fc8c96;
+    float: none;
+    background: #fff;
+    font-size: 1rem;
+    padding: 0;
+}
+.notice_pagination span.current {
+    background: #fc8c96;
+    color: #fff;
+}
+.notice_pagination a.page-numbers:hover {
+    background: #fc8c96;
+    color: #fff;
+}
+.notice_pagination a.page-numbers i{
+    font-size: 1rem;
+}
+
 @media all and (-ms-high-contrast: none) {
     .mainWrap.single .mainArea .postArea .snsArea .fb a,
     .mainWrap.single .mainArea .postArea .snsArea .tw a,
