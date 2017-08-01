@@ -171,17 +171,21 @@ if ( !function_exists( 'wphd_load_page_template' )) {
 		$plugin_dir 	= ( $active_question ) ? SPCV_CUSTOME_PLUGIN_DIR : WPHD_THREAD_PLUGIN_DIR;
 		$spc_option 	= get_option('spc_options');
 
-	    if ( (isset($spc_option['notice_slug']) && !empty($spc_option['notice_slug']) && is_page($spc_option['notice_slug'])) || is_page( 'notice' ) ) {
-	        $page_template = $plugin_dir . 'views/page-notice.php';
-	    }
+		if ($template_file == 'default') {
+		    if ( (isset($spc_option['notice_slug']) && !empty($spc_option['notice_slug']) && is_page($spc_option['notice_slug'])) || is_page( 'notice' ) ) {
+		        $page_template = $plugin_dir . 'views/page-notice.php';
+		    }
+		}
 
 	    if (is_single() && get_post_type() == 'question_post') {
 	    	$page_template = $plugin_dir . 'views/single-question_post.php';
 	    }
 
-	    if ( $active_thread && (isset($spc_option['add_thread_slug']) && !empty($spc_option['add_thread_slug']) && is_page($spc_option['add_thread_slug'])) || is_page( 'add-thread' ) ) {
-	        $page_template = WPHD_THREAD_PLUGIN_DIR . 'views/add-thread.php';
-	    }
+	    if ($template_file == 'default') {
+		    if ( $active_thread && (isset($spc_option['add_thread_slug']) && !empty($spc_option['add_thread_slug']) && is_page($spc_option['add_thread_slug'])) || is_page( 'add-thread' ) ) {
+		        $page_template = WPHD_THREAD_PLUGIN_DIR . 'views/add-thread.php';
+		    }
+		}
 
 	    if (is_single() && get_post_type() == 'thread_post') {
 	    	$page_template = WPHD_THREAD_PLUGIN_DIR . 'views/single-thread_post.php';

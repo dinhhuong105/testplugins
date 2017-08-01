@@ -154,21 +154,27 @@ if (!is_admin()) {
 if ( !function_exists( 'wphd_load_page_template' )) {
 	function wphd_load_page_template( $page_template )
 	{
+
+		$template_file 		= get_post_meta( get_the_ID(), '_wp_page_template', TRUE );
 		$active_question 	= is_plugin_active( 'spc-questionnaires/spc-questionnaires.php' );
 		$active_thread 		= is_plugin_active( 'spc-threads/spc-threads.php' );
 		$spc_option 		= get_option('spc_options');
 
-	    if ( (isset($spc_option['notice_slug']) && !empty($spc_option['notice_slug']) && is_page($spc_option['notice_slug'])) || is_page( 'notice' ) ) {
-	        $page_template = SPCV_CUSTOME_PLUGIN_DIR . 'views/page-notice.php';
-	    }
+		if ($template_file == 'default') {
+			if ( (isset($spc_option['notice_slug']) && !empty($spc_option['notice_slug']) && is_page($spc_option['notice_slug'])) || is_page( 'notice' ) ) {
+		        $page_template = SPCV_CUSTOME_PLUGIN_DIR . 'views/page-notice.php';
+		    }
+		}
 
 	    if (is_single() && get_post_type() == 'question_post') {
 	    	$page_template = SPCV_CUSTOME_PLUGIN_DIR . 'views/single-question_post.php';
 	    }
 
-	    if ( $active_thread && ((isset($spc_option['add_thread_slug']) && !empty($spc_option['add_thread_slug']) && is_page($spc_option['add_thread_slug'])) || is_page( 'add-thread' ))) {
-	        $page_template = WPHD_THREAD_PLUGIN_DIR . 'views/add-thread.php';
-	    }
+	    if ($template_file == 'default') {
+		    if ( $active_thread && ((isset($spc_option['add_thread_slug']) && !empty($spc_option['add_thread_slug']) && is_page($spc_option['add_thread_slug'])) || is_page( 'add-thread' ))) {
+		        $page_template = WPHD_THREAD_PLUGIN_DIR . 'views/add-thread.php';
+		    }
+		}
 
 	    if (is_single() && get_post_type() == 'thread_post') {
 	    	$page_template = WPHD_THREAD_PLUGIN_DIR . 'views/single-thread_post.php';
