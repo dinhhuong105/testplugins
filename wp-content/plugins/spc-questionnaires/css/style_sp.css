@@ -1896,3 +1896,6 @@ ol.commentlist {
 .single-question_post .single-featured-image-header {
   display: none;
 }
+.qaSingle .commentFormArea .answerList li label.select-other {
+    display: none;
+}

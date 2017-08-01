@@ -29,6 +29,11 @@
 		margin: 10px 0; 
 		position: relative;
 		min-height: 90px;
+		background: #fff;
+	}
+	.ui-state-highlight {
+		background: #f1f1f1;
+		border: 1px dashed #999;
 	}
 	.btn-group{
 		position: absolute;
@@ -88,7 +93,8 @@
 		if(isset($post_metas[0])){
 			foreach ($post_metas[0] as $key => $post_meta) {
 				foreach ($post_meta as $id => $meta) {
-					$check = isset($meta['required'])?"checked='checked'":"";
+					$check = isset($meta['required']) ? "checked = 'checked'" : "";
+					$other = isset($meta['other']) ? "checked = 'checked'" : "";
 					if($meta['type'] == 'checkbox'){
 						echo '<li class="ui-state-default">';
 						echo '<div class="box-question holddiv" id="ques'.$id.'">
@@ -148,7 +154,7 @@
 						</div>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label><br/>';
+						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label>    <label> その他 :  <input type="checkbox" name="question['. $key .']['. $id .'][other]" '.$other.' ></label><br/>';
 						$i=0;
 						foreach ($meta['answer'] as $answer) {
 							echo '<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'">
@@ -290,7 +296,7 @@ jQuery(document).ready(function($){
 			str += '<div class="box-question">';
 			str += '<div class="btn-group"><a class="btn_first btn"><span class="dashicons dashicons-arrow-up-alt2"></span></a><a class="btn_up btn"><span class="dashicons dashicons-arrow-up"></span></a><a class="btn_trash"><span class="dashicons dashicons-no-alt"></span></a><a class="btn_down btn"><span class="dashicons dashicons-arrow-down"></span></a><a class="btn_last btn"><span class="dashicons dashicons-arrow-down-alt2"></span></a><input type="hidden" name="_sort_question[]" value="'+id+'"/></div>';
 			str += hidden($('select[name=question_type] :selected').val(),id);
-			str += question_input(id,1);
+			str += question_input(id,1, selected);
 			str += "<br/><br/>"
 		if( selected == 'checkbox'){
 			str += checkbox( id,number_question );
@@ -323,8 +329,19 @@ jQuery(document).ready(function($){
 		}
 	});
 
-	$( "#sortable" ).sortable();
-    $( "#sortable" ).disableSelection();
+	// sortable element form
+    $( "#sortable" ).sortable({
+      	placeholder: "ui-state-highlight",
+      	start: function( event, ui ) {
+      		console.log(ui.item);
+      		var height = ui.item.outerHeight(true);
+      		$('.ui-state-highlight').css({
+      			'height': height + 'px',
+      			'line-height' : height + 'px'
+      		});
+      	}
+    });
+    $( "#sortable" ).disableSelection(); 
 
     $('#frm_question').on('click','li a.btn_up',function(){
 	  var current = $(this).closest('li.ui-state-default');
@@ -414,11 +431,13 @@ jQuery(document).on("change", 'select.option1_enable',function(e){
 	}
 });
 
-function question_input($id,$multi = 1){
+function question_input($id,$multi = 1, $type = ''){
 	var $str = '';
-	//posid_'+ post_id +'_question_' + $id + '
-	for(var i=0; i<$multi; i++){
+	for (var i=0; i<$multi; i++) {
 		$str += '<label for="posid_'+ post_id +'_question_' + $id + '">アンケート項目 </label><input id="posid_'+ post_id +'_question_' + $id + '" type="text" name="question['+ post_id +']['+ $id +'][question]" required> <label> 必須 :  <input type="checkbox" name="question['+post_id+']['+ $id +'][required]" checked="checked" ></label>';
+		if ($type == 'pulldown') {
+			$str += '&nbsp;<label> その他 :  <input type="checkbox" name="question['+post_id+']['+ $id +'][other]" ></label>';
+		}
 	}
 	return $str;
 }

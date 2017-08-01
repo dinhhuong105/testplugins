@@ -22,10 +22,7 @@
 <section class="commentArea">
     <?php $comment_arr = array(); ?>
     <?php if(have_comments()): ?>
-    <?php 
-        // $comment_order_default = get_option('comment_order');
-        $comment_order_default = 'desc';
-    ?>
+    <?php $comment_order_default = 'desc'; ?>
 
     <div class="question_filter">
         <div class="icon_search">
@@ -42,7 +39,12 @@
                         $ansKeys = $qkey.','.$anskey;
                 ?>
                     <option value="<?=$ansKeys?>" <?=(isset($_GET['comment_filter_by']) && $_GET['comment_filter_by'] == $ansKeys)?'selected':''?> >┗ <?=mb_strlen($ansval)<10?$ansval:mb_substr($ansval,0,10)."..."?></option>
-            <?php } 
+            <?php }
+            if (isset($question['other'])) {
+                $other_filter = $qkey . ',' . 'other';
+                $select_other = (isset($_GET['comment_filter_by']) && $_GET['comment_filter_by'] == $other_filter) ? 'selected' : '';
+                echo '<option value="'. $other_filter .'" '. $selected_other .'>┗ その他</option>';
+            }
             echo '</optgroup>';
                 }
             } ?>
@@ -201,12 +203,13 @@
                 <?php endif; ?>
                 
                 <?php 
-                if(isset($questions[$post->ID]) && $questions[$post->ID]){
+                if (isset($questions[$post->ID]) && $questions[$post->ID]) {
                     foreach ($questions[$post->ID] as $qkey => $question) {
                         $required = isset($question['required'])?"required":"";
+                        $other = isset($question['other']) ? true : false;
                         $star = isset($question['required'])?'<span class="red">※</span>':"";
-                        if($question['type'] == 'checkbox'){
-                            ?>
+                        if ($question['type'] == 'checkbox') {
+                    ?>
                             <li>
                                 <h3><?=$question['question'].$star?></h3>
                                 <div class="checkArea" >
@@ -219,63 +222,63 @@
                                     } ?>
                                 </div>
                             </li>
-                            <?php
-                        }elseif($question['type'] == 'radio'){
-                            ?>
+                    <?php
+                        } elseif ($question['type'] == 'radio') {
+                    ?>
                             <li>
                                 <h3><?=$question['question'].$star?></h3>
-                                <?php foreach ($question['answer'] as $anskey => $ansval) {
-                                    ?>
+                                <?php foreach ($question['answer'] as $anskey => $ansval) { ?>
                                     <label >
                                         <input <?=$required?> value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="radio" ><?=$ansval?>
                                     </label>
-                                <?php
-                                } ?>
+                                <?php } ?>
                             </li>
-                            <?php
-                        }elseif($question['type'] == 'pulldown'){
-                            ?>
+                    <?php
+                        } elseif($question['type'] == 'pulldown') {
+                    ?>
                             <li>
-                                <h3><?=$question['question'].$star?></h3>
+                                <h3><?php echo $question['question'].$star ; ?></h3>
                                 <label for="select" class="selectArea">
-                                    <select name="answer[<?=$qkey?>][]">
-                                    <?php foreach ($question['answer'] as $anskey => $ansval) {
-                                        ?>
-                                        <option value="<?=$anskey?>"><?=$ansval?></option>
-                                        <?php
-                                    } ?>
+                                    <select name="answer[<?php echo $qkey; ?>][]">
+                                    <?php foreach ($question['answer'] as $anskey => $ansval) : ?>
+                                        <option value="<?php echo $anskey; ?>"><?php echo $ansval; ?></option>
+                                    <?php endforeach; ?>
+                                    <?php if ($other) : ?>
+                                        <option value="other">その他</option>
+                                    <?php endif;?>
                                     </select>
                                 </label>
+                                <?php if ($other) : ?>
+                                    <label for="select_other" class="select-other">
+                                        <input style="width:100%;" name="answer[<?php echo $qkey; ?>][other]" type="text" placeholder="その他" >
+                                    </label>
+                                <?php endif;?>
                             </li>
-                            <?php
-                        }elseif($question['type'] == 'textbox'){
-                            ?>
+                    <?php
+                        } elseif($question['type'] == 'textbox') {
+                    ?>
                             <li>
                                 <h3><?=$question['question'].$star?></h3>
                                 <input <?= $required?> name="answer[<?=$qkey?>][textbox]" type="text" placeholder="回答を入力してください" >
                             </li>
-                            <?php
-                        }elseif($question['type'] == 'unit'){
-                            ?>
+                    <?php
+                        } elseif($question['type'] == 'unit') {
+                    ?>
                             <li>
                                 <h3><?=$question['question'].$star?></h3>
                                 <?php if($question['answer'][0]){?>
                                     <div class="answer_unit">
-                                    <?php foreach ($question['answer'] as $anskey => $ansval) {
-                                        ?>
-                                            <?php if($ansval){?>
+                                    <?php foreach ($question['answer'] as $anskey => $ansval) { ?>
+                                            <?php if($ansval) { ?>
                                             	<label><input <?=$required?> name="answer[<?=$qkey?>][unit][]" type="number" min="0" placeholder="<?=$ansval?>" ><?=$ansval?></label>
-                                            <?php
-                                            } ?>
-                                        <?php
-                                    } ?>
+                                            <?php } ?>
+                                        <?php } ?>
                                     </div>
-                                <?php
-                                } ?>
+                                <?php } ?>
                             </li>
-                            <?php
-                        }elseif($question['type'] == 'textarea'){
-                            ?>
+                    <?php
+                        } elseif($question['type'] == 'textarea') {
+                    ?>
                             <li>
                                 <h3><?=$question['question'].$star?></h3>
                                 <textarea <?=$required?> name="answer[<?=$qkey?>][textarea]" placeholder="回答を入力してください" style="resize: vertical;"></textarea>
@@ -304,8 +307,7 @@
                 
                 <li>
                     <textarea name="comment" id="thread_content" class="textareaCustom"></textarea>
-                    <?php
-                    if( $boolAvalible ): ?>
+                    <?php if( $boolAvalible ): ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn">アンケートに回答する</button>
                     <?php else: ?>
                         <button type="submit" name="submitted" value="send" class="sendBtn btnDisable" disabled="disabled">回答締め切りました。</button>
@@ -341,14 +343,29 @@
 
         var get_sort = 'comment_order_by=' + sort;
         var get_filter = 'comment_filter_by=' + target.val();
-        
-        var listParam = window.location.pathname.split('/');
-        var lastParam = listParam[listParam.length-1];
-        var path = window.location.pathname;
-        if(/^comment-page-[0-9]/g.test(lastParam)){
-            path = window.location.pathname.replace('/'+lastParam,'');
+
+        // redirect to first page.
+        var pathname_location = window.location.pathname.split('/');
+        var count_pathname_location = pathname_location.length - 1;
+
+        // remove slash at the last of array.
+        if ( pathname_location[count_pathname_location] == '') {
+            pathname_location.splice(count_pathname_location, 1);
         }
-        var current_link = window.location.origin + path;
+
+        // remove slash at the first of array.
+        if ( pathname_location[0] == '') {
+            pathname_location.splice(0, 1);
+        }
+
+        // remove comment-page-[0-9].
+        if (/^comment-page-[0-9]/g.test(pathname_location[pathname_location.length-1])) {
+            var count_pathname_location = pathname_location.length - 1;
+            pathname_location.splice(count_pathname_location, 1);
+        }
+
+        var current_link = window.location.origin  + '/' + pathname_location.join('/') + '/';
+
         if(sort.length>0) {
             current_link += '?';
             if(target.val().length>0){

@@ -48,6 +48,13 @@
                 ?>
                     <option value="<?=$ansKeys?>" <?=(isset($_GET['comment_filter_by']) && $_GET['comment_filter_by'] == $ansKeys)?'selected':''?> >┗ <?=mb_strlen($ansval)<10?$ansval:mb_substr($ansval,0,10)."..."?></option>
             <?php } 
+
+            if (isset($question['other'])) {
+                $other_filter = $qkey . ',' . 'other';
+                $select_other = (isset($_GET['comment_filter_by']) && $_GET['comment_filter_by'] == $other_filter) ? 'selected' : '';
+                echo '<option value="'. $other_filter .'" '. $selected_other .'>┗ その他</option>';
+            }
+
             echo '</optgroup>';
                 }
             } ?>
@@ -184,6 +191,7 @@
                 if(isset($questions[$post->ID]) && $questions[$post->ID]){
                     foreach ($questions[$post->ID] as $qkey => $question) {
                         $required = isset($question['required'])?"required":"";
+                        $other = isset($question['other']) ? true : false;
                         $star = isset($question['required'])?'<span class="red">※</span>':"";
                         if($question['type'] == 'checkbox'){
                             ?>
@@ -224,8 +232,17 @@
                                         <option value="<?=$anskey?>"><?=$ansval?></option>
                                         <?php
                                     } ?>
+                                    <?php if ($other) : ?>
+                                        <option value="other">その他</option>
+                                    <?php endif;?>
                                     </select>
                                 </label>
+
+                                <?php if ($other) : ?>
+                                    <label for="select_other" class="select-other">
+                                        <input style="width:100%;" name="answer[<?php echo $qkey; ?>][other]" type="text" placeholder="その他" >
+                                    </label>
+                                <?php endif;?>
                             </li>
                             <?php
                         }elseif($question['type'] == 'textbox'){
@@ -313,14 +330,27 @@
 		var get_sort = 'comment_order_by=' + sort;
 		var get_filter = 'comment_filter_by=' + target.val();
         
-        var listParam = window.location.pathname.split('/');
-        var lastParam = listParam[listParam.length-1];
-        var path = window.location.pathname;
+        // redirect to first page.
+        var pathname_location = window.location.pathname.split('/');
+        var count_pathname_location = pathname_location.length - 1;
 
-        if(/^comment-page-[0-9]/g.test(lastParam)){
-            path = window.location.pathname.replace('/'+lastParam,'');
+        // remove slash at the last of array.
+        if ( pathname_location[count_pathname_location] == '') {
+            pathname_location.splice(count_pathname_location, 1);
         }
-        var current_link = window.location.origin + path;
+
+        // remove slash at the first of array.
+        if ( pathname_location[0] == '') {
+            pathname_location.splice(0, 1);
+        }
+
+        // remove comment-page-[0-9].
+        if (/^comment-page-[0-9]/g.test(pathname_location[pathname_location.length-1])) {
+            var count_pathname_location = pathname_location.length - 1;
+            pathname_location.splice(count_pathname_location, 1);
+        }
+
+        var current_link = window.location.origin  + '/' + pathname_location.join('/') + '/';
         
         if(sort.length>0) {
         	current_link += '?';

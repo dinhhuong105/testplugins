@@ -1956,3 +1956,6 @@ ol.commentlist {
     width: 323px !important;
     height: 198px !important;
 }
+.mainWrap label.select-other {
+    display: none;
+}

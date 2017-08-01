@@ -301,7 +301,18 @@ jQuery(function () {
             // prevent the default behaviour of return key pressed
             return false;
         }
-    });  
+    });
+
+    jQuery('.answerInpotList li .selectArea select, .answerList li .selectArea select').change(function() {
+        var $this = jQuery(this);
+        var value = $this.val();
+        jQuery('.answerInpotList li .select-other, .answerList li .select-other').css({'display' : 'none'});
+        if (value == 'other') {
+            $this.parent().closest('li').find('.select-other').css({
+                'display': 'block'
+            }).find('input').attr('required', true); 
+        }
+    });
 });
 
 function placeCaretAtEnd(el) {

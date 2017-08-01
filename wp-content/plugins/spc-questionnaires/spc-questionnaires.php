@@ -1027,14 +1027,22 @@ if ( !function_exists( 'question_comment' )) {
 	                        $answers = get_comment_meta($comment->comment_ID,'_question_comment',true);
 	                        $GLOBALS['answers'] = $answers;
 
-	                        if($answers){
+	                        if ($answers) {
 	                            echo '<ul class="answerList">';
 	                            foreach ($_sort_question as $ksort => $vsort) {
 	                                foreach ($answers as $queskey => $answer) {
-	                                    if($queskey == $vsort){
+	                                    if ($queskey == $vsort) {
 	                                        echo "<li>".$list_no[$ksort];
+	                                        $search_key = array_search('other', $answer);
+
+	                                        if (isset($search_key) && $search_key !== false) {
+	                                        	$answer[$search_key] = $answer['other'];
+	                                        }
+
+	                                        unset($answer['other']);
+
 	                                        foreach ($answer as $key_ans => $las_ans) {
-	                                            if(is_array($las_ans) && $key_ans == 'unit'){
+	                                            if (is_array($las_ans) && $key_ans == 'unit') {
 	                                                $list_unit = $questions[key($questions)][$queskey]['answer'];
 	                                                $answer_string = '';
 
@@ -1051,13 +1059,11 @@ if ( !function_exists( 'question_comment' )) {
 	                                                }
 
 	                                                ?>
-	                                                	<label><?= $answer_string; ?></label>
+	                                                	<label><?php echo $answer_string; ?></label>
 	                                                <?php
-	                                            }else{
-	                                            ?>
-	                                            	<label class="<?php echo (isset($answer) && count($answer)>1) ? 'check' : ''; ?>"><?php echo (isset($questions[key($questions)][$queskey]['answer'][$las_ans]) && $questions[key($questions)][$queskey]['answer'][$las_ans] != '') ? $questions[key($questions)][$queskey]['answer'][$las_ans] : $las_ans; ?></label>
-	                                            <?php
-	                                            }
+	                                            } else { ?>
+	                                            	<label class="<?php echo (isset($answer) && count($answer) > 1) ? 'check' : ''; ?>"><?php echo (isset($questions[key($questions)][$queskey]['answer'][$las_ans]) && $questions[key($questions)][$queskey]['answer'][$las_ans] != '') ? $questions[key($questions)][$queskey]['answer'][$las_ans] : $las_ans; ?></label>
+	                                            <?php }
 	                                        }
 	                                    }
 	                                }
