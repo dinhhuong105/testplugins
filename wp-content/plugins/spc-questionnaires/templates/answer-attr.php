@@ -159,21 +159,17 @@
 			<td><?=$comment->comment_date?></td>
 			<td><?=$comment->comment_author?></td>
 			<?php
+
 				$comment_metas = get_comment_meta($comment->comment_ID,'_question_comment',TRUE);
 				if (!empty($question_meta[$id])) :
 				foreach ($question_meta[$id] as $kQuestion => $question) {
-
-					// echo '<pre>';
-					// print_r($question);
-					// echo '</pre>';
-					// exit;
-
-					?>
+			?>
 					<td>
 						<?php
 						if(isset($comment_metas[$kQuestion])){
 							$first = true;
 						    foreach ($comment_metas[$kQuestion] as $key => $answer) {
+
 								if($question['type'] == 'unit'){
 								    $list_unit = $question['answer'];
 								    $answer_string = '';
@@ -188,17 +184,24 @@
                                     }
 
 								    echo $answer_string;
-								}
-						        elseif(isset($question['answer'][$answer]) && $question['answer'][$answer] == ""){
+								} elseif ($question['type'] == 'textbox') {
 									echo $answer;
-								} else {
+								} elseif (isset($question['other']) && $question['other'] == 'on') {
+									if (array_search('other', $comment_metas[$kQuestion]) !== false) {
+										echo $comment_metas[$kQuestion]['other'];
+										continue(2);
+									} else if (isset($question['answer'][$answer])) {
+										echo $question['answer'][$answer];
+									}
+									
+								} else if ((!isset($question['other']) || $question['other'] != 'on') && empty($comment_metas[$kQuestion]['other'])) {
 								    if($first) {
 									    echo isset($question['answer'][$answer]) ? $question['answer'][$answer] : '';
 								    } else if (isset($question['answer'][$answer])) {
 								        echo ', ' .$question['answer'][$answer];
 								    }
 								}
-								
+
 								$first = false;
 							}
 						}else{
