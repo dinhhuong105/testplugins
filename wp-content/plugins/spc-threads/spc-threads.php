@@ -166,6 +166,7 @@ if (!is_admin()) {
 if ( !function_exists( 'wphd_load_page_template' )) {
 	function wphd_load_page_template( $page_template )
 	{
+		$template_file 	= get_post_meta( get_the_ID(), '_wp_page_template', TRUE );
 		$active_question = is_plugin_active( 'spc-questionnaires/spc-questionnaires.php' );
 		$active_thread 	= is_plugin_active( 'spc-threads/spc-threads.php' );
 		$plugin_dir 	= ( $active_question ) ? SPCV_CUSTOME_PLUGIN_DIR : WPHD_THREAD_PLUGIN_DIR;
@@ -997,42 +998,6 @@ if ( !function_exists ('breadcrumb')) {
 
 	        /* 投稿のページ */
 	        if (is_single() || $post->post_type === "thread_post" || $post->post_type === "question_post") {
-	            if ( $post->post_type === "movingimage_post" || $post->post_type === "movie_post") {//動画、レシピ
-					
-					if ($post->post_type === "movingimage_post") {
-					 	$str.='<li><i class="fa fa-angle-right arrowIcon"></i><a href="'. home_url('/') .'recipe-list"><span>レシピ</span></a></li>';
-					 	$cats = get_the_terms($post->ID,"movingimage_cat");
-					} elseif ($post->post_type === "movie_post") {
-					  	$cats = get_the_terms($post->ID,"movie_cat");
-					}
-					
-					usort( $cats , '_usort_terms_by_ID');
-	             
-	               foreach($cats as $cat) {
-	                    $str.='<li><i class="fa fa-angle-right arrowIcon"></i><a href="'.get_category_link($cat->term_id). '"><span>'. $cat->name . '</span></a></li>';
-	               }
-
-	            } elseif ( $post->post_type === "item_post" ) {
-
-	               	$cats = get_the_terms($post->ID, 'item_cat');
-	               	$count_cat = is_array($cats)?count($cats):0;
-	               	$new_cats = array();
-
-	               	for ($i = 0; $i < $count_cat; $i++) {
-	                    $ancestors = get_ancestors( $cats[$i]->term_id, 'item_cat' );
-	                    $count_anc = count($ancestors);
-	                    $new_cats[$count_anc] = $cats[$i];  // 先祖の数をキーとした要素
-	               }
-
-	               ksort($new_cats);    // キーでソートする
-	               $end_term = end($new_cats);
-	               $end_term_id = $end_term->term_id;
-
-	               foreach ($new_cats as $cat) {
-	                    $str.='<li><i class="fa fa-angle-right arrowIcon"></i><a href="'.get_category_link($cat->term_id). '"><span>'. $cat->name . '</span></a></li>';
-	               }
-
-	             } else {
 
 	               $categories = get_the_category($post->ID);
 	               $cat = $categories;
@@ -1064,15 +1029,8 @@ if ( !function_exists ('breadcrumb')) {
 		                    $str.='<li><i class="fa fa-angle-right arrowIcon"></i><a href="'. get_category_link($cat[0]->term_id). '"><span>'. $cat[0]->cat_name . '</span></a></li>';
 		                }
 	                }
-	            }
 
 	          /* 固定ページ ライター個人ページ*/
-	        } elseif ( is_page('author-more') ) { 
-	            $author_id = $_GET['uID'];
-	            $author = get_userdata($author_id);
-	            $str.= '<li class="fixPage"><i class="fa fa-angle-right arrowIcon"></i><span>'. $author->display_name .'</span></li>';
-	        
-	          /* 固定ページ */
 	        } elseif(is_page()) { 
 	            if ($post -> post_parent != 0 ) {
 	                $ancestors = array_reverse(get_post_ancestors( $post->ID ));
@@ -1093,52 +1051,7 @@ if ( !function_exists ('breadcrumb')) {
 	            $str.='<li><i class="fa fa-angle-right arrowIcon"></i><span>'. single_tag_title( '' , false ). '</span></li>';
 	        
 	          /* レシピカテゴリーページ */
-	        } elseif (is_tax('movingimage_cat')) { 
-				$tax = get_queried_object();
-	            $str.='<li><i class="fa fa-angle-right arrowIcon"></i><a href="'. home_url('/') .'recipe-list"><span>レシピ</span></a></li>';
-				$breadcrumb = '<li><i class="fa fa-angle-right arrowIcon"></i><a href="'.get_category_link($tax->term_id).
-					'"><span>'. $tax->name . '</span></a></li>';
-				$tax_list = get_ancestors( $tax->term_id, 'movingimage_cat' );
-				foreach( $tax_list as $tax_id ){
-					$tax = get_term_by( 'id', $tax_id, 'movingimage_cat');
-					$breadcrumb = '<li><i class="fa fa-angle-right arrowIcon"></i><a href="'.get_category_link($tax->term_id).
-						'"><span>'. $tax->name . '</span></a></li>'.$breadcrumb;
-				}
-				$str .= $breadcrumb;
-
-			  /* 動画カテゴリーページ */
-			} elseif (is_tax('movie_cat')) {
-				$tax = get_queried_object();
-				$breadcrumb = '<li><i class="fa fa-angle-right arrowIcon"></i><a href="'.get_category_link($tax->term_id).
-					'"><span>'. $tax->name . '</span></a></li>';
-
-				$tax_list = get_ancestors( $tax->term_id, 'movingimage_cat' );
-				
-				foreach ( $tax_list as $tax_id ) {
-					$tax = get_term_by( 'id', $tax_id, 'movingimage_cat');
-					$breadcrumb = '<li><i class="fa fa-angle-right arrowIcon"></i><a href="'.get_category_link($tax->term_id).
-						'"><span>'. $tax->name . '</span></a></li>'.$breadcrumb;
-				}
-
-				$str .= $breadcrumb;
-
-			  /* 商品カテゴリーページ */
-			} elseif (is_tax('item_cat')) {
-				$tax = get_queried_object();
-				$breadcrumb = '<li><i class="fa fa-angle-right arrowIcon"></i><a href="'.get_category_link($tax->term_id).
-					'"><span>'. $tax->name . '</span></a></li>';
-
-				$tax_list = get_ancestors( $tax->term_id, 'item_cat' );
-				foreach ( $tax_list as $tax_id ) {
-					$tax = get_term_by( 'id', $tax_id, 'item_cat');
-					$breadcrumb = '<li><i class="fa fa-angle-right arrowIcon"></i><a href="'.get_category_link($tax->term_id).
-						'"><span>'. $tax->name . '</span></a></li>'.$breadcrumb;
-				}
-
-				$str .= $breadcrumb;
-
-			  /* 時系列アーカイブページ */
-			} elseif (is_date()) {
+	        } elseif (is_date()) {
 	            if (get_query_var('day') != 0) {
 	                $str.='<li itemtype="http://data-vocabulary.org/"><a href="'. get_year_link(get_query_var('year')). '"><span>' . get_query_var('year'). '年</span></a></li>';
 	                $str.='<li><a href="'. get_month_link(get_query_var('year'), get_query_var('monthnum')). '"><span>'. get_query_var('monthnum') .'月</span></a></li>';

@@ -191,12 +191,14 @@
 								}
 						        elseif(isset($question['answer'][$answer]) && $question['answer'][$answer] == ""){
 									echo $answer;
-								}else{
-								    if($first)
+								} else {
+								    if($first) {
 									    echo isset($question['answer'][$answer]) ? $question['answer'][$answer] : '';
-								    else
-								        echo ', ' . $question['answer'][$answer];
+								    } else if (isset($question['answer'][$answer])) {
+								        echo ', ' .$question['answer'][$answer];
+								    }
 								}
+								
 								$first = false;
 							}
 						}else{
