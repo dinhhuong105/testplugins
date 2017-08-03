@@ -1899,3 +1899,27 @@ ol.commentlist {
 .qaSingle .commentFormArea .answerList li label.select-other {
     display: none;
 }
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: gray;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: gray;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: gray;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: gray;
+}
+.qaSingle .commentFormArea .answerList li label.label-other-radio {
+    width: 55%;
+}
+.qaSingle .commentFormArea .answerList li input.other-input {
+    width: 90% !important;
+}
+
+@media (max-width: 480px) {
+  .qaSingle .commentFormArea .answerList li label.label-other-radio {
+      width: 90%;
+  }
+}
