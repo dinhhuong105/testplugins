@@ -1915,7 +1915,7 @@ ol.commentlist {
     width: 55%;
 }
 .qaSingle .commentFormArea .answerList li input.other-input {
-    width: 90% !important;
+    width: 75% !important;
 }
 
 @media (max-width: 480px) {

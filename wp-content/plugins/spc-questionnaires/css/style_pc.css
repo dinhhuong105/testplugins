@@ -1963,7 +1963,7 @@ label.label-other-radio {
     width: 55%;
 }
 .mainWrap.single.qa .mainArea .commentFormArea form ul li input.other-input {
-    width: 90%;
+    width: 80%;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: gray;

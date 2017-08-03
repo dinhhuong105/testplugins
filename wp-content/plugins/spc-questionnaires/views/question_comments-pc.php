@@ -234,8 +234,8 @@
                                 <?php } ?>
                                 <?php if ($other) : ?>
                                     <label for="select_other" class="label-other-radio">
-                                        <input id="select_other" class="other-radio" <?php echo $required; ?> value="<?php echo '' ;?>" name="answer[<?php echo $qkey; ?>][]" type="radio" >
-                                        <input data-required="<?php echo $required; ?>" class="other-input" name="answer[<?php echo $qkey; ?>][other]" type="text" placeholder="その他" />
+                                        <input id="select_other" class="other-radio" <?php echo $required; ?> value="<?php echo '' ;?>" name="answer[<?php echo $qkey; ?>][]" type="radio" >その他
+                                        <input data-required="<?php echo $required; ?>" class="other-input" name="answer[<?php echo $qkey; ?>][other]" type="text" placeholder="入力して下さい" />
                                     </label>
                                 <?php endif;?>
                             </li>
