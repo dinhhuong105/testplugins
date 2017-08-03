@@ -8,7 +8,7 @@
     $GLOBALS['questions'] = $questions; 
     $count_comment = wp_count_comments($post->ID);
     $list_tyles = array('慎重', '普通', 'お気楽');
-    $GLOBALS['comment_no'] = get_post_meta($post->ID, '_question_comment_no', true);
+    $GLOBALS['comment_no'] = get_post_meta($post->ID, '_question_comment_no', true); 
 
     //check avalible for button submit comment form
     $boolAvalible = false;
@@ -232,6 +232,12 @@
                                         <input <?=$required?> value="<?=$anskey?>" name="answer[<?=$qkey?>][]" type="radio" ><?=$ansval?>
                                     </label>
                                 <?php } ?>
+                                <?php if ($other) : ?>
+                                    <label for="select_other" class="label-other-radio">
+                                        <input id="select_other" class="other-radio" <?php echo $required; ?> value="<?php echo '' ;?>" name="answer[<?php echo $qkey; ?>][]" type="radio" >
+                                        <input data-required="<?php echo $required; ?>" class="other-input" style="width:50%;" name="answer[<?php echo $qkey; ?>][other]" type="text" placeholder="その他" />
+                                    </label>
+                                <?php endif;?>
                             </li>
                     <?php
                         } elseif($question['type'] == 'pulldown') {
@@ -243,16 +249,9 @@
                                     <?php foreach ($question['answer'] as $anskey => $ansval) : ?>
                                         <option value="<?php echo $anskey; ?>"><?php echo $ansval; ?></option>
                                     <?php endforeach; ?>
-                                    <?php if ($other) : ?>
-                                        <option value="other">その他</option>
-                                    <?php endif;?>
                                     </select>
                                 </label>
-                                <?php if ($other) : ?>
-                                    <label for="select_other" class="select-other">
-                                        <input style="width:100%;" name="answer[<?php echo $qkey; ?>][other]" type="text" placeholder="その他" >
-                                    </label>
-                                <?php endif;?>
+                                
                             </li>
                     <?php
                         } elseif($question['type'] == 'textbox') {
@@ -432,6 +431,25 @@
         }
 
         window.location = current_link;
+    });
+
+    jQuery(document).ready(function () {
+        jQuery('.mainWrap label.label-other-radio input.other-input').on('click', function () {
+            jQuery(this).parent().find('input.other-radio').click();
+        });
+
+        jQuery('.mainWrap label input[type=radio]').on('click', function () {
+            var other_input = jQuery(this).parent().find('input.other-input');
+            var required = other_input.attr('data-required');
+            if (jQuery(this).hasClass('other-radio')) {
+                other_input.focus();
+                if (required != '') {
+                    other_input.attr('required', true);
+                }    
+            } else {
+                jQuery(this).closest('li').find('input.other-input').val('').removeAttr('required');
+            }
+        });
     });
 </script>
 <script src="<?php echo SPCV_CUSTOME_PLUGIN_URI; ?>views/js/notice-board.js"></script>

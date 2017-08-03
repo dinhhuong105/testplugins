@@ -187,7 +187,9 @@
 								} elseif ($question['type'] == 'textbox') {
 									echo $answer;
 								} elseif (isset($question['other']) && $question['other'] == 'on') {
-									if (array_search('other', $comment_metas[$kQuestion]) !== false) {
+
+									$search_key = array_key_exists('other', $comment_metas[$kQuestion]);
+									if ($search_key === true && $comment_metas[$kQuestion]['other']) {
 										echo $comment_metas[$kQuestion]['other'];
 										continue(2);
 									} else if (isset($question['answer'][$answer])) {

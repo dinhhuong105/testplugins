@@ -131,7 +131,7 @@
 						</div>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label><br/>';
+						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label>    <label> その他 :  <input type="checkbox" name="question['. $key .']['. $id .'][other]" '.$other.' ></label><br/>';
 						$i=0;
 						foreach ($meta['answer'] as $answer) {
 							echo '<input type="radio" name="posid_'. $key .'_answer_'. $id .'"> 
@@ -154,7 +154,7 @@
 						</div>';
 						echo '<input type="hidden" name="question['. $key .']['. $id .'][type]" value="'.$meta['type'].'">';
 						echo '<label for="posid_'. $key .'_question_' . $id . '">アンケート項目</label>';
-						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label>    <label> その他 :  <input type="checkbox" name="question['. $key .']['. $id .'][other]" '.$other.' ></label><br/>';
+						echo '<input id="posid_'. $key .'_question_' . $id . '" type="text" name="question['. $key .']['. $id .'][question]" value="'.$meta['question'].'" required><label> 必須 :  <input type="checkbox" name="question['. $key .']['. $id .'][required]" '.$check.' ></label><br/>';
 						$i=0;
 						foreach ($meta['answer'] as $answer) {
 							echo '<input type="text" name="question['. $key .']['. $id .'][answer]['.$i.']" value="'.$answer.'">
@@ -435,7 +435,7 @@ function question_input($id,$multi = 1, $type = ''){
 	var $str = '';
 	for (var i=0; i<$multi; i++) {
 		$str += '<label for="posid_'+ post_id +'_question_' + $id + '">アンケート項目 </label><input id="posid_'+ post_id +'_question_' + $id + '" type="text" name="question['+ post_id +']['+ $id +'][question]" required> <label> 必須 :  <input type="checkbox" name="question['+post_id+']['+ $id +'][required]" checked="checked" ></label>';
-		if ($type == 'pulldown') {
+		if ($type == 'radio') {
 			$str += '&nbsp;<label> その他 :  <input type="checkbox" name="question['+post_id+']['+ $id +'][other]" ></label>';
 		}
 	}
