@@ -57,12 +57,12 @@
                 <td><input type="number" name="spc_options[report_no]" value="<?php echo esc_attr( $spc_option['report_no'] ); ?>" placeholder="件数を入力" id="num_of_report"/><label for="num_of_report">件</label></td>
             </tr>
             <tr>
-                <th scop="row"><label for="notice_slug">Notice slug</label></th>
-                <td><input type="text" name="spc_options[notice_slug]" value="<?php echo esc_attr( $spc_option['notice_slug'] ); ?>" placeholder="Slug for notice" id="notice_slug"/></td>
+                <th scop="row"><label for="notice_slug">掲示板一覧用スラッグ</label></th>
+                <td><input type="text" name="spc_options[notice_slug]" value="<?php echo esc_attr( $spc_option['notice_slug'] ); ?>" placeholder="掲示板一覧用スラッグ" id="notice_slug"/></td>
             </tr>
             <tr>
-                <th scop="row"><label for="num_of_report">Add thread slug</label></th>
-                <td><input type="text" name="spc_options[add_thread_slug]" value="<?php echo esc_attr( $spc_option['add_thread_slug'] ); ?>" placeholder="Slug for add thread" id="add_thread_slug"/></td>
+                <th scop="row"><label for="num_of_report">新規トピック作成ページ用スラッグ</label></th>
+                <td><input type="text" name="spc_options[add_thread_slug]" value="<?php echo esc_attr( $spc_option['add_thread_slug'] ); ?>" placeholder="新規トピック作成ページ用スラッグ" id="add_thread_slug"/></td>
             </tr>
             </tbody>
         </table>
