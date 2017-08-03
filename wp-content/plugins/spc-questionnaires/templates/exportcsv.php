@@ -31,10 +31,17 @@ $report_ans = array();
 // global $post_metas;
 $post_metas = get_post_meta($id, '_question_type', TRUE);
 
+foreach ($comment_metas as $cm_comments) {
+	foreach ($cm_comments as $cm_key => $cm_val) {
+		if (isset($cm_val['other']) and !empty($cm_val['other'])) {
+			$post_metas[$id][$cm_key]['answer'][$cm_val['other']] = $cm_val['other'];
+		}
+	}
+}
+
 foreach ($question as $key => $value) {
 	$_ans = array();
-	foreach ($value as $v) {
-		
+	foreach ($value as $v) {	
 		foreach ($v as $type => $answer) {
 		    if($type === 'unit'){
 
@@ -157,11 +164,12 @@ $count_comment =  count($comments);
 				<label>設問 <?=$stt++?></label><br/>
 				<h2 class="hndle ui-sortable-handle"><?=$value['question']?></h2><br/>
 				<ul>
-				<?php 
+				<?php
+
 				if(isset($value['answer']) && $value['type'] !== 'unit') :
-					foreach ($value['answer'] as $k_ques => $ans): 
+					foreach ($value['answer'] as $k_ques => $ans) : 
 						$csv[$key][$ans] = isset($report_ans[$key][$k_ques]) ? $report_ans[$key][$k_ques] : 0;
-						?>
+				?>
 						<li><?=$ans?> ... <?php echo isset($report_ans[$key][$k_ques]) ?  $report_ans[$key][$k_ques] : 0; ?></li>
 				<?php endforeach;
 				else: 
