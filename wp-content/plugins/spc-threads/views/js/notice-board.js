@@ -29,38 +29,44 @@ jQuery("#contentArea .imgBtn").click(function(e){
 	}
 });
 
-jQuery("#content_image").change(function(e){
-	e.preventDefault();
-	if(image_nums >= max_upload_picture){
-		alert("写真の添付可能枚数は"+max_upload_picture+"枚です。");
-		return false;
-	}
-    var target = this;
-
-    var form_data = new FormData();
-    var file_data = jQuery('#content_image').prop("files")[0];
-    form_data.append('content_image', file_data);
-    form_data.append('action', 'upload_image_thread');
-    jQuery("form :input").prop("disabled", true);
-    jQuery.ajax({
-        type: 'POST',
-        url: ajaxurl,
-        data: form_data,
-        cache: false,
-        dataType: 'json',
-        contentType: false,
-        processData: false,
-        success: function(response){
-            jQuery("form :input").prop("disabled",false);
-			if(response['status'] == 'OK'){
-            	var html_image = '<img src="'+response['image_link']+'" alt="'+response['image_title']+'" width="960" height="1280" class="alignnone size-full wp-image-'+response['id']+'" />';
-                // jQuery('#thread_content').val( jQuery('#thread_content').val() + " " + html_image );
-            	jQuery('#textareaEditor').html( jQuery('#textareaEditor').html() + " " + html_image );
-            	jQuery('#textareaEditor').trigger('input');
-            }
+jQuery(document).ready(function($) {
+    $("#content_image").change(function(e){
+        e.preventDefault();
+        if(image_nums >= max_upload_picture){
+            alert("写真の添付可能枚数は"+max_upload_picture+"枚です。");
+            return false;
         }
+        var target = this;
+
+        var form_data = new FormData();
+        var post_id = $('#postID').val();
+        var file_data = $('#content_image').prop("files")[0];
+        form_data.append('content_image', file_data);
+        form_data.append('action', 'upload_image_thread');
+        form_data.append('post_id', post_id);
+        $("form :input").prop("disabled", true);
+
+        $.ajax({
+            type: 'post',
+            url: ajaxurl,
+            data: form_data,
+            cache: false,
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            success: function(response){
+                $("form :input").prop("disabled",false);
+                if(response['status'] == 'OK'){
+                    var html_image = '<img src="'+response['image_link']+'" alt="'+response['image_title']+'" width="960" height="1280" class="alignnone size-full wp-image-'+response['id']+'" />';
+                    // jQuery('#thread_content').val( jQuery('#thread_content').val() + " " + html_image );
+                    $('#textareaEditor').html( jQuery('#textareaEditor').html() + " " + html_image );
+                    $('#textareaEditor').trigger('input');
+                }
+            }
+        });
     });
 });
+
 
 // drag image
 jQuery(function () {

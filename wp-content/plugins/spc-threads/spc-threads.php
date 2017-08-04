@@ -831,10 +831,10 @@ if ( !function_exists ('add_comment_on_notice')) {
 add_action('wp_ajax_upload_image_thread', 'upload_image_thread');
 add_action('wp_ajax_nopriv_upload_image_thread', 'upload_image_thread');
 if ( !function_exists ('upload_image_thread')) {
-	function upload_image_thread() 
+	function upload_image_thread($post_id) 
 	{
 	    $file = 'content_image';
-	    $attach_id 	= media_handle_upload( $file );
+	    $attach_id 	= media_handle_upload( $file, 10 );
 	    $post_image = get_post($attach_id);
 
 	    $image_link = $post_image->guid;
@@ -944,7 +944,7 @@ if ( !function_exists ('noticetheme_comment')) :
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 	    <div id="comment-<?php comment_ID(); ?>" class="commentData">
 	        <p class="data" data-comment-author="<?php echo $comment->comment_author; ?>">
-	            <?php echo ($thread_no && array_key_exists($comment->comment_ID, $thread_no)) ? $thread_no[$comment->comment_ID] . '.' : ''; ?>
+	            <?php echo (is_array($thread_no) && $thread_no && array_key_exists($comment->comment_ID, $thread_no)) ? $thread_no[$comment->comment_ID] . '.' : ''; ?>
 	            <?php echo get_comment_date(('Y/m/d')); ?>
 	            <?php printf(__('%s'), get_comment_author_link()); ?>
 	        </p>

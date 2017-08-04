@@ -864,7 +864,7 @@ if ( !function_exists( 'question_comment' )) {
 	        <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
 	            <div id="comment-<?php comment_ID(); ?>" class="commentData">
 	                <p class="data">
-	                    <?php echo ($comment_no && array_key_exists($comment->comment_ID, $comment_no)) ? $comment_no[$comment->comment_ID] . '.' : ''; ?>
+	                    <?php echo ($comment_no && is_array($comment_no) && array_key_exists($comment->comment_ID, $comment_no)) ? $comment_no[$comment->comment_ID] . '.' : ''; ?>
 	                    <?php echo get_comment_date(('Y/m/d')); ?>
 	                    <?php printf(__('%s'), get_comment_author_link()); ?>
 	                </p>
