@@ -51,7 +51,7 @@
 
             if (isset($question['other'])) {
                 $other_filter = $qkey . ',' . 'other';
-                $select_other = (isset($_GET['comment_filter_by']) && $_GET['comment_filter_by'] == $other_filter) ? 'selected' : '';
+                $selected_other = (isset($_GET['comment_filter_by']) && $_GET['comment_filter_by'] == $other_filter) ? 'selected="selected"' : '';
                 echo '<option value="'. $other_filter .'" '. $selected_other .'>┗ その他</option>';
             }
 
@@ -87,6 +87,12 @@
             foreach ($comment_arr as $comment) {
                 $comment_meta = get_comment_meta($comment->comment_ID,'_question_comment',true);
                 if(@array_key_exists($param[0],$comment_meta)){
+
+                    $_other_filter = array_key_exists($param[1], $comment_meta[$param[0]]);
+                    if ($_other_filter !== false && $param[1] == 'other' && !empty($comment_meta[$param[0]][$param[1]])) {
+                        $comment_meta[$param[0]][0] = $param[1];
+                    }
+
                     if(in_array($param[1],$comment_meta[$param[0]])){
                         array_push($comment_filter,$comment);
                     }

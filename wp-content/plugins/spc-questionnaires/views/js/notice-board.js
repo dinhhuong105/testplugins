@@ -171,7 +171,7 @@ jQuery(function () {
 
     jQuery("#threadAddForm").submit(function(e){
         e.preventDefault();
-        jQuery('.confirm').html('<div align="center"><img class="loading-img" src="/wp-content/plugins/report-content/static/img/loading.gif"/> 投稿中です。。。</div>');
+        jQuery('.confirm').html('<div align="center"><img class="loading-img" src="/wp-content/plugins/spc-report-content/static/img/loading.gif"/> 投稿中です。。。</div>');
         var body = jQuery("html, body");
         body.stop().animate({scrollTop:0}, 500, 'swing', function(){ });
         var data = new FormData(this);

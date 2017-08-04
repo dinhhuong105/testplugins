@@ -13,7 +13,9 @@
             	<div id="breadcrumb">
             		<ul class="breadcrumbList">
             			<li><a href="<?php echo home_url('/'); ?>">トップ</a></li>
-                        <li><i class="fa fa-angle-right arrowIcon"></i><a href="<?php echo home_url('/'); ?>notice"><span>質問掲示板</span></a></li>
+                        <?php $spc_option = get_option('spc_options'); ?>
+                        <?php $add_thread_link = (isset($spc_option['notice_slug']) && !empty($spc_option['notice_slug']) && is_single() && in_array(get_post_type(), array('question_post', 'thread_post'))) ? $spc_option['notice_slug'] : 'notice'; ?>
+                        <li><i class="fa fa-angle-right arrowIcon"></i><a href="<?php echo home_url('/') . $add_thread_link; ?>"><span>質問掲示板</span></a></li>
             		</ul>
             	</div>
             <?php endif; ?>
