@@ -407,7 +407,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .pagination ul li.next i:before , .pagination ul li.prev i:before {
     position: absolute;
-    top: 5px;
+    top: -1px;
     right: 0;
     left: 0;
     margin: 0 auto;

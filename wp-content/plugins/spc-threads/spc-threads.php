@@ -167,8 +167,8 @@ if ( !function_exists( 'wphd_load_page_template' )) {
 	function wphd_load_page_template( $page_template )
 	{
 		$template_file 	= get_post_meta( get_the_ID(), '_wp_page_template', TRUE );
-		$active_question = is_plugin_active( 'spc-questionnaires/spc-questionnaires.php' );
-		$active_thread 	= is_plugin_active( 'spc-threads/spc-threads.php' );
+		$active_question = function_exists('spc_questionaire');
+		$active_thread 	= function_exists('wphd_thread_post_type');
 		$plugin_dir 	= ( $active_question ) ? SPCV_CUSTOME_PLUGIN_DIR : WPHD_THREAD_PLUGIN_DIR;
 		$spc_option 	= get_option('spc_options');
 
@@ -514,12 +514,13 @@ if ( !function_exists ('ip_report_comment')) {
 	function ip_report_comment($comment_id, $ip)
 	{
 		global $wpdb;
-		$report_table = $wpdb->prefix . "contentreports";
-		if ( is_plugin_active( 'spc-report-content/spc-report-content.php' )) {
-			$query = $wpdb->prepare( "SELECT COUNT(*) FROM $report_table WHERE comment_id = %d AND reporter_ip = %s;", $comment_id, $ip );
+
+		if (function_exists('wprc_table_name')) {
+			$table_name = wprc_table_name();
+			$query = $wpdb->prepare( "SELECT COUNT(*) FROM $table_name WHERE comment_id = %d AND reporter_ip = %s;", $comment_id, $ip );
 			$count_ip = $wpdb->get_var( $query );
 
-			if ( $count_ip>0 ) {
+			if ( $count_ip > 0 ) {
 				return true;
 			}
 		}
@@ -541,10 +542,10 @@ if ( !function_exists ('ip_report_post')) {
 	function ip_report_post($post_id, $ip)
 	{
 		global $wpdb;
-		$report_table = $wpdb->prefix . "contentreports";
 		
-		if ( is_plugin_active( 'spc-report-content/spc-report-content.php' )) {
-			$query = $wpdb->prepare( "SELECT COUNT(*) FROM $report_table WHERE post_id = %d AND comment_id = 0 AND reporter_ip = %s;", $post_id, $ip );
+		if (function_exists('wprc_table_name')) {
+			$table_name = wprc_table_name();
+			$query = $wpdb->prepare( "SELECT COUNT(*) FROM $table_name WHERE post_id = %d AND comment_id = 0 AND reporter_ip = %s;", $post_id, $ip );
 			$count_ip = $wpdb->get_var( $query );
 
 			if ( $count_ip>0 ) {
@@ -1199,5 +1200,37 @@ if ( !function_exists( 'mytheme_post_edit_required' )) {
 	    });
 	</script>
 	<?php
+	}
+}
+
+if ( !function_exists('wphd_thread_include_page_template')) {
+	function wphd_thread_include_page_template($file_name = '') {
+		global $post;
+
+		if (empty($file_name)) {
+			wphd_default_page_template();
+		} else {
+			$file_ext 	= cf_is_mobile() ? 'sp.php' : 'pc.php';
+			$nowthemes = get_template_directory();
+			$folder = (file_exists($nowthemes . '/' . $file_name . '-' . $file_ext)) ? $nowthemes : WPHD_THREAD_PLUGIN_DIR . 'views';
+			if (file_exists($folder . '/' . $file_name . '-' . $file_ext)) {
+				include_once( $folder . '/' . $file_name . '-' . $file_ext );
+			} else {
+				wphd_default_page_template();
+			}
+		}
+	}
+}
+
+if ( !function_exists('wphd_default_page_template')) {
+	function wphd_default_page_template() {
+		global $post;
+		
+		$nowthemes = get_template_directory();
+		if (file_exists($nowthemes . '/' . 'page.php')) {
+			include_once( $nowthemes . '/' . 'page.php' );
+		} else {
+			echo 'Sorry ! This page was not found';
+		}
 	}
 }

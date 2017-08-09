@@ -6,8 +6,8 @@
             <h1 class="heading">
 				質問掲示板
             </h1>
-            <?php $spc_thread   = is_plugin_active( 'spc-threads/spc-threads.php' ); ?>
-            <?php $spc_question = is_plugin_active( 'spc-questionnaires/spc-questionnaires.php' ); ?>
+            <?php $spc_thread   = function_exists('wphd_thread_post_type'); ?>
+            <?php $spc_question = function_exists('spc_questionaire'); ?>
             <?php if ( $spc_thread ) : ?>
                 <?php $spc_option = get_option('spc_options'); ?>
     			<?php if( 
@@ -27,6 +27,7 @@
             <section class="qaListArea">
                 <ul class="articleList qaList">
                     <?php
+                        $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
                         $wphd_types = array();
                         if ($spc_thread) {
                             $wphd_types[] = 'thread_post';

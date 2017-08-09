@@ -92,7 +92,7 @@
                                 <label for="modal-trigger-thread">
                                 	<?php 
                                 	    $GLOBALS['comment'] = null;
-                                        if (is_plugin_active( 'report-content/report-content.php' )) {
+                                        if (function_exists('wprc_report_submission_form')) {
                                             wprc_report_submission_form();
                                         }
                                 	?>

@@ -156,8 +156,7 @@ if ( !function_exists( 'wphd_load_page_template' )) {
 	{
 
 		$template_file 		= get_post_meta( get_the_ID(), '_wp_page_template', TRUE );
-		$active_question 	= is_plugin_active( 'spc-questionnaires/spc-questionnaires.php' );
-		$active_thread 		= is_plugin_active( 'spc-threads/spc-threads.php' );
+		$active_thread 		= function_exists('wphd_thread_post_type');
 		$spc_option 		= get_option('spc_options');
 
 		if (empty($template_file) || $template_file == 'default') {
@@ -1058,14 +1057,14 @@ if ( !function_exists( 'ip_report_comment' )) {
 	 function ip_report_comment($comment_id, $ip){
 	    global $wpdb;
 
-	    if ( is_plugin_active( 'spc-report-content/spc-report-content.php' )) {
-		    $query = $wpdb->prepare( "SELECT COUNT(*) FROM ". $wpdb->prefix ."contentreports WHERE comment_id=%d AND reporter_ip=%s;", $comment_id, $ip );
+	    if (function_exists('wprc_table_name')) {
+	    	$query = $wpdb->prepare( "SELECT COUNT(*) FROM ". wprc_table_name() ." WHERE comment_id=%d AND reporter_ip=%s;", $comment_id, $ip );
 		    $count_ip = $wpdb->get_var( $query );
 		     
 		    if ($count_ip >0 ) {
 		     	return true;
 		    }
-		}
+	    }
 		
 	    return false;
 	 }
@@ -1315,5 +1314,38 @@ if ( !function_exists( 'post_unpublished' )) {
 	    }
 	}
 }
-
 /* end custommize */
+
+
+
+if ( !function_exists('wphd_questionnaire_include_page_template')) {
+	function wphd_questionnaire_include_page_template($file_name = '') {
+		global $post;
+
+		if (empty($file_name)) {
+			wphd_default_page_template();
+		} else {
+			$file_ext 	= cf_is_mobile() ? 'sp.php' : 'pc.php';
+			$nowthemes = get_template_directory();
+			$folder = (file_exists($nowthemes . '/' . $file_name . '-' . $file_ext)) ? $nowthemes : SPCV_CUSTOME_PLUGIN_DIR . 'views';
+			if (file_exists($folder . '/' . $file_name . '-' . $file_ext)) {
+				include_once( $folder . '/' . $file_name . '-' . $file_ext );
+			} else {
+				wphd_default_page_template();
+			}
+		}
+	}
+}
+
+if ( !function_exists('wphd_default_page_template')) {
+	function wphd_default_page_template() {
+		global $post;
+		
+		$nowthemes = get_template_directory();
+		if (file_exists($nowthemes . '/' . 'page.php')) {
+			include_once( $nowthemes . '/' . 'page.php' );
+		} else {
+			echo 'Sorry ! This page was not found';
+		}
+	}
+}

@@ -65,7 +65,7 @@
        <select id="qaSort" name="qaSort" class="sort">
             <option value="old" <?php if((isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'old') || (!isset($_GET['comment_order_by']) && $comment_order_default != 'desc')) echo 'selected' ?>>古い順</option>
 			<option value="new" <?php if((isset($_GET['comment_order_by'])) && $_GET['comment_order_by'] == 'new' || (!isset($_GET['comment_order_by']) && $comment_order_default == 'desc')) echo 'selected' ?>>新着順</option>
-            <?php if (is_plugin_active( 'spc-comments-like-dislike/spc-comments-like-dislike.php' )) : ?>
+            <?php if (class_exists( 'CLD_Comments_like_dislike' )) : ?>
             <option value="like_count" <?php if(isset($_GET['comment_order_by']) && $_GET['comment_order_by'] == 'like_count') echo 'selected' ?>>共感順</option>
             <?php endif; ?>
        </select>
