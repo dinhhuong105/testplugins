@@ -953,9 +953,9 @@ if ( !function_exists ('noticetheme_comment')) :
 	                <input id="modal-trigger-<?php comment_ID(); ?>" type="checkbox">
 	                <label for="modal-trigger-<?php comment_ID(); ?>">
 	                	<?php
-	                		if (is_plugin_active( 'report-content/report-content.php' )) {
+	                		if (function_exists('wprc_report_submission_form')) {
                                 wprc_report_submission_form();
-                            }
+                			}
 	                	?>
 	                </label>
 	                <div class="modal-overlay">

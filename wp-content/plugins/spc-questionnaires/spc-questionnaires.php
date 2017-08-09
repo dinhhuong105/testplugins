@@ -873,9 +873,9 @@ if ( !function_exists( 'question_comment' )) {
 	                        <input id="modal-trigger-1" type="checkbox">
 	                        <label for="modal-trigger-1">
 	                		<?php
-		                		if (is_plugin_active( 'report-content/report-content.php' )) {
+	                			if (function_exists('wprc_report_submission_form')) {
 	                                wprc_report_submission_form();
-	                            }
+	                			}
 		                	?>
 	                        </label>
 	                        <div class="modal-overlay">
