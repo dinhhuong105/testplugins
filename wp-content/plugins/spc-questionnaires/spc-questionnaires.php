@@ -869,8 +869,8 @@ if ( !function_exists( 'question_comment' )) {
 	                </p>
 	                <?php if(!ip_report_comment(get_comment_ID(), get_user_IP())): ?>
 	                    <div class="report modal">
-	                        <input id="modal-trigger-1" type="checkbox">
-	                        <label for="modal-trigger-1">
+	                        <input id="modal-trigger-<?php comment_ID(); ?>" type="checkbox">
+	                        <label for="modal-trigger-<?php comment_ID(); ?>">
 	                		<?php
 	                			if (function_exists('wprc_report_submission_form')) {
 	                                wprc_report_submission_form();
@@ -879,7 +879,7 @@ if ( !function_exists( 'question_comment' )) {
 	                        </label>
 	                        <div class="modal-overlay">
 	                            <div class="modal-wrap">
-	                                <label for="modal-trigger-1">✖</label>
+	                                <label for="modal-trigger-<?php comment_ID(); ?>">✖</label>
 	                                <h3>このコメントを通報</h3>
 	                                <p>このコメントを削除すべき不適切なコメントとして通報しますか？</p>
 	                                <div class="btnArea">
