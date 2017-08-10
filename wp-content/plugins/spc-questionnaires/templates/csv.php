@@ -31,9 +31,10 @@ function download_send_headers($filename) {
     header("Content-Transfer-Encoding: binary");
 }
 
-
+//global $post;
+$postID = $_GET['post'];
 $param = array(
-    'post_id'=>$post->ID
+    'post_id'=>$postID
 );
 $comments = get_comments($param);
 $answer = array();
@@ -59,6 +60,20 @@ foreach ($comment_metas as $key => $answ) {
 }
 $report_ans = array();
 $post_metas = get_post_meta($_GET['post'],'_question_type', TRUE);
+foreach ($comment_metas as $cm_comments) {
+
+  if (empty($cm_comments)) {
+    continue;
+  }
+
+  foreach ($cm_comments as $cm_key => $cm_val) {
+    if (isset($cm_val['other']) and !empty($cm_val['other'])) {
+      $post_metas[$postID][$cm_key]['answer'][$cm_val['other']] = $cm_val['other'];
+    }
+  }
+}
+
+
 foreach ($question as $key => $value) {
 	$_ans = array();
 	foreach ($value as $v) {
@@ -93,11 +108,12 @@ foreach ($question as $key => $value) {
 
 $csv = array();
 $no = 1;
+
  foreach ($post_metas[$_GET['post']] as $key => $value){
 	$csv[$key]['設問 '.$no++] = $value['question'];
 	if(isset($value['answer']) && $value['type'] != 'unit'){ 
 		foreach ($value['answer'] as $k_ques => $ans){
-			$csv[$key][$ans] = $report_ans[$key][$k_ques];
+      $csv[$key][$ans] = isset($report_ans[$key][$k_ques]) ? $report_ans[$key][$k_ques] : 0;
 		}
 	}else{
 		foreach ($report_ans[$key] as $answer => $count){

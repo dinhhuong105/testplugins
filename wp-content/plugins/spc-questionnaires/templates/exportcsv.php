@@ -32,6 +32,11 @@ $report_ans = array();
 $post_metas = get_post_meta($id, '_question_type', TRUE);
 
 foreach ($comment_metas as $cm_comments) {
+
+	if (empty($cm_comments)) {
+		continue;
+	}
+
 	foreach ($cm_comments as $cm_key => $cm_val) {
 		if (isset($cm_val['other']) and !empty($cm_val['other'])) {
 			$post_metas[$id][$cm_key]['answer'][$cm_val['other']] = $cm_val['other'];
@@ -135,7 +140,7 @@ $count_comment =  count($comments);
 <div class="row postbox" id="revisionsdiv">
 	<div class="btn">
 		<span id="loading"></span>
-		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?php echo ($_unpublish_answer[0] == 1) ? 0: 1; ?>" 
+		<button class="btn-limit  page-title-action" data-post="<?=$id?>" data-status="<?php echo (isset($_unpublish_answer[0]) && $_unpublish_answer[0] == 1) ? 0: 1; ?>" 
 		<?php
 		$m = ($_limited_answer[0] < 0 )?$_limited_answer[0]*-1:$_limited_answer[0];
 		if($count_comment < $m || empty($_limited_answer[0]) || $_unpublish_answer == 0) {

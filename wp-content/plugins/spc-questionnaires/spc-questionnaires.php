@@ -476,6 +476,7 @@ if ( !function_exists( 'update_report_status_comment' )) {
 add_action( 'admin_post_exportcsv', 'csv_file' );
 if ( !function_exists( 'csv_file' )) {
 	function csv_file() {
+		global $post;
 		include_once('templates/csv.php'); 
 	}
 }
