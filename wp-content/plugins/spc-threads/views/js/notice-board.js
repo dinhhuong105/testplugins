@@ -57,6 +57,7 @@ jQuery(document).ready(function($) {
         if (file_data.size > (1024000*max_upload_file_size)) {
             jQuery('.threadFormArea.inputForm .threadList li').find('.upload_error').remove();
             jQuery('.threadFormArea.inputForm .threadList li').last().append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size*1024 +'KBまで等</div>');
+            jQuery('#formComment li.comment-content').find('.upload_error').remove();
             jQuery('#formComment li.comment-content').append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size*1024 +'KBまで等</div>');
             return false;
         }
