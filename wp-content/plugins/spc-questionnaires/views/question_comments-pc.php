@@ -331,7 +331,7 @@
 <script type="text/javascript">
     var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
     var max_upload_picture = "<?php echo get_option('spc_options')['a_img_no']; ?>";
-    var max_upload_file_size = "<?php echo (get_option('spc_options')['upload_max_filesize']) ? get_option('spc_options')['upload_max_filesize'] : (int) ini_get('post_max_size') ; ?>";
+    var max_upload_file_size = "<?php echo (isset(get_option('spc_options')['upload_max_filesize'])) ? get_option('spc_options')['upload_max_filesize'] : (int) ini_get('post_max_size') ; ?>";
 
     jQuery('button[type=submit]').on('click',function(){
         $cbx_group = jQuery("input:checkbox[id^='option-']"); // name is not always helpful ;)

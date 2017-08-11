@@ -86,6 +86,6 @@
 <script>
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
 	var max_upload_picture = "<?php echo get_option('spc_options')['thread_img_no']; ?>";
-    var max_upload_file_size = "<?php echo (get_option('spc_options')['upload_max_filesize']) ? get_option('spc_options')['upload_max_filesize'] : (int) ini_get('post_max_size') ; ?>";
+    var max_upload_file_size = "<?php echo (isset(get_option('spc_options')['upload_max_filesize'])) ? get_option('spc_options')['upload_max_filesize'] : (int) ini_get('post_max_size') ; ?>";
 </script>
 <script src="<?php echo WPHD_THREAD_PLUGIN_URI; ?>views/js/notice-board.js"></script>
