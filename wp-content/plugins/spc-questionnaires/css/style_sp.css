@@ -1923,3 +1923,9 @@ ol.commentlist {
       width: 90%;
   }
 }
+
+#formComment li.comment-content .upload_error {
+    color: red;
+    padding-top: 10px;
+    text-align: right;
+}

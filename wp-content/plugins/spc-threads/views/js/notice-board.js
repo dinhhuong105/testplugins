@@ -1,13 +1,23 @@
 // Check max upload image
 //var count_upload = 1;
 function readURL(input) {
+    jQuery('.threadFormArea.inputForm .threadList li').find('.upload_error').remove();
+
     if (input.files && input.files[0]) {
+
+        if (input.files[0].size > (max_upload_file_size*1024000)) {
+            jQuery('.threadFormArea.inputForm .threadList li').first().append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size*1024 +'KBまで等</div>');
+            return false;
+        }
+
         var reader = new FileReader();
         reader.onload = function (e) {
             jQuery('#no_image').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
     }
+
+    jQuery('.threadFormArea.inputForm .threadList li').find('.upload_error').remove();
 }
 
 jQuery("#thread_thumb").change(function(){
@@ -30,6 +40,7 @@ jQuery("#contentArea .imgBtn").click(function(e){
 });
 
 jQuery(document).ready(function($) {
+    $('.upload_error').remove();
     $("#content_image").change(function(e){
         e.preventDefault();
         if(image_nums >= max_upload_picture){
@@ -41,6 +52,18 @@ jQuery(document).ready(function($) {
         var form_data = new FormData();
         var post_id = $('#postID').val();
         var file_data = $('#content_image').prop("files")[0];
+
+        // check max file size
+        if (file_data.size > (1024000*max_upload_file_size)) {
+            jQuery('.threadFormArea.inputForm .threadList li').find('.upload_error').remove();
+            jQuery('.threadFormArea.inputForm .threadList li').last().append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size*1024 +'KBまで等</div>');
+            jQuery('#formComment li.comment-content').append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size*1024 +'KBまで等</div>');
+            return false;
+        }
+
+        jQuery('.threadFormArea.inputForm .threadList li').find('.upload_error').remove();
+        jQuery('#formComment li.comment-content').find('.upload_error').remove();
+
         form_data.append('content_image', file_data);
         form_data.append('action', 'upload_image_thread');
         form_data.append('post_id', post_id);
@@ -58,7 +81,6 @@ jQuery(document).ready(function($) {
                 $("form :input").prop("disabled",false);
                 if(response['status'] == 'OK'){
                     var html_image = '<img src="'+response['image_link']+'" alt="'+response['image_title']+'" width="960" height="1280" class="alignnone size-full wp-image-'+response['id']+'" />';
-                    // jQuery('#thread_content').val( jQuery('#thread_content').val() + " " + html_image );
                     $('#textareaEditor').html( jQuery('#textareaEditor').html() + " " + html_image );
                     $('#textareaEditor').trigger('input');
                 }

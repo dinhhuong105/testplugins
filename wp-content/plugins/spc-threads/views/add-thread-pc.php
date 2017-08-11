@@ -39,42 +39,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <!--<ul class="answerInpotList">
-                            <li>
-                                <div class="checkArea">
-                                    <label for="anonymous">
-                                        <input style="-webkit-appearance: checkbox;" type="checkbox" id="anonymous" name="anonymous">匿名を投稿
-                                    </label>
-                                    <label for="displayID">
-                                        <input style="-webkit-appearance: checkbox;" type="checkbox" id="displayID" name="displayID">IDを表示してなりまし防止
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>-->
-                        <!--<ul class="categoryArea">
-                            <li>
-                                <label for="select" class="selectArea">
-                                <select name="parent_cat" id="parent_cat"> 
-                                    <option value="0">親カテゴリー</option> 
-                                    <?php 
-                                    $categories = get_categories( array( 'parent' => 0, 'hide_empty'=>false ) );
-                                    foreach ( $categories as $category ) {
-                                        printf( '<option value="%1$s">%2$s</option>',
-                                            esc_attr( $category->term_id ),
-                                            esc_html( $category->cat_name )
-                                        );
-                                    }
-                                    ?>
-                                </select>
-                                <select name="child_cat" id="child_cat">
-                                    <option value="0">子カテゴリー</option>
-                                </select>
-                                <select name="grandchild_cat" id="grandchild_cat" class="cd-select">
-                                    <option value="0">孫カテゴリー</option>
-                                </select>
-                                </label>
-                            </li>
-                        </ul>-->
+                        
                         <textarea name="thread_content" id="thread_content" class="textareaCustom"></textarea>
                         <input type="hidden" name="action" value="add_thread_front" />
                         <input type="hidden" name="submitted" id="submitted" value="true" />
@@ -129,6 +94,7 @@
 <?php get_footer(); ?>
 <script>
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
-	var max_upload_picture = "<?php echo get_option('spc_options')['thread_img_no']; ?>";
+    var max_upload_picture   = "<?php echo get_option('spc_options')['thread_img_no']; ?>";
+	var max_upload_file_size = "<?php echo (get_option('spc_options')['upload_max_filesize']) ? get_option('spc_options')['upload_max_filesize'] : (int) ini_get('post_max_size') ; ?>";
 </script>
 <script src="<?php echo WPHD_THREAD_PLUGIN_URI; ?>views/js/notice-board.js"></script>

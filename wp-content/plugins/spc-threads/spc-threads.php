@@ -825,6 +825,32 @@ if ( !function_exists ('add_comment_on_notice')) {
 }
 
 /**
+ * add more image size for theme
+ *
+ * @author Dinh Van Huong
+ */
+add_action( 'after_setup_theme', 'wphd_theme_setup' );
+if (!function_exists('wphd_theme_setup')) {
+	function wphd_theme_setup() {
+	      if ( function_exists( 'add_theme_support' ) ) {
+	      	$spc_options = get_option('spc_options');
+
+	  		$thumb_width = (isset($spc_options['file_thumbnail_size_w']) && strlen($spc_options['file_thumbnail_size_w'])) ? $spc_options['file_thumbnail_size_w'] : 0;
+	  		$thumb_heigh = (isset($spc_options['file_thumbnail_size_h']) && strlen($spc_options['file_thumbnail_size_h'])) ? $spc_options['file_thumbnail_size_h'] : 0;
+	  		if ($thumb_width || $thumb_heigh) {
+	  			add_image_size('spc_thumbnail_size', $thumb_width, $thumb_heigh, true);
+	  		}
+	        
+	        $resize_width = (isset($spc_options['file_resize_w']) && strlen($spc_options['file_resize_w'])) ? $spc_options['file_resize_w'] : 0;
+	  		$resize_heigh = (isset($spc_options['file_resize_h']) && strlen($spc_options['file_resize_h'])) ? $spc_options['file_resize_h'] : 0;
+	  		if ($resize_width || $resize_heigh) {
+	  			add_image_size('spc_file_resize', $resize_width, $resize_heigh, true);
+	  		}
+	    }
+	}
+}
+
+/**
  * Function for call ajax upload image when add thread on front
  *
  * @author Dinh Van Huong
@@ -832,13 +858,15 @@ if ( !function_exists ('add_comment_on_notice')) {
 add_action('wp_ajax_upload_image_thread', 'upload_image_thread');
 add_action('wp_ajax_nopriv_upload_image_thread', 'upload_image_thread');
 if ( !function_exists ('upload_image_thread')) {
-	function upload_image_thread($post_id) 
+	function upload_image_thread($post_id = 0) 
 	{
 	    $file = 'content_image';
-	    $attach_id 	= media_handle_upload( $file, 10 );
+	    $attach_id 	= media_handle_upload( $file, $post_id );
 	    $post_image = get_post($attach_id);
+	    
+	    $image_src = wp_get_attachment_image_src( $attach_id, 'spc_file_resize' );
+	    $image_link = ($image_src[0]) ? $image_src['0'] : '';
 
-	    $image_link = $post_image->guid;
 	    $image_title = $post_image->post_title;
 	    $return = array(
 	        'status' 		=> 'OK',
@@ -885,6 +913,22 @@ if ( !function_exists ('spc_setting_menu')) {
 	}
 }
 
+/**
+ * get max file size
+ *
+ * @author Dinh Van Huong
+ */
+add_filter('upload_size_limit', 'wphd_increase_upload');
+if (!function_exists('wphd_increase_upload')) {
+	function wphd_increase_upload($bytes) {
+		$ini_max_file_size = (int) ini_get('post_max_size') * 1024000; /* 1024000 = 1MB */
+	    $max_file_size = get_option('max_file_size') ? get_option('max_file_size') : $ini_max_file_size;
+	    if ($max_file_size) {
+	    	return $max_file_size;
+	    }
+	}
+}
+
 if ( !function_exists ('spc_setting_options')) {
 	function spc_setting_options() 
 	{
@@ -896,6 +940,8 @@ if ( !function_exists ('spc_setting_options')) {
 	            } else {
 	                add_option('spc_options', $_POST['spc_options']);
 	            }
+
+	            update_option('max_file_size', ($_POST['spc_options']['upload_max_filesize']*1024000));
 	        }
 	    }
 	    

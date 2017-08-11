@@ -1977,3 +1977,9 @@ label.label-other-radio {
 :-moz-placeholder { /* Firefox 18- */
   color: gray;
 }
+
+#formComment li.comment-content .upload_error {
+    color: red;
+    padding-top: 10px;
+    text-align: right;
+}

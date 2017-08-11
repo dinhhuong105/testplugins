@@ -786,6 +786,48 @@ if ( !function_exists( 'spc_setting_menu' )) {
 	}
 }
 
+/**
+ * add more image size for theme
+ *
+ * @author Dinh Van Huong
+ */
+add_action( 'after_setup_theme', 'wphd_theme_setup' );
+if (!function_exists('wphd_theme_setup')) {
+	function wphd_theme_setup() {
+	      if ( function_exists( 'add_theme_support' ) ) {
+	      	$spc_options = get_option('spc_options');
+
+	  		$thumb_width = (isset($spc_options['file_thumbnail_size_w']) && strlen($spc_options['file_thumbnail_size_w'])) ? $spc_options['file_thumbnail_size_w'] : 0;
+	  		$thumb_heigh = (isset($spc_options['file_thumbnail_size_h']) && strlen($spc_options['file_thumbnail_size_h'])) ? $spc_options['file_thumbnail_size_h'] : 0;
+	  		if ($thumb_width || $thumb_heigh) {
+	  			add_image_size('spc_thumbnail_size', $thumb_width, $thumb_heigh, true);
+	  		}
+	        
+	        $resize_width = (isset($spc_options['file_resize_w']) && strlen($spc_options['file_resize_w'])) ? $spc_options['file_resize_w'] : 0;
+	  		$resize_heigh = (isset($spc_options['file_resize_h']) && strlen($spc_options['file_resize_h'])) ? $spc_options['file_resize_h'] : 0;
+	  		if ($resize_width || $resize_heigh) {
+	  			add_image_size('spc_file_resize', $resize_width, $resize_heigh, true);
+	  		}
+	    }
+	}
+}
+
+/**
+ * get max file size
+ *
+ * @author Dinh Van Huong
+ */
+add_filter('upload_size_limit', 'wphd_increase_upload');
+if (!function_exists('wphd_increase_upload')) {
+	function wphd_increase_upload($bytes) {
+		$ini_max_file_size = (int) ini_get('post_max_size') * 1024000; /* 1024000 = 1MB */
+	    $max_file_size = get_option('max_file_size') ? get_option('max_file_size') : $ini_max_file_size;
+	    if ($max_file_size) {
+	    	return $max_file_size;
+	    }
+	}
+}
+
 if ( !function_exists( 'spc_setting_options' )) {
 	function spc_setting_options() {
 	    
@@ -797,6 +839,8 @@ if ( !function_exists( 'spc_setting_options' )) {
 	            } else {
 	                add_option('spc_options', $_POST['spc_options']);
 	            }
+
+	            update_option('max_file_size', ($_POST['spc_options']['upload_max_filesize']*1024000));
 	        }
 	    }
 	    

@@ -49,7 +49,7 @@
                         $slug_name = $post->post_name;
                         $thumbnail_id = get_post_thumbnail_id();
                         if (!isset($thumbnail_id->errors)) {
-                            $image = wp_get_attachment_image_src( $thumbnail_id, '900_thumbnail' );
+                            $image = wp_get_attachment_image_src( $thumbnail_id, 'spc_thumbnail_size' );
                             if(!$image[0]){
                                 $image[0] = '';
                             }

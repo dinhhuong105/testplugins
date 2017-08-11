@@ -66,7 +66,7 @@
 
                             $thumbnail_id = get_post_thumbnail_id();
                             if (!isset($thumbnail_id->errors)) {
-                               $image = wp_get_attachment_image_src( $thumbnail_id, 'pcList_thumbnail' );
+                               $image = wp_get_attachment_image_src( $thumbnail_id, 'spc_thumbnail_size' );
                                 if($post->post_type == 'thread_post' && !$image[0]){
                                     $image[0] = '';
                                 } 

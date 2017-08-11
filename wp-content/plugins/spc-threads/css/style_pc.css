@@ -1928,3 +1928,14 @@ section.confirm,
     width: 323px !important;
     height: 198px !important;
 }
+.threadFormArea.inputForm .threadList li:first-child .upload_error {
+    color: red;
+    padding-top: 10px;
+    text-align: left;
+}
+.threadFormArea.inputForm .threadList li:last-child .upload_error,
+#formComment li.comment-content .upload_error {
+    color: red;
+    padding-top: 10px;
+    text-align: right;
+}

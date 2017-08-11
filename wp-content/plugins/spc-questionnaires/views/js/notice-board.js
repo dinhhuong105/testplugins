@@ -35,10 +35,19 @@ jQuery("#content_image").change(function(e){
 		alert("写真の添付可能枚数は"+max_upload_picture+"枚です。");
 		return false;
 	}
-    var target = this;
 
+    var target = this;
     var form_data = new FormData();
     var file_data = jQuery('#content_image').prop("files")[0];
+
+    if (file_data.size > (1024000*max_upload_file_size)) {
+        jQuery('#formComment li.comment-content').find('.upload_error').remove();
+        jQuery('#formComment li.comment-content').append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size*1024 +'KBまで等</div>');
+        return false;
+    }
+
+    jQuery('#formComment li.comment-content').find('.upload_error').remove();
+
     form_data.append('content_image', file_data);
     form_data.append('action', 'upload_image_thread');
     jQuery("form :input").prop("disabled", true);

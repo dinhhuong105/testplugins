@@ -76,7 +76,7 @@
                 <h3>ニックネーム<span class="red">※</span></h3>
                 <input type="text" name="name" required placeholder="ニックネームを入力してください">
             </li>
-            <li>
+            <li class="comment-content">
                 <h3>コメント<span class="red">※</span></h3>
                 <p class="notes">ご自身の状況や良かった点、困った点などを具体的に書きましょう！
                         育児で困ってる方の参考になり共感ボタンをもらいやすくなります！
@@ -100,6 +100,7 @@
 <script>
 	var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
 	var max_upload_picture = "<?php echo get_option('spc_options')['less_img_no']; ?>";
+    var max_upload_file_size = "<?php echo (get_option('spc_options')['upload_max_filesize']) ? get_option('spc_options')['upload_max_filesize'] : (int) ini_get('post_max_size') ; ?>";
 
 	jQuery('#qaSort').on("change", function(e){
 		var target = jQuery(this);
