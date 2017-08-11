@@ -87,20 +87,20 @@
             <tbody>
                 <tr>
                     <th scop="row"><label for="upload_max_filesize">Upload max filesize</label></th>
-                    <td><input type="number" min="0" max="<?php echo (int) ini_get('post_max_size') ;?>" name="spc_options[upload_max_filesize]" value="<?php echo isset($spc_option['upload_max_filesize']) ? esc_attr( $spc_option['upload_max_filesize'] ) : ''; ?>" placeholder="Upload max filesize" id="upload_max_filesize"/><label for="upload_max_filesize"> MB (Upload max filesize : <?php echo ini_get('post_max_size') ;?>)</label></td>
+                    <td><input type="number" min="0" max="<?php echo (int) ini_get('post_max_size') ;?>" name="spc_options[upload_max_filesize]" value="<?php echo isset($spc_option['upload_max_filesize']) ? esc_attr( $spc_option['upload_max_filesize'] ) : ''; ?>" placeholder="" id="upload_max_filesize"/><label for="upload_max_filesize"> MB (Upload max filesize : <?php echo ini_get('post_max_size') ;?>)</label></td>
                 </tr>
                 <tr>
                     <th scop="row"><label>Thumbnail size</label></th>
                     <td>
                         <label for="file_thumbnail_size_w">Width</label> <input class="small-text" type="number" min="0" name="spc_options[file_thumbnail_size_w]" value="<?php echo isset($spc_option['file_thumbnail_size_w']) ? esc_attr( $spc_option['file_thumbnail_size_w'] ) : ''; ?>" placeholder="" id="file_thumbnail_size_w"/> &nbsp;
-                        <label for="file_thumbnail_size_h">Height</label> <input class="small-text" type="number" min="0" name="spc_options[file_thumbnail_size_h]" value="<?php echo isset($spc_option['file_thumbnail_size_h']) ? esc_attr( $spc_option['file_thumbnail_size_h'] ) : ''; ?>" placeholder="" id="file_thumbnail_size_h"/>
+                        <!-- <label for="file_thumbnail_size_h">Height</label> <input class="small-text" type="number" min="0" name="spc_options[file_thumbnail_size_h]" value="<?php echo isset($spc_option['file_thumbnail_size_h']) ? esc_attr( $spc_option['file_thumbnail_size_h'] ) : ''; ?>" placeholder="" id="file_thumbnail_size_h"/> -->
                     </td>
                 </tr>
                 <tr>
                     <th scop="row"><label for="file_resize">Size for resizing</label></th>
                     <td>
                         <label for="file_resize_w">Width</label> <input class="small-text" type="number" min="0" name="spc_options[file_resize_w]" value="<?php echo isset($spc_option['file_resize_w']) ? esc_attr( $spc_option['file_resize_w'] ) : ''; ?>" placeholder="" id="file_resize_w"/> &nbsp;
-                        <label for="file_resize_h">Height</label> <input class="small-text" type="number" min="0" name="spc_options[file_resize_h]" value="<?php echo isset($spc_option['file_resize_h']) ? esc_attr( $spc_option['file_resize_h'] ) : ''; ?>" placeholder="" id="file_resize_h"/>
+                        <!-- <label for="file_resize_h">Height</label> <input class="small-text" type="number" min="0" name="spc_options[file_resize_h]" value="<?php echo isset($spc_option['file_resize_h']) ? esc_attr( $spc_option['file_resize_h'] ) : ''; ?>" placeholder="" id="file_resize_h"/> -->
                     </td>
                 </tr>
             </tbody>

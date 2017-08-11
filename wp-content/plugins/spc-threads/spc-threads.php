@@ -838,13 +838,13 @@ if (!function_exists('wphd_theme_setup')) {
 	  		$thumb_width = (isset($spc_options['file_thumbnail_size_w']) && strlen($spc_options['file_thumbnail_size_w'])) ? $spc_options['file_thumbnail_size_w'] : 0;
 	  		$thumb_heigh = (isset($spc_options['file_thumbnail_size_h']) && strlen($spc_options['file_thumbnail_size_h'])) ? $spc_options['file_thumbnail_size_h'] : 0;
 	  		if ($thumb_width || $thumb_heigh) {
-	  			add_image_size('spc_thumbnail_size', $thumb_width, $thumb_heigh, true);
+	  			add_image_size('spc_thumbnail_size', $thumb_width, 0, false);
 	  		}
 	        
 	        $resize_width = (isset($spc_options['file_resize_w']) && strlen($spc_options['file_resize_w'])) ? $spc_options['file_resize_w'] : 0;
 	  		$resize_heigh = (isset($spc_options['file_resize_h']) && strlen($spc_options['file_resize_h'])) ? $spc_options['file_resize_h'] : 0;
 	  		if ($resize_width || $resize_heigh) {
-	  			add_image_size('spc_file_resize', $resize_width, $resize_heigh, true);
+	  			add_image_size('spc_file_resize', $resize_width, 0, false);
 	  		}
 	    }
 	}
