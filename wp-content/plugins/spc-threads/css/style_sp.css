@@ -1883,3 +1883,21 @@ ol.commentlist {
     padding-top: 10px;
     text-align: right;
 }
+.threadFormArea .threadList li .imgArea .inner-imgArea {
+    margin-bottom: 10px;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.threadFormArea .threadList li .imgArea .inner-imgArea .last-inner-imgArea {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    height: 80px;
+}
+.threadFormArea .threadList li .imgArea .inner-imgArea img {
+    margin-bottom: 0;
+}

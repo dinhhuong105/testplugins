@@ -1939,3 +1939,21 @@ section.confirm,
     padding-top: 10px;
     text-align: right;
 }
+.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .inner-imgArea {
+    margin-bottom: 10px;
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .inner-imgArea .last-inner-imgArea {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    height: 130px;
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .inner-imgArea img {
+    margin-bottom: 0;
+}

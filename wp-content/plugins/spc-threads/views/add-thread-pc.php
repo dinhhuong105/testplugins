@@ -17,7 +17,11 @@
                         <ul class="threadList">
                             <li>
                                 <div class="imgArea">
-                                    <img src="<?php echo WPHD_THREAD_PLUGIN_URI; ?>images/noimage.png" id="no_image" alt="画像" width="130" height="130">
+                                    <div class="inner-imgArea">
+                                        <div class="last-inner-imgArea">
+                                            <img src="<?php echo WPHD_THREAD_PLUGIN_URI; ?>images/noimage.png" id="no_image" alt="画像" width="130" height="130">
+                                        </div>
+                                    </div>
                                     <label class="imgBtn">
                                         <i class="fa fa-camera" aria-hidden="true"></i>画像を選択
                                         <input id="thread_thumb" name="thread_thumb" type="file">
@@ -53,7 +57,11 @@
                     <ul class="threadList">
                             <li>
                                 <div class="imgArea">
-                                    <img src="" id="confirm_no_image" alt="画像" width="130" height="130">
+                                    <div class="inner-imgArea">
+                                        <div class="last-inner-imgArea">
+                                            <img src="" id="confirm_no_image" alt="画像" width="130" height="130">
+                                        </div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
