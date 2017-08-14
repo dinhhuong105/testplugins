@@ -51,10 +51,6 @@ jQuery(document).ready(function($) {
             return false;
         }
         var target = this;
-
-        /* show loading image */
-        jQuery('.threadList #contentArea, #formComment').addClass('loading').find('.textArea').append('<img id="loading-img" src="'+ plugin_image_url +'loading.gif" />').find('#textareaEditor').removeAttr('contenteditable');
-
         var form_data = new FormData();
         var post_id = $('#postID').val();
         var file_data = $('#content_image').prop("files")[0];
@@ -67,6 +63,9 @@ jQuery(document).ready(function($) {
             jQuery('#formComment li.comment-content').append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size*1024 +'KBまで等</div>');
             return false;
         }
+
+        /* show loading image */
+        jQuery('.threadList #contentArea, #formComment').addClass('loading').find('.textArea').append('<img id="loading-img" src="'+ plugin_image_url +'loading.gif" />').find('#textareaEditor').removeAttr('contenteditable');
 
         jQuery('.threadFormArea.inputForm .threadList li').find('.upload_error').remove();
         jQuery('#formComment li.comment-content').find('.upload_error').remove();
