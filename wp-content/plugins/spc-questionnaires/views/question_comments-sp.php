@@ -327,6 +327,7 @@
     var max_upload_picture = "<?php echo get_option('spc_options')['a_img_no']; ?>";
     <?php $spc_options = get_option('spc_options'); ?>
     var max_upload_file_size = "<?php echo (isset($spc_options['upload_max_filesize']) && !empty($spc_options['upload_max_filesize'])) ? $spc_options['upload_max_filesize'] : (int) ini_get('post_max_size') ; ?>";
+    var plugin_image_url = "<?php echo SPCV_CUSTOME_PLUGIN_IMAGES; ?>";
 
     jQuery('button[type=submit]').on('click',function(){
         $cbx_group = jQuery("input:checkbox[id^='option-']"); // name is not always helpful ;)

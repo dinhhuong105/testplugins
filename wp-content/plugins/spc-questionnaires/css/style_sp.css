@@ -1929,3 +1929,12 @@ ol.commentlist {
     padding-top: 10px;
     text-align: right;
 }
+
+#formComment.loading li.comment-content #contentArea #textareaEditor {
+    opacity: 0.3;
+}
+#formComment.loading #contentArea img#loading-img {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 80px);
+}

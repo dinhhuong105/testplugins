@@ -37,6 +37,10 @@ jQuery("#content_image").change(function(e){
 	}
 
     var target = this;
+
+    /* show loading image */
+    jQuery('.threadList #contentArea, #formComment').addClass('loading').find('.textArea').append('<img id="loading-img" src="'+ plugin_image_url +'loading.gif" />').find('#textareaEditor').removeAttr('contenteditable');
+
     var form_data = new FormData();
     var file_data = jQuery('#content_image').prop("files")[0];
 
@@ -62,8 +66,12 @@ jQuery("#content_image").change(function(e){
         success: function(response){
             jQuery("form :input").prop("disabled",false);
 			if(response['status'] == 'OK'){
+                /* remove loading image */
+                jQuery('.threadList #contentArea, #formComment').removeClass('loading').find('.textArea img#loading-img').remove();
+                jQuery('.threadList #contentArea #textareaEditor, #formComment #textareaEditor').attr('contenteditable', true);
+                
+                /* add html to textareaEditor */
             	var html_image = '<img src="'+response['image_link']+'" alt="'+response['image_title']+'" width="960" height="1280" class="alignnone size-full wp-image-'+response['id']+'" />';
-                // jQuery('#thread_content').val( jQuery('#thread_content').val() + " " + html_image );
             	jQuery('#textareaEditor').html( jQuery('#textareaEditor').html() + " " + html_image );
             	jQuery('#textareaEditor').trigger('input');
             }

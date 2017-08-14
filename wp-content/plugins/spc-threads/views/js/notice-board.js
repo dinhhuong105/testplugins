@@ -1,6 +1,7 @@
 // Check max upload image
 //var count_upload = 1;
 function readURL(input) {
+    jQuery('.threadList .last-inner-imgArea').addClass('loading').append('<img id="loading-img" src="'+ plugin_image_url +'loading.gif" />');
     jQuery('.threadFormArea.inputForm .threadList li').find('.upload_error').remove();
 
     if (input.files && input.files[0]) {
@@ -17,6 +18,7 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 
+    jQuery('.threadList .last-inner-imgArea').removeClass('loading').find('img#loading-img').remove();
     jQuery('.threadFormArea.inputForm .threadList li').find('.upload_error').remove();
 }
 
@@ -48,6 +50,9 @@ jQuery(document).ready(function($) {
             return false;
         }
         var target = this;
+
+        /* show loading image */
+        jQuery('.threadList #contentArea, #formComment').addClass('loading').find('.textArea').append('<img id="loading-img" src="'+ plugin_image_url +'loading.gif" />').find('#textareaEditor').removeAttr('contenteditable');
 
         var form_data = new FormData();
         var post_id = $('#postID').val();
@@ -81,12 +86,20 @@ jQuery(document).ready(function($) {
             success: function(response){
                 $("form :input").prop("disabled",false);
                 if(response['status'] == 'OK'){
+                    /* remove loading image */
+                    jQuery('.threadList #contentArea, #formComment').removeClass('loading').find('.textArea img#loading-img').remove();
+                    jQuery('.threadList #contentArea #textareaEditor, #formComment #textareaEditor').attr('contenteditable', true);
+                    
+                    /* add html to textareaEditor */
                     var html_image = '<img src="'+response['image_link']+'" alt="'+response['image_title']+'" width="960" height="1280" class="alignnone size-full wp-image-'+response['id']+'" />';
                     $('#textareaEditor').html( jQuery('#textareaEditor').html() + " " + html_image );
                     $('#textareaEditor').trigger('input');
                 }
             }
         });
+
+        
+        // jQuery('.threadList #contentArea').removeClass('loading').find('.textArea img#loading-img').remove();
     });
 });
 

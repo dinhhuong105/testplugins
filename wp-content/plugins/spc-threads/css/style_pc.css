@@ -1953,7 +1953,31 @@ section.confirm,
     display: table-cell;
     text-align: center;
     height: 130px;
+    position: relative;
 }
 .mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .inner-imgArea img {
     margin-bottom: 0;
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .inner-imgArea .last-inner-imgArea.loading img {
+    opacity: 0.3;
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList li .imgArea .inner-imgArea img#loading-img {
+    position: absolute;
+    top: 29%;
+    left: 20%;
+    opacity: 1;
+    display: table-cell;
+    vertical-align: middle;
+    width: 79px;
+    height: auto;
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList #contentArea.loading #textareaEditor,
+#formComment.loading li.comment-content #contentArea #textareaEditor {
+    opacity: 0.3;
+}
+.mainWrap.addthread .threadFormArea .formArea .threadList #contentArea img#loading-img,
+#formComment.loading #contentArea img#loading-img {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 80px);
 }
