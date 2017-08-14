@@ -1,7 +1,6 @@
 // Check max upload image
 //var count_upload = 1;
 function readURL(input) {
-    jQuery('.threadList .last-inner-imgArea').addClass('loading').append('<img id="loading-img" src="'+ plugin_image_url +'loading.gif" />');
     jQuery('.threadFormArea.inputForm .threadList li').find('.upload_error').remove();
 
     if (input.files && input.files[0]) {
@@ -10,6 +9,8 @@ function readURL(input) {
             jQuery('.threadFormArea.inputForm .threadList li').first().append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size*1024 +'KBまで等</div>');
             return false;
         }
+
+        jQuery('.threadList .last-inner-imgArea').addClass('loading').append('<img id="loading-img" src="'+ plugin_image_url +'loading.gif" />');
 
         var reader = new FileReader();
         reader.onload = function (e) {
