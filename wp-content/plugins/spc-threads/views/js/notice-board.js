@@ -6,7 +6,8 @@ function readURL(input) {
     if (input.files && input.files[0]) {
 
         if (input.files[0].size > (max_upload_file_size*1024000)) {
-            jQuery('.threadFormArea.inputForm .threadList li').first().append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size*1024 +'KBまで等</div>');
+            jQuery('.threadFormArea.inputForm .threadList li').first().append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size +'MBまで等</div>');
+            jQuery(input).val('');
             return false;
         }
 
@@ -48,6 +49,7 @@ jQuery(document).ready(function($) {
         e.preventDefault();
         if(image_nums >= max_upload_picture){
             alert("写真の添付可能枚数は"+max_upload_picture+"枚です。");
+            $(this).val('');
             return false;
         }
         var target = this;
@@ -61,6 +63,7 @@ jQuery(document).ready(function($) {
             jQuery('.threadFormArea.inputForm .threadList li').last().append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size +'MBまで等</div>');
             jQuery('#formComment li.comment-content').find('.upload_error').remove();
             jQuery('#formComment li.comment-content').append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size +'MBまで等</div>');
+            jQuery(this).val('');
             return false;
         }
 
