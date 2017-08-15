@@ -1876,12 +1876,15 @@ ol.commentlist {
     color: red;
     padding-top: 10px;
     text-align: left;
+    max-width: 80px;
+    font-size: 12px;
 }
 .threadFormArea.inputForm .threadList li:last-child .upload_error,
 #formComment li.comment-content .upload_error {
     color: red;
     padding-top: 10px;
     text-align: right;
+    font-size: 12px;
 }
 .threadFormArea .threadList li .imgArea .inner-imgArea {
     margin-bottom: 10px;

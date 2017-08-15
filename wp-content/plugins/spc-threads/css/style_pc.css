@@ -1932,6 +1932,7 @@ section.confirm,
     color: red;
     padding-top: 10px;
     text-align: left;
+    max-width: 130px;
 }
 .threadFormArea.inputForm .threadList li:last-child .upload_error,
 #formComment li.comment-content .upload_error {
