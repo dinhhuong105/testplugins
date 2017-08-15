@@ -42,7 +42,7 @@ jQuery("#content_image").change(function(e){
 
     if (file_data.size > (1024000*max_upload_file_size)) {
         jQuery('#formComment li.comment-content').find('.upload_error').remove();
-        jQuery('#formComment li.comment-content').append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size*1024 +'KBまで等</div>');
+        jQuery('#formComment li.comment-content').append('<div class="upload_error">※画像のサイズは'+ max_upload_file_size +'MBまで等</div>');
         return false;
     }
 
