@@ -1394,3 +1394,32 @@ if ( !function_exists('wphd_default_page_template')) {
 		}
 	}
 }
+
+/**
+ * Function for call ajax upload image when add thread on front
+ *
+ * @author Dinh Van Huong
+ */
+add_action('wp_ajax_upload_image_thread', 'upload_image_thread');
+add_action('wp_ajax_nopriv_upload_image_thread', 'upload_image_thread');
+if ( !function_exists ('upload_image_thread')) {
+	function upload_image_thread($post_id = 0) 
+	{
+	    $file = 'content_image';
+	    $attach_id 	= media_handle_upload( $file, $post_id );
+	    $post_image = get_post($attach_id);
+	    
+	    $image_src = wp_get_attachment_image_src( $attach_id, 'spc_file_resize' );
+	    $image_link = ($image_src[0]) ? $image_src['0'] : '';
+
+	    $image_title = $post_image->post_title;
+	    $return = array(
+	        'status' 		=> 'OK',
+	        'id'    		=> $attach_id,
+	        'image_link' 	=> $image_link,
+	        'image_title' 	=> $image_title
+	    );
+
+	    wp_send_json($return);
+	}
+}
