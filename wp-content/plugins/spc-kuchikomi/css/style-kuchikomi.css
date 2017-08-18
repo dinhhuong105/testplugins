@@ -1,0 +1,184 @@
+/* common css */
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: gray;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: gray;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: gray;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: gray;
+}
+.clear {
+	clear: both;
+	overflow: hidden;
+}
+label.required {
+	position: relative;
+	padding-right: 20px;
+	display: inline-block;
+}
+label.required:after {
+	content: "(*)";
+	position: absolute;
+	top: 0;
+	right: 0px;
+	color: #f00;
+	font-size: 12px;
+	font-style: italic;
+	font-weight: normal;
+}
+.field-error {
+	border: 1px solid #f00 !important;
+}
+.error-message {
+	color: #f00;
+	padding-top: 5px;
+	font-size: 12px;
+	font-style: italic;
+}
+.hd-contents select {
+	font-size: 14px;
+}
+/* end common */
+
+.wphd-left {
+	float: left;
+}
+.wphd-page {
+	margin-right: 310px;
+}
+#secondary {
+	float: right;
+	width: 300px;
+}
+.hd-login .hd-login-error {
+	padding: 10px;
+	text-align: center;
+	font-size: 14px;
+	margin: 10px 0;
+	color: #f00;
+	border: 1px solid #f00;
+	background: #ffdbee;
+}
+#hd-login-form .login-form .login-group {
+	position: relative;
+}
+#hd-login-form .login-form .login-group label.required {
+	position: relative;
+	padding-right: 20px;
+	display: inline-block;
+}
+#hd-login-form .login-form .login-group label.required:after {
+	content: "(*)";
+	position: absolute;
+	top: 0;
+	right: 0px;
+	color: #f00;
+	font-size: 12px;
+	font-style: italic;
+}
+#hd-login-form .login-form .login-group .input.error {
+	border: 1px solid #f00;
+}
+#hd-login-form .login-form .login-group .error-message {
+	color: #f00;
+	padding-top: 5px;
+	font-size: 12px;
+	font-style: italic;
+}
+/* register user form */
+.hd-register {
+	font-size: 14px;
+}
+#hd-register-form .register-group {
+	margin-bottom: 15px;
+}
+#hd-register-form .register-group input {
+	padding: 5px;
+}
+#hd-register-form .register-avatar .avatar-preview {
+	text-align: center;
+}
+#hd-register-form .register-avatar .avatar-preview img {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+}
+#hd-register-form .register-avatar .img-btn {
+	display: block;
+    background: #fff;
+    position: relative;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border: solid 1px #c9c9c9;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    max-width: 150px;
+    margin: 0 auto;
+    z-index: 1;
+}
+#hd-register-form .register-avatar .img-btn input[type="file"] {
+	display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    width: 0;
+}
+#hd-register-form .register-gender label.item {
+	font-weight: normal;
+	display: inline-block;
+	cursor: pointer;
+}
+#hd-register-form .register-gender label:first-child,
+#hd-register-form .register-birthday label:first-child,
+#hd-register-form .register-num-of-child label:first-child {
+	/*display: block;*/
+}
+#hd-register-form .register-birthday select {
+	width: 100px;
+}
+#hd-register-form .register-birthday label.birthday-label {
+	display: inline-block;
+	font-weight: normal;
+	padding: 0 10px;
+}
+#hd-register-form .register-num-of-child select {
+	width: 100%;
+}
+#hd-register-form .register-submit .button {
+	width: 100%;
+    height: 50px;
+    font-size: 100%;
+    color: #fc8c96;
+    height: 50px;
+    line-height: 50px;
+    border: solid 2px #fc8c96;
+    text-align: center;
+    box-sizing: border-box;
+    background: none;
+    cursor: pointer;
+    transition: all .2s ease-in;
+    font-weight: normal;
+    padding: 0;
+} 
+#hd-register-form .register-submit .button:hover {
+	background: #fc8c96;
+    color: #fff;
+    text-decoration: none;
+}
+#register-blog-confirm,
+#register-blog-finish {
+	display: none;
+}
