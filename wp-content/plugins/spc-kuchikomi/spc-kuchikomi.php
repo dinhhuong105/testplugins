@@ -16,8 +16,14 @@ define( 'WPHD_KUCHIKOMI_PLUGIN_URI', 	plugin_dir_url( __FILE__ ));
 define( 'WPHD_KUCHIKOMI_PLUGIN_STYLE', 	plugin_dir_url( __FILE__ ) . 'css/');
 define( 'WPHD_KUCHIKOMI_PLUGIN_SCRIPT', plugin_dir_url( __FILE__ ) . 'js/');
 define( 'WPHD_KUCHIKOMI_PLUGIN_IMAGES', plugin_dir_url( __FILE__ ) . 'images/');
+define( 'WPHD_PASSWORD_DEFAULT', 123456 );
 
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+
+// require_once(WPHD_KUCHIKOMI_PLUGIN_DIR . 'vendor/twittersimpleoauth/twitteroauth/twitteroauth.php');
+// require_once(WPHD_KUCHIKOMI_PLUGIN_DIR . 'vendor/twittersimpleoauth/config.php');
+
 
 
 /**
@@ -91,6 +97,14 @@ if ( !function_exists( 'wphd_kuchikomi_load_page_template' )) {
 	    if ( is_page( 'my-page' ) ) {
 	        $page_template = WPHD_KUCHIKOMI_PLUGIN_DIR . 'accounts/wphd-kuchikomi-mypage.php';
 	    }
+
+	    if ( is_page( 'facebook-login' ) ) {
+	        $page_template = WPHD_KUCHIKOMI_PLUGIN_DIR . 'includes/wphd-kuchikomi-facebook-login-callback.php';
+	    }
+
+	    if (is_page( 'twitter-login' )) {
+	    	$page_template = WPHD_KUCHIKOMI_PLUGIN_DIR . 'includes/wphd-kuchikomi-twitter-login-callback.php';	
+	    }
 	    
 	    return $page_template;
 	}
@@ -108,6 +122,13 @@ if ( !function_exists( 'wphd_kuchikomi_plugin_unique_style' )) {
 	}
 }
 
+// add_action('init', function() {
+// 	session_start();
+// 	if ( isset( $_GET['state'] ) ) {
+// 		$_SESSION['FBRLH_state'] = $_GET['state'];
+// 	}
+// });
+
 /**
  * plugin install
  *
@@ -120,6 +141,8 @@ if (!function_exists('wphd_kuchikomi_plugin_install')) {
 	    wphd_kuchikomi_create_new_page('Login', 'login');
 	    wphd_kuchikomi_create_new_page('My page', 'my-page');
 	    wphd_kuchikomi_create_new_page('Register', 'register');
+	    wphd_kuchikomi_create_new_page('Facebook login', 'facebook-login');
+	    wphd_kuchikomi_create_new_page('Twitter login', 'twitter-login');
 	}
 }
 register_activation_hook( __FILE__ , 'wphd_kuchikomi_plugin_install');
@@ -330,6 +353,11 @@ function wphd_ajaxlogin() {
 
     $user_signon = wp_signon( $info, false );
 
+    // echo '<pre>';
+    // print_r($user_signon);
+    // echo '</pre>';
+    // exit;
+
     if ( is_wp_error($user_signon) ) {
         echo json_encode(array('loggedin' => false));
     } else {
@@ -339,10 +367,49 @@ function wphd_ajaxlogin() {
     exit;
 }
 
+add_action ('wp_loaded', 'login_via_social_network');
+if (!function_exists('login_via_social_network')) {
+    function login_via_social_network($info) {
+
+        if (empty($info)) {
+        	return;
+        }
+
+        $user_signon = wp_signon( $info, false );
+
+        // echo '<pre>';
+        // print_r($user_signon);
+        // echo '</pre>';
+        // exit;
+
+        if ( !is_wp_error($user_signon) ) {
+
+        	// echo 'aaaaaaaaa';exit;
+
+            wp_redirect(home_url('/my-page')); exit;
+            // echo '<script type="text/javascript">window.location.href = "'. home_url('/my-page') .'";</script>'; exit;
+        } else {
+        	echo $user_signon->get_error_message();exit;
+            // wp_redirect(home_url('/login')); exit;
+            // echo '<script type="text/javascript">window.location.href = "'. home_url('/login') .'";</script>'; exit;
+        }
+    }
+}
+
+add_action('wp_ajax_nopriv_ajax_check_email', 'wphd_ajax_check_email');
+add_action('wp_ajax_ajax_check_email', 'wphd_ajax_check_email');
+if (!function_exists('wphd_ajax_check_email')) {
+	function wphd_ajax_check_email() {
+
+	}
+}
+
 add_action( 'wp_ajax_nopriv_check_existed_email_front', 'wphd_check_existed_email_front', 10 );
 add_action( 'wp_ajax_check_existed_email_front', 'wphd_check_existed_email_front', 10 );
 if (!function_exists('wphd_check_existed_email_front')) {
 	function wphd_check_existed_email_front() {
+		echo 'email = ' . $_POST['email'];
+		echo email_exists($_POST['email']);
 		$result = (email_exists($_POST['email'])) ? true : false;
 		echo json_encode(array('result' => $result));
 		exit;

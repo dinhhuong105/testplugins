@@ -54,6 +54,9 @@ label.required:after {
 	float: right;
 	width: 300px;
 }
+.hd-login {
+	margin-top: 100px;
+}
 .hd-login .hd-login-error {
 	padding: 10px;
 	text-align: center;
